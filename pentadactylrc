@@ -1,0 +1,21 @@
+"hg6964
+
+loadplugins '\.(js|penta)$'
+group user
+command! fixscroll -javascript buffer.focusElement(buffer.doc.documentElement)
+command! -nargs=1 tabrename -javascript content.document.title = args[0];
+highlight Hint font:bold 10px Arial;background:#D8DFEA;color:#3B5998;border:1px dotted;
+map -count -modes=n , <count>:bmarks<Space>-tags<Space>
+map -count -modes=n c -builtin <count>:emenu<Space>Tools.Clearly<Return>
+map -count -modes=n,v <C-S-C> <count><C-v><C-c>
+map -count -modes=n,v <C-S-V> <count><C-v><C-v>
+map -count -modes=n gm -ex tabmove +1
+map -count -modes=n gM -ex tabmove -1
+map -count -modes=n h -builtin <count>2h
+map -count -modes=n j -builtin <count>5j
+map -count -modes=n k -builtin <count>5k
+map -count -modes=n l -builtin <count>2l
+map -count -modes=n w <count>:tabnew<Space>wikipedia-en<Space>
+set hlfind
+
+" vim: set ft=pentadactyl:
