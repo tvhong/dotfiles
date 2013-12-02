@@ -47,3 +47,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
 
 filetype plugin indent on     " required!
+
+" Indent differently for html files
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
