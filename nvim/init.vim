@@ -33,6 +33,9 @@ set list " Show problematic characters
 " Colorscheme {{{
 syntax enable " enable syntax processing
 set background=dark
+" Using solarized color scheme.
+" Note: also need to set the terminal's color pallete to Solarized color
+" scheme, check out https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized for instructions.
 colorscheme solarized
 " }}}
 
