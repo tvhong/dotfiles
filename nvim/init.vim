@@ -30,16 +30,6 @@ set list " Show problematic characters
 " }}}
 
 
-" Colorscheme {{{
-syntax enable " enable syntax processing
-set background=dark
-" Using solarized color scheme.
-" Note: also need to set the terminal's color pallete to Solarized color
-" scheme, check out https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized for instructions.
-colorscheme solarized
-" }}}
-
-
 " Spaces & Tabs {{{
 set tabstop=4 " number of visual spaces per TAB
 set softtabstop=4 " number of spaces in tab when editing
@@ -160,6 +150,16 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 call plug#end()
+" }}}
+
+
+" Colorscheme {{{
+syntax enable " enable syntax processing
+set background=dark
+" Using solarized color scheme.
+" Note: also need to set the terminal's color pallete to Solarized color
+" scheme, check out https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized for instructions.
+colorscheme solarized
 " }}}
 
 
