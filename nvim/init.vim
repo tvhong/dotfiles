@@ -175,6 +175,8 @@
 " FZF {{{
     " Search tags.
     nnoremap <leader>. :Tags<CR>
+    " Search tags under cursor.
+    nnoremap <leader>> :Tags <C-r><C-w><CR>
     " Search tags in the current buffer.
     nnoremap <leader>B :BTags<CR>
     " Search current buffer.
