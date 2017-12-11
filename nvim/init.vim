@@ -5,6 +5,8 @@ augroup mynvimrchook
     autocmd BufWritePost init.vim,.nvimrc source $MYVIMRC " Auto reload vimrc whne it changes
 augroup END
 
+let mapleader = "," " set <leader> key.
+
 set showmatch " Show matching brackets
 set number  relativenumber " show number on left
 
@@ -18,7 +20,7 @@ set shiftwidth=4 " spaces per tab when >>
 set expandtab
 
 set cursorline " highlight current line
-filetype indent on      " load filetype-specific indent files
+"filetype indent on      " load filetype-specific indent files
 
 if !&scrolloff
     set scrolloff=3 " show next 3 lines when scrolling
@@ -42,10 +44,8 @@ set ignorecase " Make searching case insensitive
 set smartcase " insensitive search unless has a capital char
 set gdefault            " Use 'g' flag by default with :s/foo/bar/.
 
-" Use <C-L to clear the highlighting of :set hlsearch
-if maparg('<C-L>', 'n') ==# ''
-    nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-endif
+" clear the highlighting of :set hlsearch
+nnoremap <leader><space> :nohlsearch<CR>
 
 " Function to toggle relative numbering
 function! ToggleNumber()
@@ -57,7 +57,16 @@ function! ToggleNumber()
     endif
 endfunc
 
-nnoremap <leader>r :call ToggleNumbek()<cr>
+nnoremap <leader>r :call ToggleNumber()<cr>
 
 " Use ; for commands.
 nnoremap ; :
+" Use Q to execute default register.
+nnoremap Q @q
+
+" Press <CR> to save file.
+nnoremap <CR> :w!<CR>
+
+set wildmenu " visual autocomplete for command menu.
+
+set lazyredraw          " redraw only when we need to.
