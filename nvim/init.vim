@@ -1,8 +1,10 @@
 " This is to be linked to ~/.config/nvim/init.vim
 " Dependencies:
-" * Solarized Palette in terminal.
-" * NERD fonts in terminal.
-" * Vim-plug.
+" * Solarized Palette in terminal (https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized).
+" * NERD fonts in terminal (https://github.com/ryanoasis/nerd-fonts#font-installation).
+" * Vim-plug (https://github.com/junegunn/vim-plug).
+" * ctags (`brew install ctags`)
+" * the_silver_searcher (`brew install the_silver_searcher`)
 
 " UI Layout {{{
     set mouse=a " enable mouse usage
@@ -141,10 +143,12 @@
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'altercation/vim-colors-solarized'
     Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'mileszs/ack.vim'
+    " Plug "LustyExplorer"
     " Plug 'vim-syntastic/syntastic'
-    " tagbar
     " virtualenv
     " YCM
+    " silver search
     " Note: Has dependency on ryanoasis/nerd-fonts
     Plug 'ryanoasis/vim-devicons' " Should stay at the end for other plugins to use
     call plug#end()
@@ -159,32 +163,39 @@
     colorscheme solarized
 " }}}
 " NERDtree {{{
-    augroup nerdtree_configs
-        autocmd vimenter * NERDTree
-    augroup END
-
     nnoremap <C-n> :NERDTreeToggle<CR>
-    " }}}
-    " CtrlP {{{
-        " open a file
-        nnoremap <leader>o :CtrlP<CR>
-        " open buffer menu
-        nnoremap <leader>b :CtrlPBuffer<CR>
-        " open most recently used files
-        nnoremap <leader>f :CtrlPMRUFiles<CR>
-        " ignore files in .gitignore
-        let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-        set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-        let g:ctrlp_custom_ignore = {
+" }}}
+" CtrlP {{{
+    " open a file
+    nnoremap <leader>o :CtrlP<CR>
+    " open buffer menu
+    nnoremap <leader>b :CtrlPBuffer<CR>
+    " open most recently used files
+    nnoremap <leader>f :CtrlPMRUFiles<CR>
+    " ignore files in .gitignore
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+    " ignore useless files
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+    let g:ctrlp_custom_ignore = {
         \ 'dir':  '\v[\/]\.(git|hg|svn)$',
         \ 'file': '\v\.(exe|so|dll)$',
-        \ 'link': 'some_bad_symbolic_links',
         \ }
+    nnoremap <leader>. :CtrlPTag<cr>
 " }}}
 " Vim-Airline {{{
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
 " }}}
 
+" Ack.vim {{{
+    " Let ack.vim uses the silver searcher
+    let g:ackprg = 'ag --nogroup --nocolor --column'
+
+    " open a new tab and search for something
+    nnoremap <leader>a :tab split<CR>:Ack ""<left>
+
+    " immediately search for the word under the cursor in a new tab
+    nnoremap <leader>A: :tab split<CR>:Ack <C-r><C-w><CR>
+" }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
 " vim:foldmethod=marker:foldlevel=0
