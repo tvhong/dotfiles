@@ -176,8 +176,12 @@
 " FZF {{{
     " Search tags.
     nnoremap <leader>. :Tags<CR>
-    " Search all lines in the buffer.
+    " Search all lines in the current buffer.
     nnoremap <leader>b :BLines<CR>
+    " Search all tags in the current buffer.
+    nnoremap <leader>B :BTags<CR>
+    " Search all lines in all buffer.
+    nnoremap <leader>l :Lines<CR>
     " open most recently used files
     nnoremap <leader>f :Files<CR>
 " }}}
