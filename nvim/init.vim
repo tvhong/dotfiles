@@ -1,23 +1,18 @@
 " this is to be linked to ~/.config/nvim/init.vim
-
-let mapleader = "," " set <leader> key.
 set mouse=a " enable mouse usage
 
-set showmatch " Show matching brackets
-set number  relativenumber " show number on left
+
+" UI Layout {{{
+set lazyredraw " redraw only when we need to.
 
 set splitright " Vertical split to right of current
 set splitbelow " Horizontal split below current
 
-set tabstop=4 " number of visual spaces per TAB
-set softtabstop=4 " number of spaces in tab when editing
-set shiftwidth=4 " spaces per tab when >>
-set expandtab
-
+set number relativenumber " show number on left
 set cursorline " highlight current line
-"filetype indent on      " load filetype-specific indent files
+
+set showmatch " Show matching brackets
 set wildmenu " visual autocomplete for command menu.
-set lazyredraw          " redraw only when we need to.
 
 if !&scrolloff
     set scrolloff=3 " show next 3 lines when scrolling
@@ -27,55 +22,66 @@ if !&sidescrolloff
 endif
 
 " Tell Vim which characters to show for expanded TABs,
-" trailing whitespace, and end-of-lines. VERY useful!
+" trailing whitespace, and end-of-lines.
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
-set list                " Show problematic characters
-" Highlight all tabs and trailing white spaces
-" highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-" match ExtraWhitespace /\s\+$/
+set list " Show problematic characters
+" }}}
 
+
+" Colorscheme {{{
+syntax enable " enable syntax processing
+set background=dark
+colorscheme solarized
+" }}}
+
+
+" Spaces & Tabs {{{
+set tabstop=4 " number of visual spaces per TAB
+set softtabstop=4 " number of spaces in tab when editing
+set shiftwidth=4 " spaces per tab when >>
+set expandtab
+" }}}
+
+
+" Searching {{{
 set ignorecase " Make searching case insensitive
 set smartcase " insensitive search unless has a capital char
-set gdefault            " Use 'g' flag by default with :s/foo/bar/.
+set gdefault " Use 'g' flag by default with :s/foo/bar/.
+" }}}
 
-" clear the highlighting of :set hlsearch
-nnoremap <leader><space> :nohlsearch<CR>
-" set backup
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp " set the backup directory
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp " set the swap directory
-set backupskip=/tmp/*,/private/tmp/* " skip these directories for backup
-set writebackup
 
-" Toggle between number and relative number
-function! ToggleNumber()
-    if (&relativenumber == 1)
-        set norelativenumber
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
-
-nnoremap <leader>r :call ToggleNumber()<cr>
-
+" Key Maps {{{
 " move down on long lines
 nnoremap j gj
 nnoremap k gk
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
 " Press <CR> to save file.
 nnoremap <CR> :w!<CR>
 " Use Q to execute default register.
 nnoremap Q @q
+" }}}
 
-" highlight last inserted text
-nnoremap gV `[v`]
-" edit vimrc shortcut
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+
+" Leader Maps {{{
+let mapleader = "," " set <leader> key.
+
+" clear the highlighting of :set hlsearch
+nnoremap <leader><space> :nohlsearch<CR>
+
+" change between relative and absolute numbering
+nnoremap <leader>r :call ToggleNumber()<cr>
+
 " save session
 nnoremap <leader>s :mksession!<CR>
+" }}}
 
+
+" AutoGroups {{{
 augroup mynvimrchook
     autocmd!
     " Auto reload vimrc whne it changes
@@ -85,19 +91,6 @@ augroup mynvimrchook
                 \:call <SID>StripTrailingWhitespaces()
 augroup END
 
-" strips trailing whitespace. this
-" is called on buffer write in the autogroup above.
-function! StripTrailingWhitespaces()
-    " save last search & cursor position
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    let @/=_s
-    call cursor(l, c)
-endfunction
-
-" Commenting
 augroup filetype_javascript
     autocmd!
     autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc>
@@ -114,7 +107,45 @@ augroup filetype_html
     autocmd FileType html nnoremap <buffer> <leader>f Vatzf
 augroup END
 
-" Vim-Plugins
+" }}}
+
+
+" Backups {{{
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp " set the backup directory
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp " set the swap directory
+set backupskip=/tmp/*,/private/tmp/* " skip these directories for backup
+set writebackup
+" }}}
+
+
+" Custom Functions {{{
+
+
+" Toggle between number and relative number
+function! ToggleNumber()
+    if (&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunction
+
+" strips trailing whitespace.
+function! StripTrailingWhitespaces()
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
+" }}}
+
+
+" Plugins {{{
 " Auto install vim-plug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -126,7 +157,9 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 call plug#end()
+" }}}
 
-syntax enable " enable syntax processing
-set background=dark
-colorscheme solarized
+
+" Auto-folding when open this file
+set modelines=1 " Run the line below for this file only
+" vim:foldmethod=marker:foldlevel=0
