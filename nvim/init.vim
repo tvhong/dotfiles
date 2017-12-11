@@ -71,11 +71,14 @@ nnoremap <leader>r :call ToggleNumber()<cr>
 
 " save session
 nnoremap <leader>s :mksession!<CR>
+
+" edit vimrc
+nnoremap <leader>ev :e $MYVIMRC<CR>
 " }}}
 
 
 " AutoGroups {{{
-augroup mynvimrchook
+augroup my_nvimrc_hook
     autocmd!
     " Auto reload vimrc whne it changes
     autocmd BufWritePost init.vim,.nvimrc source $MYVIMRC
@@ -161,6 +164,15 @@ set background=light
 " Note: also need to set the terminal's color pallete to Solarized color
 " scheme, check out https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized for instructions.
 colorscheme solarized
+" }}}
+
+
+" NERDtree {{{
+augroup nerdtree_configs
+    autocmd vimenter * NERDTree
+augroup END
+
+nnoremap <C-n> :NERDTreeToggle<CR>
 " }}}
 
 
