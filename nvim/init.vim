@@ -98,8 +98,24 @@ function! StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-" Vim-Plugin
+" Commenting
+augroup filetype_javascript
+    autocmd!
+    autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc>
+augroup END
 
+augroup filetype_python
+    autocmd!
+    autocmd FileType python nnoremap <buffer> <leader>c I#<esc>
+augroup END
+
+augroup filetype_html
+    autocmd!
+    autocmd FileType html setlocal nowrap
+    autocmd FileType html nnoremap <buffer> <leader>f Vatzf
+augroup END
+
+" Vim-Plugins
 " Auto install vim-plug
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -108,4 +124,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'scrooloose/nerdtree'
 call plug#end()
+
+" Nerdtree config
