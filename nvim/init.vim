@@ -142,7 +142,6 @@
     Plug 'scrooloose/nerdtree'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'altercation/vim-colors-solarized'
-    Plug 'mileszs/ack.vim'
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
     Plug 'junegunn/fzf.vim'
     " Plug "LustyExplorer"
@@ -176,27 +175,22 @@
 " FZF {{{
     " Search tags.
     nnoremap <leader>. :Tags<CR>
-    " Search all lines in the current buffer.
-    nnoremap <leader>b :BLines<CR>
-    " Search all tags in the current buffer.
+    " Search tags in the current buffer.
     nnoremap <leader>B :BTags<CR>
-    " Search all lines in all buffer.
+    " Search current buffer.
+    nnoremap <leader>b :BLines<CR>
+    " Search in all buffers.
     nnoremap <leader>l :Lines<CR>
-    " open most recently used files
+    " Search for files
     nnoremap <leader>f :Files<CR>
+
+    " Search using Silver search
+    nnoremap <leader>a :Ag 
+    " Immediately search for the word under the cursor.
+    nnoremap <leader>A :Ag <C-r><C-w><CR>
 " }}}
 " Vim-Airline {{{
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
-" }}}
-" Ack.vim {{{
-    " Let ack.vim uses the silver searcher
-    let g:ackprg = 'ag --nogroup --nocolor --column'
-
-    " open a new tab and search for something
-    nnoremap <leader>a :Ack ""<left>
-
-    " immediately search for the word under the cursor in a new tab
-    nnoremap <leader>A: :Ack <C-r><C-w><CR>
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
