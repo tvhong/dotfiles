@@ -142,7 +142,6 @@
     Plug 'scrooloose/nerdtree'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'altercation/vim-colors-solarized'
-    Plug 'ctrlpvim/ctrlp.vim'
     Plug 'mileszs/ack.vim'
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
     Plug 'junegunn/fzf.vim'
@@ -173,23 +172,6 @@
 
     " open NERDTree automatically when vim starts up on opening a directory
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-" }}}
-" CtrlP {{{
-    " open a file
-    nnoremap <leader>o :CtrlP<CR>
-    " open buffer menu
-    nnoremap <leader>b :CtrlPBuffer<CR>
-    " open most recently used files
-    nnoremap <leader>f :CtrlPMRUFiles<CR>
-    " ignore files in .gitignore
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-    " ignore useless files
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-    let g:ctrlp_custom_ignore = {
-        \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-        \ 'file': '\v\.(exe|so|dll)$',
-        \ }
-    nnoremap <leader>. :CtrlPTag<cr>
 " }}}
 " FZF {{{
     " Search tags.
