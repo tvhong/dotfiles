@@ -1,8 +1,11 @@
-" this is to be linked to ~/.config/nvim/init.vim
-set mouse=a " enable mouse usage
-
+" This is to be linked to ~/.config/nvim/init.vim
+" Dependencies:
+" * Solarized Palette in terminal.
+" * NERD fonts in terminal.
+" * Vim-plug.
 
 " UI Layout {{{
+set mouse=a " enable mouse usage
 set lazyredraw " redraw only when we need to.
 set encoding=utf8
 set guifont=FuraCode_Nerd_Font:h11 " install font from https://github.com/ryanoasis/nerd-fonts & enable in iTerm
@@ -152,9 +155,15 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'vim-syntastic/syntastic'
+" tagbar
+" virtualenv
+" YCM
 " Note: Has dependency on ryanoasis/nerd-fonts
 Plug 'ryanoasis/vim-devicons' " Should stay at the end for other plugins to use
 call plug#end()
@@ -180,8 +189,26 @@ augroup END
 nnoremap <C-n> :NERDTreeToggle<CR>
 " }}}
 
-" let g:airline_powerline_fonts = 1 " Let vim-airline uses fonts
+" CtrlP {{{
+    " open a file
+    nnoremap <leader>o :CtrlP<CR>
+    " open buffer menu
+    nnoremap <leader>b :CtrlPBuffer<CR>
+    " open most recently used files
+    nnoremap <leader>f :CtrlPMRUFiles<CR>
+    " ignore files in .gitignore
+    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+    set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+    let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'link': 'some_bad_symbolic_links',
+    \ }
+" }}}
 
+" Vim-Airline {{{
+let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
+" }}}
 
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
