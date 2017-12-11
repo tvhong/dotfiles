@@ -185,16 +185,15 @@
 " Vim-Airline {{{
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
 " }}}
-
 " Ack.vim {{{
     " Let ack.vim uses the silver searcher
     let g:ackprg = 'ag --nogroup --nocolor --column'
 
     " open a new tab and search for something
-    nnoremap <leader>a :tab split<CR>:Ack ""<left>
+    nnoremap <leader>a :Ack ""<left>
 
     " immediately search for the word under the cursor in a new tab
-    nnoremap <leader>A: :tab split<CR>:Ack <C-r><C-w><CR>
+    nnoremap <leader>A: :Ack <C-r><C-w><CR>
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
