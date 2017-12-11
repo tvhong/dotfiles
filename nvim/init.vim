@@ -155,7 +155,8 @@ call plug#end()
 
 " Colorscheme {{{
 syntax enable " enable syntax processing
-set background=dark
+set background=light
+
 " Using solarized color scheme.
 " Note: also need to set the terminal's color pallete to Solarized color
 " scheme, check out https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized for instructions.
