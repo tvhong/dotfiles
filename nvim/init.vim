@@ -36,10 +36,10 @@
     set list " Show problematic characters
 " }}}
 " Spaces & Tabs {{{
-    set tabstop=4 " number of visual spaces per TAB
-    set softtabstop=4 " number of spaces in tab when editing
+    set softtabstop=4 " number of spaces when TAB is typed
     set shiftwidth=4 " spaces per tab when >>
-    set expandtab
+    set tabstop=4 " number of visual spaces per TAB
+    set noexpandtab
 " }}}
 " Searching {{{
     set ignorecase " Make searching case insensitive
