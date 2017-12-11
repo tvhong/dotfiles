@@ -1,11 +1,7 @@
 " this is to be linked to ~/.config/nvim/init.vim
 
-augroup mynvimrchook
-    au!
-    autocmd BufWritePost init.vim,.nvimrc source $MYVIMRC " Auto reload vimrc whne it changes
-augroup END
-
 let mapleader = "," " set <leader> key.
+set mouse=a " enable mouse usage
 
 set showmatch " Show matching brackets
 set number  relativenumber " show number on left
@@ -21,6 +17,8 @@ set expandtab
 
 set cursorline " highlight current line
 "filetype indent on      " load filetype-specific indent files
+set wildmenu " visual autocomplete for command menu.
+set lazyredraw          " redraw only when we need to.
 
 if !&scrolloff
     set scrolloff=3 " show next 3 lines when scrolling
@@ -35,7 +33,6 @@ if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
 set list                " Show problematic characters
-
 " Highlight all tabs and trailing white spaces
 " highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 " match ExtraWhitespace /\s\+$/
@@ -46,8 +43,14 @@ set gdefault            " Use 'g' flag by default with :s/foo/bar/.
 
 " clear the highlighting of :set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
+" set backup
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp " set the backup directory
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp " set the swap directory
+set backupskip=/tmp/*,/private/tmp/* " skip these directories for backup
+set writebackup
 
-" Function to toggle relative numbering
+" Toggle between number and relative number
 function! ToggleNumber()
     if (&relativenumber == 1)
         set norelativenumber
@@ -59,14 +62,50 @@ endfunc
 
 nnoremap <leader>r :call ToggleNumber()<cr>
 
-" Use ; for commands.
-nnoremap ; :
+" move down on long lines
+nnoremap j gj
+nnoremap k gk
+" Press <CR> to save file.
+nnoremap <CR> :w!<CR>
 " Use Q to execute default register.
 nnoremap Q @q
 
-" Press <CR> to save file.
-nnoremap <CR> :w!<CR>
+" highlight last inserted text
+nnoremap gV `[v`]
+" edit vimrc shortcut
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+" save session
+nnoremap <leader>s :mksession!<CR>
 
-set wildmenu " visual autocomplete for command menu.
+augroup mynvimrchook
+    autocmd!
+    " Auto reload vimrc whne it changes
+    autocmd BufWritePost init.vim,.nvimrc source $MYVIMRC
+    " Remove whitespaces before write
+    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
+                \:call <SID>StripTrailingWhitespaces()
+augroup END
 
-set lazyredraw          " redraw only when we need to.
+" strips trailing whitespace. this
+" is called on buffer write in the autogroup above.
+function! StripTrailingWhitespaces()
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" Vim-Plugin
+
+" Auto install vim-plug
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+call plug#end()
