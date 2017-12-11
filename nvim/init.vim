@@ -4,6 +4,8 @@ set mouse=a " enable mouse usage
 
 " UI Layout {{{
 set lazyredraw " redraw only when we need to.
+set encoding=utf8
+set guifont=FuraCode_Nerd_Font:h11 " install font from https://github.com/ryanoasis/nerd-fonts & enable in iTerm
 
 set splitright " Vertical split to right of current
 set splitbelow " Horizontal split below current
@@ -151,7 +153,10 @@ endif
 
 call plug#begin()
 Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'altercation/vim-colors-solarized'
+" Note: Has dependency on ryanoasis/nerd-fonts
+Plug 'ryanoasis/vim-devicons' " Should stay at the end for other plugins to use
 call plug#end()
 " }}}
 
@@ -174,6 +179,8 @@ augroup END
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 " }}}
+
+" let g:airline_powerline_fonts = 1 " Let vim-airline uses fonts
 
 
 " Auto-folding when open this file
