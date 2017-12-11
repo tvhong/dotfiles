@@ -144,6 +144,8 @@
     Plug 'altercation/vim-colors-solarized'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'mileszs/ack.vim'
+    Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
+    Plug 'junegunn/fzf.vim'
     " Plug "LustyExplorer"
     " Plug 'vim-syntastic/syntastic'
     " virtualenv
@@ -188,6 +190,14 @@
         \ 'file': '\v\.(exe|so|dll)$',
         \ }
     nnoremap <leader>. :CtrlPTag<cr>
+" }}}
+" FZF {{{
+    " Search tags.
+    nnoremap <leader>. :Tags<CR>
+    " Search all lines in the buffer.
+    nnoremap <leader>b :BLines<CR>
+    " open most recently used files
+    nnoremap <leader>f :Files<CR>
 " }}}
 " Vim-Airline {{{
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
