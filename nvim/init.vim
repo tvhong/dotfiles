@@ -33,23 +33,17 @@
     endif
     set list " Show problematic characters
 " }}}
-
-
 " Spaces & Tabs {{{
     set tabstop=4 " number of visual spaces per TAB
     set softtabstop=4 " number of spaces in tab when editing
     set shiftwidth=4 " spaces per tab when >>
     set expandtab
 " }}}
-
-
 " Searching {{{
     set ignorecase " Make searching case insensitive
     set smartcase " insensitive search unless has a capital char
     set gdefault " Use 'g' flag by default with :s/foo/bar/.
 " }}}
-
-
 " Key Maps {{{
     " move down on long lines
     nnoremap j gj
@@ -63,8 +57,6 @@
     " Use Q to execute default register.
     nnoremap Q @q
 " }}}
-
-
 " Leader Maps {{{
     let mapleader = "," " set <leader> key.
 
@@ -80,8 +72,6 @@
     " edit vimrc
     nnoremap <leader>ev :e $MYVIMRC<CR>
 " }}}
-
-
 " AutoGroups {{{
     augroup my_nvimrc_hook
         autocmd!
@@ -108,8 +98,6 @@
         autocmd FileType html nnoremap <buffer> <leader>f Vatzf
     augroup END
 " }}}
-
-
 " Backups {{{
     set backup
     set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp " set the backup directory
@@ -117,8 +105,6 @@
     set backupskip=/tmp/*,/private/tmp/* " skip these directories for backup
     set writebackup
 " }}}
-
-
 " Custom Functions {{{
     " Toggle between number and relative number
     function! ToggleNumber()
@@ -141,8 +127,6 @@
         call cursor(l, c)
     endfunction
 " }}}
-
-
 " Plugins {{{
     " Auto install vim-plug
     if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -165,8 +149,6 @@
     Plug 'ryanoasis/vim-devicons' " Should stay at the end for other plugins to use
     call plug#end()
 " }}}
-
-
 " Colorscheme {{{
     syntax enable " enable syntax processing
     set background=light
@@ -176,8 +158,6 @@
     " scheme, check out https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized for instructions.
     colorscheme solarized
 " }}}
-
-
 " NERDtree {{{
     augroup nerdtree_configs
         autocmd vimenter * NERDTree
@@ -185,7 +165,6 @@
 
     nnoremap <C-n> :NERDTreeToggle<CR>
     " }}}
-
     " CtrlP {{{
         " open a file
         nnoremap <leader>o :CtrlP<CR>
@@ -202,9 +181,8 @@
         \ 'link': 'some_bad_symbolic_links',
         \ }
 " }}}
-
 " Vim-Airline {{{
-let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
+    let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
 " }}}
 
 " Auto-folding when open this file
