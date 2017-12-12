@@ -30,16 +30,14 @@
 
     " Tell Vim which characters to show for expanded TABs,
     " trailing whitespace, and end-of-lines.
-    if &listchars ==# 'eol:$'
-      set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-    endif
+    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
     set list " Show problematic characters
 " }}}
 " Spaces & Tabs {{{
     set softtabstop=4 " number of spaces when TAB is typed
     set shiftwidth=4 " spaces per tab when >>
     set tabstop=4 " number of visual spaces per TAB
-    set noexpandtab
+    set expandtab
 " }}}
 " Searching {{{
     set ignorecase " Make searching case insensitive
@@ -53,6 +51,9 @@
 
     " highlight last inserted text
     nnoremap gV `[v`]
+
+    " Use space to trigger folding
+    nnoremap <space> za
 
     " Press <CR> to save file.
     nnoremap <CR> :w!<CR>
