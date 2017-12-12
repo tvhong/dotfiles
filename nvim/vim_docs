@@ -1,0 +1,14 @@
+A good vimrc: https://dougblack.io/words/a-good-vimrc.html
+Silver searcher: https://github.com/ggreer/the_silver_searcher
+Ctags: https://andrew.stwrt.ca/posts/vim-ctags/
+
+(~/.vim is equivalent to ~/.config/nvim/)
+  .vim
+  |____after    # for overrides to system-level vim
+  |____autoload # a directory for some plugins
+  |____colors   # custom colorthemes
+  |____doc      # documentation
+  |____ftplugin # custom filetype plugins
+  |____indent   # custom indentation overrides
+  |____plugin   # plugin installation directory
+  |____syntax   # custom syntax coloring files
