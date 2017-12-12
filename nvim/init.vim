@@ -78,7 +78,7 @@
 " AutoGroups {{{
     augroup my_nvimrc_hook
         autocmd!
-        " Auto reload vimrc whne it changes
+        " Auto reload vimrc when it changes
         autocmd BufWritePost init.vim,.nvimrc source $MYVIMRC
         " Remove whitespaces before write
         autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
@@ -141,7 +141,7 @@
     call plug#begin()
     Plug 'vim-airline/vim-airline'
     Plug 'scrooloose/nerdtree'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Plugin to color different file ext differently.
     Plug 'altercation/vim-colors-solarized'
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
     Plug 'junegunn/fzf.vim'
@@ -151,6 +151,7 @@
     " virtualenv
     " YCM
     " silver search
+    " Snippet
     " Note: Has dependency on ryanoasis/nerd-fonts
     Plug 'ryanoasis/vim-devicons' " Should stay at the end for other plugins to use
     call plug#end()
@@ -168,11 +169,13 @@
     nnoremap <C-n> :NERDTreeToggle<CR>
 
     " open a NERDTree automatically when vim starts up if no files were specified
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    augroup nerdtree
+        autocmd StdinReadPre * let s:std_in=1
+        autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-    " open NERDTree automatically when vim starts up on opening a directory
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+        " open NERDTree automatically when vim starts up on opening a directory
+        autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+    augroup END
 " }}}
 " FZF {{{
     " Search tags.
