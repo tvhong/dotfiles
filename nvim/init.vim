@@ -145,7 +145,6 @@
     Plug 'altercation/vim-colors-solarized'
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
     Plug 'junegunn/fzf.vim'
-    Plug 'tmhedberg/simpylfold'
     " Plug "LustyExplorer"
     " Plug 'vim-syntastic/syntastic'
     " virtualenv
