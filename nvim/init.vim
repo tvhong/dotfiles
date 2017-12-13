@@ -5,7 +5,12 @@
 " * Vim-plug (https://github.com/junegunn/vim-plug).
 " * ctags (`brew install ctags`)
 " * the_silver_searcher (`brew install the_silver_searcher`)
+" * CMake (for YouCompleteMe)
+" * nvim-python `:help provider-python`
+" *             & https://github.com/neovim/neovim/wiki/FAQ#python-support-isnt-working
+" * Manual installation for YouCompleteMe as well.
 
+let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 " UI Layout {{{
     set mouse=a " enable mouse usage
     set lazyredraw " redraw only when we need to.
@@ -139,6 +144,7 @@
     endif
 
     call plug#begin()
+    Plug 'tpope/vim-surround'
     Plug 'vim-airline/vim-airline'
     Plug 'scrooloose/nerdtree'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Plugin to color different file ext differently.
@@ -146,6 +152,7 @@
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
     Plug 'junegunn/fzf.vim'
     Plug 'scrooloose/nerdcommenter' " Auto comment for different file types
+    Plug 'Valloric/YouCompleteMe'
     " Plug "LustyExplorer"
     " Plug 'vim-syntastic/syntastic'
     " virtualenv
@@ -158,7 +165,7 @@
 " }}}
 " Colorscheme {{{
     syntax enable " enable syntax processing
-    set background=light
+    set background=dark
 
     " Using solarized color scheme.
     " Note: also need to set the terminal's color pallete to Solarized color
@@ -198,6 +205,9 @@
 " }}}
 " Vim-Airline {{{
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
+" }}}
+" YouCompleteMe {{{
+    let g:ycm_python_binary_path = 'python'
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
