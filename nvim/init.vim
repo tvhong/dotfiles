@@ -59,9 +59,6 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 
     " Use space to trigger folding
     nnoremap <space> za
-
-    " Press <CR> to save file.
-    nnoremap <CR> :w!<CR>
     " Use Q to execute default register.
     nnoremap Q @q
 " }}}
@@ -207,7 +204,13 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
 " }}}
 " YouCompleteMe {{{
-    let g:ycm_python_binary_path = 'python'
+    let g:ycm_python_binary_path = 'python' " Use the first python found in $PATH
+
+    let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+    let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+    let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+    let g:ycm_complete_in_comments = 1 " Completion in comments
+    let g:ycm_complete_in_strings = 1 " Completion in string
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
