@@ -144,15 +144,19 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 
     call plug#begin()
     Plug 'tpope/vim-surround'
+    Plug 'scrooloose/nerdcommenter' " Auto comment for different file types
+
+    Plug 'altercation/vim-colors-solarized'
     Plug 'vim-airline/vim-airline'
+
     Plug 'scrooloose/nerdtree'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Plugin to color different file ext differently.
-    Plug 'altercation/vim-colors-solarized'
+    Plug 'majutsushi/tagbar' " Shows tags for the currently edited file.
+    Plug 'ludovicchabant/vim-gutentags' " Auto-generate tag files
+
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
     Plug 'junegunn/fzf.vim'
-    Plug 'scrooloose/nerdcommenter' " Auto comment for different file types
     Plug 'Valloric/YouCompleteMe'
-    Plug 'majutsushi/tagbar'
     " Plug "LustyExplorer"
     " Plug 'vim-syntastic/syntastic'
     " virtualenv
@@ -218,6 +222,14 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
     let g:ycm_complete_in_comments = 1 " Completion in comments
     let g:ycm_complete_in_strings = 1 " Completion in string
+
+    " Shortcuts for ycm goto commands.
+    nnoremap <C-]> :YcmCompleter GoTo<CR>
+    nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+" }}}
+" Tagbar {{{
+    nnoremap <leader>t :TagbarToggle<CR>
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
