@@ -63,6 +63,12 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     vnoremap <space> zf
     " Use Q to execute default register.
     nnoremap Q @q
+
+	" Windows keys
+	nnoremap <C-j> <C-w>j
+	nnoremap <C-k> <C-w>k
+	nnoremap <C-h> <C-w>h
+	nnoremap <C-l> <C-w>l
 " }}}
 " Leader Maps {{{
     let mapleader = "," " set <leader> key.
@@ -224,8 +230,9 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:ycm_complete_in_strings = 1 " Completion in string
 
     " Shortcuts for ycm goto commands.
-    nnoremap <C-]> :YcmCompleter GoTo<CR>
-    nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+    "nnoremap <C-]> :YcmCompleter GoTo<CR>
+    nnoremap <leader>gd :YcmCompleter GoTo<CR>
+    nnoremap <leader>gD :YcmCompleter GoToDefinition<CR>
     nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 " }}}
 " Tagbar {{{
