@@ -59,6 +59,8 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 
     " Use space to trigger folding
     nnoremap <space> za
+    " Use space to create fold in visual mode
+    vnoremap <space> zf
     " Use Q to execute default register.
     nnoremap Q @q
 " }}}
@@ -150,6 +152,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     Plug 'junegunn/fzf.vim'
     Plug 'scrooloose/nerdcommenter' " Auto comment for different file types
     Plug 'Valloric/YouCompleteMe'
+    Plug 'majutsushi/tagbar'
     " Plug "LustyExplorer"
     " Plug 'vim-syntastic/syntastic'
     " virtualenv
@@ -170,8 +173,6 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     colorscheme solarized
 " }}}
 " NERDtree {{{
-    nnoremap <C-n> :NERDTreeToggle<CR>
-
     " open a NERDTree automatically when vim starts up if no files were specified
     augroup nerdtree
         autocmd StdinReadPre * let s:std_in=1
@@ -180,6 +181,12 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
         " open NERDTree automatically when vim starts up on opening a directory
         autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
     augroup END
+
+    " Shortcut to start NERDTree
+    nnoremap <C-n> :NERDTreeToggle<CR>
+
+    " Ignore certain files in NERDTree
+    let NERDTreeIgnore = ['\.pyc$']
 " }}}
 " FZF {{{
     " Search tags.
