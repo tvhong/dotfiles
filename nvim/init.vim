@@ -84,7 +84,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
         autocmd BufWritePost init.vim,.nvimrc source $MYVIMRC
         " Remove whitespaces before write
         autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
-                    \:call <SID>StripTrailingWhitespaces()
+                    \ :call <SID>StripTrailingWhitespaces()
     augroup END
 
     augroup filetype_javascript
@@ -122,7 +122,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     endfunction
 
     " strips trailing whitespace.
-    function! StripTrailingWhitespaces()
+    function! s:StripTrailingWhitespaces()
         " save last search & cursor position
         let _s=@/
         let l = line(".")
