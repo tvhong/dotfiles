@@ -64,11 +64,11 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Use Q to execute default register.
     nnoremap Q @q
 
-	" Windows keys
-	nnoremap <C-j> <C-w>j
-	nnoremap <C-k> <C-w>k
-	nnoremap <C-h> <C-w>h
-	nnoremap <C-l> <C-w>l
+    " Windows keys
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-h> <C-w>h
+    nnoremap <C-l> <C-w>l
 " }}}
 " Leader Maps {{{
     let mapleader = "," " set <leader> key.
@@ -194,6 +194,8 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 
     " Shortcut to start NERDTree
     nnoremap <C-n> :NERDTreeToggle<CR>
+    " Show current buffer in NERDTree
+    nnoremap <leader>n :NERDTreeFind<CR>
 
     " Ignore certain files in NERDTree
     let NERDTreeIgnore = ['\.pyc$']
@@ -202,18 +204,18 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Search tags.
     nnoremap <leader>. :Tags<CR>
     " Search tags under cursor.
-    nnoremap <leader>> :Tags <C-r><C-w><CR>
+    nnoremap <leader>> :Tags '<C-r><C-w><CR>
     " Search tags in the current buffer.
-    nnoremap <leader>B :BTags<CR>
+    nnoremap <leader>b :Buffers<CR>
     " Search current buffer.
-    nnoremap <leader>b :BLines<CR>
+    nnoremap <leader>B :BTags<CR>
     " Search in all buffers.
     nnoremap <leader>l :Lines<CR>
     " Search for files
     nnoremap <leader>f :Files<CR>
 
     " Search using Silver search
-    nnoremap <leader>a :Ag 
+    nnoremap <leader>a :Ag<CR>
     " Immediately search for the word under the cursor.
     nnoremap <leader>A :Ag <C-r><C-w><CR>
 " }}}
@@ -230,13 +232,19 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:ycm_complete_in_strings = 1 " Completion in string
 
     " Shortcuts for ycm goto commands.
-    "nnoremap <C-]> :YcmCompleter GoTo<CR>
-    nnoremap <leader>gd :YcmCompleter GoTo<CR>
-    nnoremap <leader>gD :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
     nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 " }}}
 " Tagbar {{{
-    nnoremap <leader>t :TagbarToggle<CR>
+    " Auto focus to Tagbar when open
+    let g:tagbar_autofocus = 0
+    " Auto close the tagbar when hitting <CR>
+    let g:tagbar_autoclose = 0
+
+    " Toggle tagbar
+    nnoremap <leader>tt :TagbarToggle<CR>
+    " Show method/class tagbar
+    nnoremap <leader>t :TagbarShowTag<CR>
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
