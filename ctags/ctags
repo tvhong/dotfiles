@@ -7,3 +7,4 @@
 --exclude=*.min.js
 --exclude=node_modules
 --exclude=bower_components
+--python-kinds=-iv
