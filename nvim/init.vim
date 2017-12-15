@@ -80,6 +80,10 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 " Leader Maps {{{
     let mapleader = "," " set <leader> key.
 
+    " Remap goto start and goto end
+    nnoremap B ^
+    nnoremap E $
+
     " clear the highlighting of :set hlsearch
     nnoremap <leader><space> :nohlsearch<CR>
 
@@ -210,6 +214,8 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     nnoremap <F3> :NERDTreeToggle<CR>
     " Show current buffer in NERDTree
     nnoremap <leader>gn :NERDTreeFind<CR>
+    " Bookmark to NERDTree
+    nnoremap <leader>bn :Bookmark<CR>
 " }}}
 " FZF {{{
     " Search tags.
