@@ -256,12 +256,17 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 " ag.vim {{{
     " Open a larger quickfix window
     let g:ag_qhandler = "botright copen 20"
+    " Highlight result (not working!)
+    let g:ag_highlight = 1
+    " Specify the default ag options
+    let g:ag_prg = "ag --column --nogroup --noheading"
+
     " Search using Silver search
-    nnoremap <leader>a :Ag --ignore "tests/" ""<left>
-    nnoremap <leader>at :Ag ""<left>
+    nnoremap <leader>a :Ag! --ignore "tests*.py" ""<left>
+    nnoremap <leader>at :Ag! ""<left>
     " Immediately search for the word under the cursor.
-    nnoremap <leader>A :Ag --ignore "tests/" "<C-r><C-w>"<CR>
-    nnoremap <leader>At :Ag "<C-r><C-w>"<CR>
+    nnoremap <leader>A :Ag! --ignore "test*.py" --word "<C-r><C-w>"<CR>
+    nnoremap <leader>At :Ag! --word "<C-r><C-w>"<CR>
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
