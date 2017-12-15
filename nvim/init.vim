@@ -161,6 +161,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 
     Plug 'altercation/vim-colors-solarized'
     Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
     Plug 'scrooloose/nerdtree'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Plugin to color different file ext differently.
@@ -225,7 +226,18 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     nnoremap <leader>f :Files<CR>
 " }}}
 " Vim-Airline {{{
+    " Note, if ever need to customize airline's section, see
+    " :help airline-section
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
+    " Enable tabline that shows list of buffers
+    let g:airline#extensions#tabline#enabled = 1
+    " Set solarized theme (Need :AirlineTheme solarized) before this has effect.
+    let g:airline_solarized_bg='dark'
+
+    augroup vim_airline_config
+        autocmd!
+        autocmd VimEnter * AirlineTheme solarized
+    augroup END
 " }}}
 " YouCompleteMe {{{
     let g:ycm_python_binary_path = 'python' " Use the first python found in $PATH
