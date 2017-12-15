@@ -200,13 +200,15 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
         autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
     augroup END
 
+    " Remap NERDTree menu key so we can still use marking.
+    let NERDTreeMapMenu = 'M'
+    " Ignore certain files in NERDTree
+    let NERDTreeIgnore = ['\.pyc$', 'migrations[[dir]]']
+
     " Shortcut to start NERDTree
     nnoremap <F3> :NERDTreeToggle<CR>
     " Show current buffer in NERDTree
     nnoremap <leader>gn :NERDTreeFind<CR>
-
-    " Ignore certain files in NERDTree
-    let NERDTreeIgnore = ['\.pyc$', 'migrations[[dir]]']
 " }}}
 " FZF {{{
     " Search tags.
@@ -243,6 +245,8 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:tagbar_autofocus = 0
     " Auto close the tagbar when hitting <CR>
     let g:tagbar_autoclose = 0
+    " Disable tag sorting
+    let g:tagbar_sort = 0
 
     " Toggle tagbar
     nnoremap <F7> :TagbarToggle<CR>
