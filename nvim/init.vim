@@ -35,7 +35,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 
     " Tell Vim which characters to show for expanded TABs,
     " trailing whitespace, and end-of-lines.
-    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+    set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
     set list " Show problematic characters
 " }}}
 " Spaces & Tabs {{{
@@ -69,6 +69,13 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     nnoremap <C-k> <C-w>k
     nnoremap <C-h> <C-w>h
     nnoremap <C-l> <C-w>l
+
+    " Window resize
+    nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+    nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
+    nnoremap <silent> <Leader>+v :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+    nnoremap <silent> <Leader>-v :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 " }}}
 " Leader Maps {{{
     let mapleader = "," " set <leader> key.
@@ -163,6 +170,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
     Plug 'junegunn/fzf.vim'
     Plug 'Valloric/YouCompleteMe'
+    Plug 'rking/ag.vim'
     " Plug "LustyExplorer"
     " Plug 'vim-syntastic/syntastic'
     " virtualenv
@@ -193,12 +201,12 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     augroup END
 
     " Shortcut to start NERDTree
-    nnoremap <C-n> :NERDTreeToggle<CR>
+    nnoremap <F3> :NERDTreeToggle<CR>
     " Show current buffer in NERDTree
-    nnoremap <leader>n :NERDTreeFind<CR>
+    nnoremap <leader>gn :NERDTreeFind<CR>
 
     " Ignore certain files in NERDTree
-    let NERDTreeIgnore = ['\.pyc$']
+    let NERDTreeIgnore = ['\.pyc$', 'migrations[[dir]]']
 " }}}
 " FZF {{{
     " Search tags.
@@ -213,11 +221,6 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     nnoremap <leader>l :Lines<CR>
     " Search for files
     nnoremap <leader>f :Files<CR>
-
-    " Search using Silver search
-    nnoremap <leader>a :Ag<CR>
-    " Immediately search for the word under the cursor.
-    nnoremap <leader>A :Ag <C-r><C-w><CR>
 " }}}
 " Vim-Airline {{{
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
@@ -242,9 +245,19 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:tagbar_autoclose = 0
 
     " Toggle tagbar
-    nnoremap <leader>tt :TagbarToggle<CR>
+    nnoremap <F7> :TagbarToggle<CR>
     " Show method/class tagbar
-    nnoremap <leader>t :TagbarShowTag<CR>
+    nnoremap <leader>gt :TagbarShowTag<CR>
+" }}}
+" ag.vim {{{
+    " Open a larger quickfix window
+    let g:ag_qhandler = "botright copen 20"
+    " Search using Silver search
+    nnoremap <leader>a :Ag --ignore "tests/" ""<left>
+    nnoremap <leader>at :Ag ""<left>
+    " Immediately search for the word under the cursor.
+    nnoremap <leader>A :Ag --ignore "tests/" "<C-r><C-w>"<CR>
+    nnoremap <leader>At :Ag "<C-r><C-w>"<CR>
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
