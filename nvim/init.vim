@@ -20,7 +20,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     set splitright " Vertical split to right of current
     set splitbelow " Horizontal split below current
 
-    set number relativenumber " show number on left
+    set number " show number on left
     set cursorline " highlight current line
 
     set showmatch " Show matching brackets
@@ -54,6 +54,9 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     nnoremap j gj
     nnoremap k gk
 
+    " Shortcut for :
+    nnoremap ; :
+
     " highlight last inserted text
     nnoremap gV `[v`]
 
@@ -71,11 +74,11 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     nnoremap <C-l> <C-w>l
 
     " Window resize
-    nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-    nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+    nnoremap <silent> <Leader>w+ :exe "resize " . (winheight(0) * 3/2)<CR>
+    nnoremap <silent> <Leader>w- :exe "resize " . (winheight(0) * 2/3)<CR>
 
-    nnoremap <silent> <Leader>+v :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-    nnoremap <silent> <Leader>-v :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+    nnoremap <silent> <Leader>w> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+    nnoremap <silent> <Leader>w< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 " }}}
 " Leader Maps {{{
     let mapleader = "," " set <leader> key.
@@ -207,11 +210,22 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 
     " Remap NERDTree menu key so we can still use marking.
     let NERDTreeMapMenu = 'M'
-    " Ignore certain files in NERDTree
-    let NERDTreeIgnore = ['\.pyc$', 'migrations[[dir]]']
+    " Remap NERDTree next/prev sibling keys
+    let NERDTreeMapJumpNextSibling = '<C-n>'
+    let NERDTreeMapJumpPrevSibling = '<C-p>'
+
+    " Change current working directory to root.
+    let NERDTreeChDirMode=2
+
+    " Ignore certain files in NERDTree.
+    let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', 'migrations[[dir]]']
+    " List py files before directories.
+    let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
+    " Show bookmarks list by default.
+    let NERDTreeShowBookmarks=1
 
     " Shortcut to start NERDTree
-    nnoremap <F3> :NERDTreeToggle<CR>
+    nnoremap <leader>wn :NERDTreeToggle<CR>
     " Show current buffer in NERDTree
     nnoremap <leader>gn :NERDTreeFind<CR>
     " Bookmark to NERDTree
@@ -221,7 +235,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Search tags.
     nnoremap <leader>. :Tags<CR>
     " Search tags under cursor.
-    nnoremap <leader>> :Tags '<C-r><C-w><CR>
+    nnoremap <leader>> :Tags '<C-r><C-w> <CR>
     " Search tags in the current buffer.
     nnoremap <leader>b :Buffers<CR>
     " Search current buffer.
@@ -235,8 +249,6 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Note, if ever need to customize airline's section, see
     " :help airline-section
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
-    " Enable tabline that shows list of buffers
-    let g:airline#extensions#tabline#enabled = 1
     " Set solarized theme (Need :AirlineTheme solarized) before this has effect.
     let g:airline_solarized_bg='dark'
 
@@ -267,7 +279,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:tagbar_sort = 0
 
     " Toggle tagbar
-    nnoremap <F7> :TagbarToggle<CR>
+    nnoremap <leader>wt :TagbarToggle<CR>
     " Show method/class tagbar
     nnoremap <leader>gt :TagbarShowTag<CR>
 " }}}
