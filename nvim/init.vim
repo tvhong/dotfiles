@@ -5,10 +5,12 @@
 " * Vim-plug (https://github.com/junegunn/vim-plug).
 " * ctags (`brew install ctags`)
 " * the_silver_searcher (`brew install the_silver_searcher`)
-" * CMake (for YouCompleteMe)
-" * nvim-python `:help provider-python`
-" *             & https://github.com/neovim/neovim/wiki/FAQ#python-support-isnt-working
 " * Manual installation for YouCompleteMe as well.
+    " * CMake (for YouCompleteMe)
+    " * nvim-python `:help provider-python`
+    " *             & https://github.com/neovim/neovim/wiki/FAQ#python-support-isnt-working
+" * Prospector for linting (`pip install prospector`)
+" * Isort for python sorting.
 
 let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 " UI Layout {{{
@@ -178,6 +180,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
     Plug 'junegunn/fzf.vim'
     Plug 'Valloric/YouCompleteMe'
+    Plug 'w0rp/ale' " Async Lint Engine
     Plug 'rking/ag.vim'
     " Plug "LustyExplorer"
     " Plug 'vim-syntastic/syntastic'
@@ -297,6 +300,24 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Immediately search for the word under the cursor.
     nnoremap <leader>A :Ag! --ignore "test*.py" --word "<C-r><C-w>"<CR>
     nnoremap <leader>At :Ag! --word "<C-r><C-w>"<CR>
+" }}}
+" ALE {{{
+    let g:ale_linters = {
+                \   'python': ['prospector'],
+                \}
+    " Go to previous error and next error. Can't use nnoremap.
+    nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-n> <Plug>(ale_next_wrap)
+
+    " ALEFix configurations. See :ALEFixSuggest.
+    let g:ale_fixers = {
+                \   'python': [
+                \       'isort',
+                \       'yapf',
+                \   ],
+                \}
+    " Auto-run ALEFix on save.
+    let g:ale_fix_on_save = 1
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
