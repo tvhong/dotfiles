@@ -1,6 +1,7 @@
 A good vimrc: https://dougblack.io/words/a-good-vimrc.html
 Silver searcher: https://github.com/ggreer/the_silver_searcher
 Ctags: https://andrew.stwrt.ca/posts/vim-ctags/
+Python linters: https://github.com/vintasoftware/python-linters-and-code-analysis
 
 (~/.vim is equivalent to ~/.config/nvim/)
   .vim
