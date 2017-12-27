@@ -59,6 +59,11 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Shortcut for :
     nnoremap ; :
 
+    " Map Y to copy till EOL (like D & C)
+    nnoremap Y y$
+    " Yank all to clipboard
+    nnoremap <Leader>ya :%y+<CR>
+
     " highlight last inserted text
     nnoremap gV `[v`]
 
@@ -182,6 +187,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     Plug 'Valloric/YouCompleteMe'
     Plug 'w0rp/ale' " Async Lint Engine
     Plug 'rking/ag.vim'
+    Plug 'qpkorr/vim-bufkill'
     " Plug "LustyExplorer"
     " Plug 'vim-syntastic/syntastic'
     " virtualenv
@@ -202,8 +208,8 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     colorscheme solarized
 " }}}
 " NERDtree {{{
-    " open a NERDTree automatically when vim starts up if no files were specified
     augroup nerdtree
+        " open a NERDTree automatically when vim starts up if no files were specified
         autocmd StdinReadPre * let s:std_in=1
         autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
@@ -216,9 +222,11 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Remap NERDTree next/prev sibling keys
     let NERDTreeMapJumpNextSibling = '<C-n>'
     let NERDTreeMapJumpPrevSibling = '<C-p>'
-
-    " Change current working directory to root.
-    let NERDTreeChDirMode=2
+    " Remap NERDTree split keys
+    let NERDTreeMapOpenSplit = 's'
+    let NERDTreeMapPreviewSplit = 'gs'
+    let NERDTreeMapOpenVSplit = 'v'
+    let NERDTreeMapPreviewVSplit = 'gv'
 
     " Ignore certain files in NERDTree.
     let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', 'migrations[[dir]]']
@@ -247,6 +255,11 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     nnoremap <leader>l :Lines<CR>
     " Search for files
     nnoremap <leader>f :Files<CR>
+    " Remap splitting key bindings
+    let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit' }
 " }}}
 " Vim-Airline {{{
     " Note, if ever need to customize airline's section, see
@@ -261,22 +274,30 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     augroup END
 " }}}
 " YouCompleteMe {{{
+    " Remember to add the project dir to PYTHONPATH so that jedi can find the
+    " definition.
     let g:ycm_python_binary_path = 'python' " Use the first python found in $PATH
 
-    let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+    let g:ycm_auto_trigger = 1 " Make sure auto trigger is on
+    " Control threshold for ID-based suggestion.
+    " Use high number (e.g. 99) to turn off ID-based suggestion and leave semantic completion
+    let g:ycm_min_num_of_chars_for_completion = 2
+    " let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
     let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
     let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
     let g:ycm_complete_in_comments = 1 " Completion in comments
     let g:ycm_complete_in_strings = 1 " Completion in string
+    let g:ycm_max_num_candidates = 50 " Limit the # of candidates from semantic completion suggestion
 
     " Shortcuts for ycm goto commands.
     nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
     nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
+    nnoremap <leader>gp :YcmCompleter GetDoc<CR> " go peek
 " }}}
 " Tagbar {{{
-    " Auto focus to Tagbar when open
-    let g:tagbar_autofocus = 0
-    " Auto close the tagbar when hitting <CR>
+    " Whether to auto focus to Tagbar when open
+    let g:tagbar_autofocus = 1
+    " Whether to auto close the tagbar when hitting <CR>
     let g:tagbar_autoclose = 0
     " Disable tag sorting
     let g:tagbar_sort = 0
@@ -292,7 +313,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Highlight result (not working!)
     let g:ag_highlight = 1
     " Specify the default ag options
-    let g:ag_prg = "ag --column --nogroup --noheading"
+    let g:ag_prg = "ag --column --nogroup --noheading --ignore '*.pyc'"
 
     " Search using Silver search
     nnoremap <leader>a :Ag! --ignore "tests*.py" ""<left>
@@ -303,7 +324,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 " }}}
 " ALE {{{
     let g:ale_linters = {
-                \   'python': ['prospector'],
+                \   'python': ['pyflakes', 'prospector'],
                 \}
     " Go to previous error and next error. Can't use nnoremap.
     nmap <silent> <C-p> <Plug>(ale_previous_wrap)
@@ -318,6 +339,14 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
                 \}
     " Auto-run ALEFix on save.
     let g:ale_fix_on_save = 1
+
+    " Don't run linters when coding
+    let g:ale_lint_on_text_changed = 'never'
+    " Don't run linters on opening a file
+    let g:ale_lint_on_enter = 0
+" }}}
+" BufKill {{{
+    nnoremap <leader>q :BD<CR>
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
