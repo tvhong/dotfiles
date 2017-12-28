@@ -59,8 +59,8 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Shortcut for :
     nnoremap ; :
 
-    " Easier quit
-    nnoremap <leader>q :q<CR>
+    " Delete buffer
+    nnoremap <leader>q :bd<CR>
 
     " Map Y to copy till EOL (like D & C)
     nnoremap Y y$
@@ -220,13 +220,15 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let NERDTreeMapPreviewSplit = 'gh'
     let NERDTreeMapOpenVSplit = '<C-v>'
     let NERDTreeMapPreviewVSplit = 'gv'
+    " Remap help key
+    let NERDTreeMapHelp = 'H'
 
     " Ignore certain files in NERDTree.
-    let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '\.lock', 'migrations[[dir]]']
+    let NERDTreeIgnore=['\.vim$', '\~$', '\.swp$', '\.pyc$', '\.lock', 'migrations[[dir]]', 'node_modules[[dir]]', 'bower_components[[dir]]']
     " List py files before directories.
     let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
-    " Show bookmarks list by default.
-    let NERDTreeShowBookmarks=1
+    " Show bookmarks don't list by default.
+    let NERDTreeShowBookmarks=0
 
     " Shortcut to start NERDTree
     nnoremap <leader>wn :NERDTreeToggle<CR>
@@ -246,8 +248,8 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     nnoremap <leader>bt :BTags<CR>
     " Search in all buffers.
     nnoremap <leader>bl :Lines<CR>
-    " Search for files
-    nnoremap <leader>f :Files<CR>
+    " Search for files (ignore .gitignores)
+    nnoremap <leader>f :GFiles<CR>
     " Remap splitting key bindings
     let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
@@ -343,8 +345,9 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 " }}}
 " BufKill {{{
     " Kill buffer without removing the window
-    nnoremap <leader>qq :BD<CR>
+    nnoremap <leader>d :BD<CR>
 " }}}
+" TODO: Make braces matching and autoclosing working for hbs files
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
 " vim:foldmethod=marker:foldlevel=0
