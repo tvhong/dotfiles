@@ -220,9 +220,9 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let NERDTreeMapJumpNextSibling = '<C-n>'
     let NERDTreeMapJumpPrevSibling = '<C-p>'
     " Remap NERDTree split keys
-    let NERDTreeMapOpenSplit = 's'
-    let NERDTreeMapPreviewSplit = 'gs'
-    let NERDTreeMapOpenVSplit = 'v'
+    let NERDTreeMapOpenSplit = '<C-h>'
+    let NERDTreeMapPreviewSplit = 'gh'
+    let NERDTreeMapOpenVSplit = '<C-v>'
     let NERDTreeMapPreviewVSplit = 'gv'
 
     " Ignore certain files in NERDTree.
@@ -255,7 +255,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Remap splitting key bindings
     let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
-      \ 'ctrl-s': 'split',
+      \ 'ctrl-h': 'split',
       \ 'ctrl-v': 'vsplit' }
 " }}}
 " Vim-Airline {{{
