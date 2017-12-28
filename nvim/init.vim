@@ -183,18 +183,14 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     Plug 'ludovicchabant/vim-gutentags' " Auto-generate tag files
 
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
-    Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/fzf.vim'  " Fuzzy search for files, tags, buffer, e.t.c
     Plug 'Valloric/YouCompleteMe'
-    Plug 'w0rp/ale' " Async Lint Engine
+    Plug 'w0rp/ale' " Linting engine.
     Plug 'rking/ag.vim'
     Plug 'qpkorr/vim-bufkill'
     Plug 'yuttie/comfortable-motion.vim' " For a smoother scrolling experience.
-    " Plug "LustyExplorer"
-    " Plug 'vim-syntastic/syntastic'
-    " virtualenv
-    " YCM
-    " silver search
-    " Snippet
+    " Snippet?
+    " Git integration
     " Note: Has dependency on ryanoasis/nerd-fonts
     Plug 'ryanoasis/vim-devicons' " Should stay at the end for other plugins to use
     call plug#end()
