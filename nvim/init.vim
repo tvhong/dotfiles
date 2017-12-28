@@ -59,6 +59,9 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Shortcut for :
     nnoremap ; :
 
+    " Easier quit
+    nnoremap <leader>q :q<CR>
+
     " Map Y to copy till EOL (like D & C)
     nnoremap Y y$
     " Yank all to clipboard
@@ -189,6 +192,9 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     Plug 'rking/ag.vim'
     Plug 'qpkorr/vim-bufkill'
     Plug 'yuttie/comfortable-motion.vim' " For a smoother scrolling experience.
+
+    " Plugins for Javascript
+    Plug 'pangloss/vim-javascript'
     " Snippet?
     " Git integration
     " Note: Has dependency on ryanoasis/nerd-fonts
@@ -226,7 +232,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let NERDTreeMapPreviewVSplit = 'gv'
 
     " Ignore certain files in NERDTree.
-    let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', 'migrations[[dir]]']
+    let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '\.lock', 'migrations[[dir]]']
     " List py files before directories.
     let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
     " Show bookmarks list by default.
@@ -245,11 +251,11 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Search tags under cursor.
     nnoremap <leader>> :Tags '<C-r><C-w> <CR>
     " Search tags in the current buffer.
-    nnoremap <leader>b :Buffers<CR>
+    nnoremap <leader>bb :Buffers<CR>
     " Search current buffer.
-    nnoremap <leader>B :BTags<CR>
+    nnoremap <leader>bt :BTags<CR>
     " Search in all buffers.
-    nnoremap <leader>l :Lines<CR>
+    nnoremap <leader>bl :Lines<CR>
     " Search for files
     nnoremap <leader>f :Files<CR>
     " Remap splitting key bindings
@@ -264,6 +270,9 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
     " Set solarized theme (Need :AirlineTheme solarized) before this has effect.
     let g:airline_solarized_bg='dark'
+
+    " Enable tabline when there's no window
+    let g:airline#extensions#tabline#enabled = 1
 
     augroup vim_airline_config
         autocmd!
@@ -313,11 +322,11 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:ag_prg = "ag --column --nogroup --noheading --ignore '*.pyc'"
 
     " Search using Silver search
-    nnoremap <leader>a :Ag! --ignore "tests*.py" ""<left>
-    nnoremap <leader>at :Ag! ""<left>
+    nnoremap <leader>a :Ag! --ignore "tests*.py" --ignore "tags" 
+    nnoremap <leader>at :Ag! --ignore "tags" 
     " Immediately search for the word under the cursor.
-    nnoremap <leader>A :Ag! --ignore "test*.py" --word "<C-r><C-w>"<CR>
-    nnoremap <leader>At :Ag! --word "<C-r><C-w>"<CR>
+    nnoremap <leader>A :Ag! --ignore "test*.py" --ignore "tags" --word "<C-r><C-w>"<CR>
+    nnoremap <leader>At :Ag! --ignore "tags" --word "<C-r><C-w>"<CR>
 " }}}
 " ALE {{{
     let g:ale_linters = {
@@ -343,7 +352,8 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:ale_lint_on_enter = 0
 " }}}
 " BufKill {{{
-    nnoremap <leader>q :BD<CR>
+    " Kill buffer without removing the window
+    nnoremap <leader>qq :BD<CR>
 " }}}
 " Auto-folding when open this file
 set modelines=1 " Run the line below for this file only
