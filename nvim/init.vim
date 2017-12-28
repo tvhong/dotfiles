@@ -188,6 +188,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     Plug 'w0rp/ale' " Async Lint Engine
     Plug 'rking/ag.vim'
     Plug 'qpkorr/vim-bufkill'
+    Plug 'yuttie/comfortable-motion.vim' " For a smoother scrolling experience.
     " Plug "LustyExplorer"
     " Plug 'vim-syntastic/syntastic'
     " virtualenv
@@ -281,7 +282,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let g:ycm_auto_trigger = 1 " Make sure auto trigger is on
     " Control threshold for ID-based suggestion.
     " Use high number (e.g. 99) to turn off ID-based suggestion and leave semantic completion
-    let g:ycm_min_num_of_chars_for_completion = 2
+    let g:ycm_min_num_of_chars_for_completion = 99
     " let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
     let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
     let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
