@@ -118,22 +118,6 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
         autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
                     \ :call <SID>StripTrailingWhitespaces()
     augroup END
-
-    augroup filetype_javascript
-        autocmd!
-        autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc>
-    augroup END
-
-    augroup filetype_python
-        autocmd!
-        autocmd FileType python nnoremap <buffer> <leader>c I#<esc>
-    augroup END
-
-    augroup filetype_html
-        autocmd!
-        autocmd FileType html setlocal nowrap
-        autocmd FileType html nnoremap <buffer> <leader>f Vatzf
-    augroup END
 " }}}
 " Backups {{{
     set backup
@@ -195,6 +179,12 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
 
     " Plugins for Javascript
     Plug 'pangloss/vim-javascript'
+    Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags
+    Plug 'gregsexton/matchtag' " Highlight matching HTML/XML tag
+
+    " Plugins for Ember
+    Plug 'joukevandermaas/vim-ember-hbs'
+
     " Snippet?
     " Git integration
     " Note: Has dependency on ryanoasis/nerd-fonts
