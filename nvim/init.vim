@@ -212,6 +212,7 @@
     " IDE-like features.
     Plug 'Valloric/YouCompleteMe' " Auto-complete for vim.
     Plug 'w0rp/ale' " Linting engine.
+    Plug 'tpope/vim-fugitive' " Git integration.
 
     " Plugins for Javascript.
     Plug 'pangloss/vim-javascript' " Enhance javascript coding experience.
