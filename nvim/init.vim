@@ -12,12 +12,15 @@
 " * Prospector for linting (`pip install prospector`)
 " * Isort for python sorting.
 
-" Assume that python 2 host prog is installed by:
-" ```
-" $ pyenv virtualenv 2.7.14 py2nvim`
-" $ pyenv activate py2nvim
-" $ pip install neovim
-let g:python_host_prog = join([$HOME, '.pyenv/versions/py2nvim/bin/python'], '/')
+" Dependencies Settings {{{
+    " Assume that python 2 host prog is installed by:
+    " $ pyenv virtualenv 2.7.14 py2nvim`
+    " $ pyenv activate py2nvim
+    " $ pip install neovim
+
+    " Specify the python path:
+    let g:python_host_prog = join([$HOME, '.pyenv/versions/py2nvim/bin/python'], '/')
+" }}}
 " UI Layout {{{
     set mouse=a " enable mouse usage
     set lazyredraw " redraw only when we need to.
