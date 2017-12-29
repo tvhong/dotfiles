@@ -164,9 +164,9 @@
     augroup zenefits_projects_settings
         autocmd!
         " Indentations settings.
-        autocmd BufRead,BufEnter */{yourpeople*,global-styles}/*.py
+        autocmd BufRead,BufEnter */{yourPeople*,global-styles}/*.py
             \ set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
-        autocmd BufRead,BufEnter */{yourpeople*,global-styles}/*.{js,scss,css}
+        autocmd BufRead,BufEnter */{yourPeople*,global-styles}/*.{js,scss,css}
             \ set noexpandtab shiftwidth=2 softtabstop=2 tabstop=2
     augroup END
 " }}}
@@ -220,6 +220,7 @@
     Plug 'yuttie/comfortable-motion.vim' " For a smoother scrolling experience.
 
     " Text editor enhancement plugins.
+    Plug 'jiangmiao/auto-pairs' " Auto insert/delete brackets, parens, quotes
     Plug 'scrooloose/nerdtree' " File explorer
         Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Plugin to color different file ext differently.
     Plug 'majutsushi/tagbar' " Shows tags for the currently edited file.
