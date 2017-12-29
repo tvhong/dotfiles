@@ -75,7 +75,7 @@
     set softtabstop=4 " number of spaces when TAB is typed
     set shiftwidth=4 " spaces per tab when >>
     set tabstop=4 " number of visual spaces per TAB
-    set noexpandtab
+    set expandtab
 " }}}
 " Searching {{{
     set ignorecase " Make searching case insensitive
@@ -149,6 +149,13 @@
         autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
                     \ :call <SID>StripTrailingWhitespaces()
     augroup END
+
+    " Zenefits specific settings
+    autocmd BufRead,BufEnter $HOME/workspace/yourpeople*/*
+                \ setlocal tabstop=4
+                \ setlocal shiftwidth=4
+                \ setlocal softtabstop=4
+                \ setlocal noexpandtab
 " }}}
 " Backups {{{
     set backup
@@ -223,7 +230,6 @@
     Plug 'joukevandermaas/vim-ember-hbs' " Support for Ember handle bar files.
 
     " Snippet?
-    " Git integration.
     " Note: Has dependency on ryanoasis/nerd-fonts.
     Plug 'ryanoasis/vim-devicons' " Should stay at the end for other plugins to use
     call plug#end()
