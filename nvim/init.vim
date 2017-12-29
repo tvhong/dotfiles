@@ -3,7 +3,7 @@
 " * Solarized Palette in terminal (https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized).
 " * NERD fonts in terminal (https://github.com/ryanoasis/nerd-fonts#font-installation).
 " * Vim-plug (https://github.com/junegunn/vim-plug).
-" * ctags (`brew install ctags`)
+" * Universal ctags
 " * the_silver_searcher (`brew install the_silver_searcher`)
 " * Manual installation for YouCompleteMe as well.
     " * CMake (for YouCompleteMe)
@@ -227,7 +227,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     let NERDTreeMapHelp = 'H'
 
     " Ignore certain files in NERDTree.
-    let NERDTreeIgnore=['\.vim$', '\~$', '\.swp$', '\.pyc$', '\.lock', 'migrations[[dir]]', 'node_modules[[dir]]', 'bower_components[[dir]]']
+    let NERDTreeIgnore=['\~$', '\.swp$', '\.pyc$', '\.lock', 'migrations[[dir]]', 'node_modules[[dir]]', 'bower_components[[dir]]']
     " List py files before directories.
     let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
     " Show bookmarks don't list by default.
