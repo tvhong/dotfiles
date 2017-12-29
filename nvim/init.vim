@@ -1,10 +1,5 @@
 " This is to be linked to ~/.config/nvim/init.vim
 " Dependencies:
-" * Solarized Palette in terminal (https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized).
-" * NERD fonts in terminal (https://github.com/ryanoasis/nerd-fonts#font-installation).
-" * Vim-plug (https://github.com/junegunn/vim-plug).
-" * Universal ctags (https://ctags.io/).
-" * The Silver Searcher (`brew install the_silver_searcher`).
 " * Manual installation for YouCompleteMe as well.
     " * CMake (for YouCompleteMe).
     " * nvim-python `:help provider-python`
@@ -12,7 +7,35 @@
 " * Prospector for linting (`pip install prospector` in the project's venv).
 " * Isort for python sorting (`pip install isort` in the project's venv).
 
-" Dependencies Settings {{{
+" Dependencies {{{
+    " Vim Plug:
+    " - Website: https://github.com/junegunn/vim-plug
+    " - Installation: https://github.com/junegunn/vim-plug#neovim
+
+    " Solarized Palette:
+    " - Website: http://ethanschoonover.com/solarized
+    " - Installation:
+    "   + iterm2: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
+    "   + Gnome Terminal: Right click > Profile > Profile Preferences > Colours.
+    "                     Select built-in Solarized themes.
+
+    " NERD Fonts:
+    " - Website: https://github.com/ryanoasis/nerd-fonts
+    " - Installation: https://github.com/ryanoasis/nerd-fonts#font-installation
+
+    " The Silver Searcher:
+    " - Website: https://github.com/ggreer/the_silver_searcher
+    " - Installation:
+    "   + MacOS: `brew install the_silver_searcher`
+    "   + Ubuntu: `apt install silversearcher-ag`
+
+    " Universal Ctags:
+    " - Website: https://ctags.io/
+    " - Installation:
+    "   + MacOS: https://github.com/universal-ctags/homebrew-universal-ctags
+    "   + Ubuntu: https://askubuntu.com/a/836521/69234
+
+    " Python2 For Neovim:
     " Assume that python 2 host prog is installed by:
     " $ pyenv virtualenv 2.7.14 py2nvim`
     " $ pyenv activate py2nvim
