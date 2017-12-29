@@ -120,9 +120,9 @@
 
     nnoremap <silent> <Leader>w> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
     nnoremap <silent> <Leader>w< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
-" }}}
-" Leader Maps {{{
-    let mapleader = "," " set <leader> key.
+
+    " Map <leader> key.
+    let mapleader = ","
 
     " Remap goto start and goto end.
     nnoremap B ^
