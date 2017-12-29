@@ -1,6 +1,6 @@
 Link this directory to `~/.config/nvim/after/ftplugin/`
 ```bash
-ln -s $PWD ~/.config/nvim/after
+ln -s $PWD ~/.config/nvim/after/ftplugin
 ```
 
 The default ftplugins are in `$VIMRUNTIME/ftplugin/`
