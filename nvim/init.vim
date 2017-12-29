@@ -94,8 +94,8 @@
     " Shortcut for :
     nnoremap ; :
 
-    " Delete buffer.
-    nnoremap <leader>q :bd<CR>
+    " Delete buffer and close the window.
+    nnoremap <leader>qq :bd<CR>
 
     " Map Y to copy till EOL (like D & C).
     nnoremap Y y$
@@ -299,8 +299,6 @@
     nnoremap <leader>wn :NERDTreeToggle<CR>
     " Show current buffer in NERDTree.
     nnoremap <leader>gn :NERDTreeFind<CR>
-    " Bookmark to NERDTree.
-    nnoremap <leader>bn :Bookmark<CR>
 " }}}
 " FZF {{{
     " Search tags.
@@ -417,8 +415,8 @@
     let g:ale_lint_on_enter = 0
 " }}}
 " BufKill {{{
-    " Kill buffer without removing the window.
-    nnoremap <leader>d :BD<CR>
+    " Close buffer but keep window open.
+    nnoremap <leader>d :qo<CR>
 " }}}
 " Vim-Markdown {{{
     " Fold a little nicer.
