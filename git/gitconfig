@@ -1,17 +1,17 @@
 [user]
-	name = Vy Hong
-	email = contact@vyhong.me
+    name = Vy Hong
+    email = contact@vyhong.me
 [color]
-	ui = true
+    ui = true
 [alias]
-	st = status
-	co = checkout
-	cm = commit
-	br = branch
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	logme = log --pretty=format:'%h %s [%an]' --graph
-	loggraph = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    st = status
+    co = checkout
+    cm = commit
+    br = branch
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    logme = log --pretty=format:'%h %s [%an]' --graph
+    loggraph = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [core]
-	editor = vim
+    editor = vim
 [push]
-	default = simple
+    default = simple
