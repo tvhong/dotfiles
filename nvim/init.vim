@@ -145,13 +145,19 @@
         autocmd!
         " Auto reload vimrc when it changes.
         autocmd BufWritePost init.vim,.nvimrc source $MYVIMRC
+    augroup END
+
+    augroup clean_whitespaces_on_write
+        autocmd!
         " Remove whitespaces before write.
         autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
                     \ :call <SID>StripTrailingWhitespaces()
     augroup END
 
-    " Zenefits specific settings
+    " Zenefits specific settings.
     augroup zenefits_projects_settings
+        autocmd!
+        " Indentations settings.
         autocmd BufRead,BufEnter */{yourpeople*,global-styles}/*.py
             \ set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
         autocmd BufRead,BufEnter */{yourpeople*,global-styles}/*.{js,scss,css}
