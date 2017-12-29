@@ -194,7 +194,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     Plug 'ryanoasis/vim-devicons' " Should stay at the end for other plugins to use
     call plug#end()
 " }}}
-" Colorscheme {{{
+" Solarized colorscheme {{{
     syntax enable " enable syntax processing
     set background=dark
 
