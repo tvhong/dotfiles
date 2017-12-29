@@ -12,7 +12,8 @@
 " * Prospector for linting (`pip install prospector`)
 " * Isort for python sorting.
 
-let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
+" Assume that python 2 host prog is installed by `pyenv virtualenv 2.7.14 py2nvim`
+let g:python_host_prog = join([$HOME, '.pyenv/versions/py2nvim/bin/python'], '/')
 " UI Layout {{{
     set mouse=a " enable mouse usage
     set lazyredraw " redraw only when we need to.
@@ -164,7 +165,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     " Layout plugins
     Plug 'altercation/vim-colors-solarized'
     Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    Plug 'vim-airline/vim-airline-themes', {'do': ':AirlineTheme solarized'}
     Plug 'ap/vim-css-color'
 
     Plug 'scrooloose/nerdtree'
