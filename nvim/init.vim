@@ -1,9 +1,5 @@
 " This is to be linked to ~/.config/nvim/init.vim
 " Dependencies:
-" * Manual installation for YouCompleteMe as well.
-    " * CMake (for YouCompleteMe).
-    " * nvim-python `:help provider-python`
-    " *             & https://github.com/neovim/neovim/wiki/FAQ#python-support-isnt-working
 " * Prospector for linting (`pip install prospector` in the project's venv).
 " * Isort for python sorting (`pip install isort` in the project's venv).
 
@@ -35,7 +31,7 @@
     "   + MacOS: https://github.com/universal-ctags/homebrew-universal-ctags
     "   + Ubuntu: https://askubuntu.com/a/836521/69234
 
-    " Python2 For Neovim:
+    " Python2 Support For NeoVim:
     " Assume that python 2 host prog is installed by:
     " $ pyenv virtualenv 2.7.14 py2nvim`
     " $ pyenv activate py2nvim
@@ -43,6 +39,14 @@
 
     " Specify the python path:
     let g:python_host_prog = join([$HOME, '.pyenv/versions/py2nvim/bin/python'], '/')
+
+    " YouCompleteMe:
+    " - Website: https://github.com/Valloric/YouCompleteMe/
+    " - Installation:
+    "   + :PlugInstall to download YCM. If it times out, might need increase
+    "   vim-plug timeout.
+    "   + Enable Python2 support for NeoVim.
+    "   + Compile YCM (https://github.com/Valloric/YouCompleteMe/#installation).
 " }}}
 " UI Layout {{{
     set mouse=a " enable mouse usage
@@ -338,6 +342,7 @@
     let g:ycm_python_binary_path = 'python' " Use the first python found in $PATH
 
     let g:ycm_auto_trigger = 1 " Make sure auto trigger is on.
+
     " Control threshold for ID-based suggestion.
     " Use high number (e.g. 99) to turn off ID-based suggestion and leave semantic completion.
     let g:ycm_min_num_of_chars_for_completion = 99
