@@ -151,11 +151,12 @@
     augroup END
 
     " Zenefits specific settings
-    autocmd BufRead,BufEnter $HOME/workspace/yourpeople*/*
-                \ setlocal tabstop=4
-                \ setlocal shiftwidth=4
-                \ setlocal softtabstop=4
-                \ setlocal noexpandtab
+    augroup zenefits_projects_settings
+        autocmd BufRead,BufEnter */{yourpeople*,global-styles}/*.py
+            \ set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+        autocmd BufRead,BufEnter */{yourpeople*,global-styles}/*.{js,scss,css}
+            \ set noexpandtab shiftwidth=2 softtabstop=2 tabstop=2
+    augroup END
 " }}}
 " Backups {{{
     set backup
