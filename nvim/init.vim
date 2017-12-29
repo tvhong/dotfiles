@@ -3,7 +3,7 @@
 " * Solarized Palette in terminal (https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized).
 " * NERD fonts in terminal (https://github.com/ryanoasis/nerd-fonts#font-installation).
 " * Vim-plug (https://github.com/junegunn/vim-plug).
-" * Universal ctags
+" * Universal ctags (https://ctags.io/)
 " * the_silver_searcher (`brew install the_silver_searcher`)
 " * Manual installation for YouCompleteMe as well.
     " * CMake (for YouCompleteMe)
@@ -12,7 +12,11 @@
 " * Prospector for linting (`pip install prospector`)
 " * Isort for python sorting.
 
-" Assume that python 2 host prog is installed by `pyenv virtualenv 2.7.14 py2nvim`
+" Assume that python 2 host prog is installed by:
+" ```
+" $ pyenv virtualenv 2.7.14 py2nvim`
+" $ pyenv activate py2nvim
+" $ pip install neovim
 let g:python_host_prog = join([$HOME, '.pyenv/versions/py2nvim/bin/python'], '/')
 " UI Layout {{{
     set mouse=a " enable mouse usage
