@@ -261,7 +261,10 @@
     let NERDTreeMapHelp = 'H'
 
     " Ignore certain files in NERDTree.
-    let NERDTreeIgnore=['\~$', '\.swp$', '\.pyc$', '\.lock', 'migrations[[dir]]', 'node_modules[[dir]]', 'bower_components[[dir]]']
+    let NERDTreeIgnore=[
+        \ '\~$', '\.swp$', '\.lock',
+        \ '\.pyc$', '__pycache__[[dir]]', 'migrations[[dir]]',
+        \ 'node_modules[[dir]]', 'bower_components[[dir]]']
     " List py files before directories.
     let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
     " Show bookmarks don't list by default.
