@@ -4,13 +4,13 @@
 " * NERD fonts in terminal (https://github.com/ryanoasis/nerd-fonts#font-installation).
 " * Vim-plug (https://github.com/junegunn/vim-plug).
 " * Universal ctags (https://ctags.io/)
-" * the_silver_searcher (`brew install the_silver_searcher`)
+" * The Silver Searcher (`brew install the_silver_searcher`)
 " * Manual installation for YouCompleteMe as well.
     " * CMake (for YouCompleteMe)
     " * nvim-python `:help provider-python`
     " *             & https://github.com/neovim/neovim/wiki/FAQ#python-support-isnt-working
-" * Prospector for linting (`pip install prospector`)
-" * Isort for python sorting.
+" * Prospector for linting (`pip install prospector` in the project's venv)
+" * Isort for python sorting (`pip install isort` in the project's venv).
 
 " Dependencies Settings {{{
     " Assume that python 2 host prog is installed by:
@@ -170,31 +170,33 @@
     Plug 'scrooloose/nerdcommenter' " Auto comment for different file types
 
     " Layout plugins
-    Plug 'altercation/vim-colors-solarized'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes', {'do': ':AirlineTheme solarized'}
-    Plug 'ap/vim-css-color'
-
-    Plug 'scrooloose/nerdtree'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Plugin to color different file ext differently.
-    Plug 'majutsushi/tagbar' " Shows tags for the currently edited file.
-    Plug 'ludovicchabant/vim-gutentags' " Auto-generate tag files
-
-    Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
-    Plug 'junegunn/fzf.vim'  " Fuzzy search for files, tags, buffer, e.t.c
-    Plug 'Valloric/YouCompleteMe'
-    Plug 'w0rp/ale' " Linting engine.
-    Plug 'rking/ag.vim'
-    Plug 'qpkorr/vim-bufkill'
+    Plug 'altercation/vim-colors-solarized' " Solarize vim theme.
+    Plug 'vim-airline/vim-airline' " Nicer statusbar support for vim.
+        Plug 'vim-airline/vim-airline-themes', {'do': ':AirlineTheme solarized'} " Vim-airline & solarize integration
+    Plug 'ap/vim-css-color' " Highlight HEX color codes.
     Plug 'yuttie/comfortable-motion.vim' " For a smoother scrolling experience.
 
+    " Text editor enhancement plugins
+    Plug 'scrooloose/nerdtree' " File explorer
+        Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Plugin to color different file ext differently.
+    Plug 'majutsushi/tagbar' " Shows tags for the currently edited file.
+    Plug 'ludovicchabant/vim-gutentags' " Auto-generate tag files.
+    Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
+        Plug 'junegunn/fzf.vim' " Fuzzy search for files, tags, buffer, e.t.c
+    Plug 'qpkorr/vim-bufkill' " Add commands to kill buffers without removing the window.
+    Plug 'rking/ag.vim' " Silver searcher vim integration.
+
+    " IDE-like features
+    Plug 'Valloric/YouCompleteMe' " Auto-complete for vim.
+    Plug 'w0rp/ale' " Linting engine.
+
     " Plugins for Javascript
-    Plug 'pangloss/vim-javascript'
-    Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags
-    Plug 'gregsexton/matchtag' " Highlight matching HTML/XML tag
+    Plug 'pangloss/vim-javascript' " Enhance javascript coding experience.
+    Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags.
+    Plug 'gregsexton/matchtag' " Highlight matching HTML/XML tag.
 
     " Plugins for Ember
-    Plug 'joukevandermaas/vim-ember-hbs'
+    Plug 'joukevandermaas/vim-ember-hbs' " Support for Ember handle bar files.
 
     " Snippet?
     " Git integration
