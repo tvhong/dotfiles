@@ -44,7 +44,7 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     set softtabstop=4 " number of spaces when TAB is typed
     set shiftwidth=4 " spaces per tab when >>
     set tabstop=4 " number of visual spaces per TAB
-    set expandtab
+    set noexpandtab
 " }}}
 " Searching {{{
     set ignorecase " Make searching case insensitive
