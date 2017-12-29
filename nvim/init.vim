@@ -59,6 +59,8 @@
     set showmatch " Show matching brackets
     set wildmenu " visual autocomplete for command menu.
 
+    set nofoldenable " don't fold unless told.
+
     if !&scrolloff
         set scrolloff=3 " show next 3 lines when scrolling
     endif
@@ -236,6 +238,10 @@
     " Plugins for Ember.
     Plug 'joukevandermaas/vim-ember-hbs' " Support for Ember handle bar files.
 
+    " Plugins for Markdown.
+    Plug 'godlygeek/tabular' " Dependency for vim-markdown.
+    Plug 'plasticboy/vim-markdown' " Markdown support for vim.
+
     " Snippet?
     " Note: Has dependency on ryanoasis/nerd-fonts.
     Plug 'ryanoasis/vim-devicons' " Should stay at the end for other plugins to use
@@ -406,6 +412,10 @@
 " BufKill {{{
     " Kill buffer without removing the window.
     nnoremap <leader>d :BD<CR>
+" }}}
+" Vim-Markdown {{{
+    " Fold a little nicer.
+    let g:vim_markdown_folding_style_pythonic = 1
 " }}}
 " TODO: Make braces matching and autoclosing working for hbs files.
 " Auto-folding when open this file.
