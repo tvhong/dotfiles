@@ -13,5 +13,6 @@
     loggraph = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [core]
     editor = vim
+    excludesfile = /home/vy/.gitignore_global
 [push]
     default = simple
