@@ -270,7 +270,7 @@
     " Show bookmarks don't list by default.
     let NERDTreeShowBookmarks=0
 
-    " Shortcut to start NERDTree.
+    " Start NERDTree.
     nnoremap <leader>wn :NERDTreeToggle<CR>
     " Show current buffer in NERDTree.
     nnoremap <leader>gn :NERDTreeFind<CR>
@@ -342,10 +342,15 @@
     " Disable tag sorting.
     let g:tagbar_sort = 0
 
-    " Toggle tagbar.
+    " Map tagbar keys to be consistent with NERDTree.
+    " Map hIde to 'I'.
+    let g:tagbar_map_hidenonpublic = 'I'
+    " Map Help to 'H'.
+    let g:tagbar_map_help = 'H'
+    " Toggle Tagbar.
     nnoremap <leader>wt :TagbarToggle<CR>
-    " Show method/class tagbar.
-    nnoremap <leader>gt :TagbarShowTag<CR>
+    " Jump to this method in Tagbar.
+    nnoremap <leader>gt :TagbarOpen j<CR>
 " }}}
 " ag.vim {{{
     " Open a larger quickfix window.
