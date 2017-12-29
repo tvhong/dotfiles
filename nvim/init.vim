@@ -63,8 +63,6 @@
     set showmatch " Show matching brackets
     set wildmenu " visual autocomplete for command menu.
 
-    set nofoldenable " don't fold unless told.
-
     if !&scrolloff
         set scrolloff=3 " show next 3 lines when scrolling
     endif
@@ -229,6 +227,9 @@
         Plug 'junegunn/fzf.vim' " Fuzzy search for files, tags, buffer, e.t.c
     Plug 'qpkorr/vim-bufkill' " Add commands to kill buffers without removing the window.
     Plug 'rking/ag.vim' " Silver searcher vim integration.
+
+    " Tmux support.
+    Plug 'christoomey/vim-tmux-navigator' " Easier navigation from vim to tmux
 
     " IDE-like features.
     Plug 'Valloric/YouCompleteMe' " Auto-complete for vim.
