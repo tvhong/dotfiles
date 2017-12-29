@@ -157,12 +157,15 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     endif
 
     call plug#begin()
+    " General editing plugins
     Plug 'tpope/vim-surround'
     Plug 'scrooloose/nerdcommenter' " Auto comment for different file types
 
+    " Layout plugins
     Plug 'altercation/vim-colors-solarized'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'ap/vim-css-color'
 
     Plug 'scrooloose/nerdtree'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Plugin to color different file ext differently.
@@ -248,8 +251,10 @@ let g:python_host_prog = '/Users/vhong/.pyenv/versions/py2nvim/bin/python'
     nnoremap <leader>bt :BTags<CR>
     " Search in all buffers.
     nnoremap <leader>bl :Lines<CR>
-    " Search for files (ignore .gitignores)
+    " Search for files in git repo (ignore .gitignores)
     nnoremap <leader>f :GFiles<CR>
+    " Normal file search
+    nnoremap <leader>F :Files<CR>
     " Remap splitting key bindings
     let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
