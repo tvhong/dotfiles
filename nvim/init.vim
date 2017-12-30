@@ -95,7 +95,7 @@
     nnoremap ; :
 
     " Delete buffer and close the window.
-    nnoremap <leader>qq :bd<CR>
+    nnoremap <leader>qc :bd!<CR>
 
     " Map Y to copy till EOL (like D & C).
     nnoremap Y y$
@@ -416,7 +416,7 @@
 " }}}
 " BufKill {{{
     " Close buffer but keep window open.
-    nnoremap <leader>d :qo<CR>
+    nnoremap <leader>qq :BD!<CR>
 " }}}
 " Vim-Markdown {{{
     " Fold a little nicer.
