@@ -70,6 +70,9 @@
         set sidescrolloff=5 " show next 5 columns while side-scrolling
     endif
 
+    " No folding by default
+    set nofoldenable
+
     " Tell Vim which characters to show for expanded TABs,
     " trailing whitespace, and end-of-lines.
     set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
