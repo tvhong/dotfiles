@@ -278,8 +278,8 @@
     let NERDTreeMapJumpNextSibling = '<C-n>'
     let NERDTreeMapJumpPrevSibling = '<C-p>'
     " Remap NERDTree split keys.
-    let NERDTreeMapOpenSplit = '<C-h>'
-    let NERDTreeMapPreviewSplit = 'gh'
+    let NERDTreeMapOpenSplit = '<C-s>'
+    let NERDTreeMapPreviewSplit = 'gs'
     let NERDTreeMapOpenVSplit = '<C-v>'
     let NERDTreeMapPreviewVSplit = 'gv'
     " Remap help key.
@@ -318,7 +318,7 @@
     " Remap splitting key bindings.
     let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
-      \ 'ctrl-h': 'split',
+      \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
 " }}}
 " Vim-Airline {{{
@@ -337,9 +337,9 @@
     augroup END
 " }}}
 " YouCompleteMe {{{
-    " Remember to add the project dir to PYTHONPATH so that jedi can find the
+    " Remember to add the project dir to PYTHONPATH so that Jedi can find the
     " definition.
-    let g:ycm_python_binary_path = 'python' " Use the first python found in $PATH
+    let g:ycm_python_binary_path = 'python' " Tell Jedi to use the first Python found in $PATH.
 
     let g:ycm_auto_trigger = 1 " Make sure auto trigger is on.
 
@@ -347,8 +347,8 @@
     " Use high number (e.g. 99) to turn off ID-based suggestion and leave semantic completion.
     let g:ycm_min_num_of_chars_for_completion = 99
     " let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file.
-    let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-    let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+    " let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure.
+    let g:ycm_seed_identifiers_with_syntax = 1 " Seed identifiers from the language's keywords list.
     let g:ycm_complete_in_comments = 1 " Completion in comments
     let g:ycm_complete_in_strings = 1 " Completion in string
     let g:ycm_max_num_candidates = 50 " Limit the # of candidates from semantic completion suggestion
