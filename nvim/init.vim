@@ -285,6 +285,8 @@
     let NERDTreeMapPreviewSplit = 'gs'
     let NERDTreeMapOpenVSplit = '<C-v>'
     let NERDTreeMapPreviewVSplit = 'gv'
+    let NERDTreeMapOpenInTab = '<C-t>'
+    let NERDTreeMapOpenInTabSilent = 'T'
     " Remap help key.
     let NERDTreeMapHelp = 'H'
 
