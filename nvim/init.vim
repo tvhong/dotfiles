@@ -324,6 +324,8 @@
     nnoremap <leader>f :GFiles<CR>
     " Normal file search.
     nnoremap <leader>F :Files<CR>
+    " Search windows
+    nnoremap <leader>ww :Windows<CR>
     " Remap splitting key bindings.
     let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
