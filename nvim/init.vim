@@ -99,14 +99,15 @@
 
     " Shortcut for :
     nnoremap ; :
+    nnoremap q; q:
 
     " Delete buffer and close the window.
-    nnoremap <leader>qc :bd!<CR>
+    nnoremap <silent> <leader>qc :bd!<CR>
 
     " Map Y to copy till EOL (like D & C).
     nnoremap Y y$
     " Yank all to clipboard.
-    nnoremap <Leader>ya :%y+<CR>
+    nnoremap <leader>ya :%y+<CR>
 
     " Highlight last inserted text.
     nnoremap gV `[v`]
@@ -125,11 +126,11 @@
     nnoremap <C-l> <C-w>l
 
     " Window resize.
-    nnoremap <silent> <Leader>w+ :exe "resize " . (winheight(0) * 3/2)<CR>
-    nnoremap <silent> <Leader>w- :exe "resize " . (winheight(0) * 2/3)<CR>
+    nnoremap <silent> <leader>w+ :exe "resize " . (winheight(0) * 3/2)<CR>
+    nnoremap <silent> <leader>w- :exe "resize " . (winheight(0) * 2/3)<CR>
 
-    nnoremap <silent> <Leader>w> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-    nnoremap <silent> <Leader>w< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+    nnoremap <silent> <leader>w> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+    nnoremap <silent> <leader>w< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
     " Map <leader> key.
     let mapleader = ","
