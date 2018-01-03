@@ -48,6 +48,9 @@
     "   + Enable Python2 support for NeoVim.
     "   + Compile YCM (https://github.com/Valloric/YouCompleteMe/#installation).
 " }}}
+" General config {{{
+    nnoremap <leader>wq :q<CR>
+" }}}
 " UI Layout {{{
     set mouse=a " enable mouse usage
     set lazyredraw " redraw only when we need to.
