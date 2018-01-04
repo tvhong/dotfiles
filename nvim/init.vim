@@ -407,7 +407,7 @@
 " }}}
 " ALE {{{
     let g:ale_linters = {
-                \   'python': ['pyflakes', 'prospector'],
+                \   'python': ['pyflakes'],
                 \}
     " Go to previous error and next error. Can't use nnoremap.
     nmap <silent> <C-p> <Plug>(ale_previous_wrap)
