@@ -48,9 +48,6 @@
     "   + Enable Python2 support for NeoVim.
     "   + Compile YCM (https://github.com/Valloric/YouCompleteMe/#installation).
 " }}}
-" General config {{{
-    nnoremap <leader>wq :q<CR>
-" }}}
 " UI Layout {{{
     set mouse=a " enable mouse usage
     set lazyredraw " redraw only when we need to.
@@ -93,6 +90,9 @@
     set gdefault " Use 'g' flag by default with :s/foo/bar/.
 " }}}
 " Key Maps {{{
+    " Map <leader> key.
+    let mapleader = ","
+
     " Move down on long lines.
     nnoremap j gj
     nnoremap k gk
@@ -102,7 +102,10 @@
     nnoremap q; q:
 
     " Delete buffer and close the window.
-    nnoremap <silent> <leader>qc :bd!<CR>
+    nnoremap <leader>qc :bd!<CR>
+
+    " Close window.
+    nnoremap <leader>wq :q<CR>
 
     " Map Y to copy till EOL (like D & C).
     nnoremap Y y$
@@ -131,9 +134,6 @@
 
     nnoremap <silent> <leader>w> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
     nnoremap <silent> <leader>w< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
-
-    " Map <leader> key.
-    let mapleader = ","
 
     " Remap goto start and goto end.
     nnoremap B ^
@@ -352,7 +352,7 @@
     " definition.
     let g:ycm_python_binary_path = 'python' " Tell Jedi to use the first Python found in $PATH.
 
-    let g:ycm_auto_trigger = 1 " Make sure auto trigger is on.
+    let g:ycm_auto_trigger = 1 " Turn off auto trigger because it's too distracting.
 
     " Control threshold for ID-based suggestion.
     " Use high number (e.g. 99) to turn off ID-based suggestion and leave semantic completion.
