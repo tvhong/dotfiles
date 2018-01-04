@@ -122,6 +122,9 @@
     " Use Q to execute default register.
     nnoremap Q @q
 
+    " Get file name.
+    nnoremap <leader>@ :echo @%<CR>
+
     " Windows keys.
     nnoremap <C-j> <C-w>j
     nnoremap <C-k> <C-w>k
