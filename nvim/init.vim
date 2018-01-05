@@ -48,6 +48,9 @@
     "   + Enable Python2 support for NeoVim.
     "   + Compile YCM (https://github.com/Valloric/YouCompleteMe/#installation).
 " }}}
+" General Configs {{{
+    set autoread
+" }}}
 " UI Layout {{{
     set mouse=a " enable mouse usage
     set lazyredraw " redraw only when we need to.
@@ -124,6 +127,9 @@
 
     " Get file name.
     nnoremap <leader>@ :echo @%<CR>
+
+    " Save file name to clipboard
+    nnoremap <F4> :let @+ = expand("%:p")<CR>
 
     " Windows keys.
     nnoremap <C-j> <C-w>j
@@ -399,7 +405,7 @@
     let g:ag_prg = "ag --column --nogroup --noheading --ignore '*.pyc'"
 
     " Search using Silver search.
-    nnoremap <leader>a :Ag! --ignore "tests*.py" --ignore "tags" 
+    nnoremap <leader>a :Ag! --ignore "test*.py" --ignore "tags" 
     nnoremap <leader>at :Ag! --ignore "tags" 
     " Immediately search for the word under the cursor.
     nnoremap <leader>A :Ag! --ignore "test*.py" --ignore "tags" --word "<C-r><C-w>"<CR>
