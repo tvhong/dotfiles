@@ -137,13 +137,6 @@
     nnoremap <C-h> <C-w>h
     nnoremap <C-l> <C-w>l
 
-    " Window resize.
-    nnoremap <silent> <leader>w+ :exe "resize " . (winheight(0) * 3/2)<CR>
-    nnoremap <silent> <leader>w- :exe "resize " . (winheight(0) * 2/3)<CR>
-
-    nnoremap <silent> <leader>w> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
-    nnoremap <silent> <leader>w< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
-
     " Remap goto start and goto end.
     nnoremap B ^
     nnoremap E $
