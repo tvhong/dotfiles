@@ -171,9 +171,9 @@
     augroup zenefits_projects_settings
         autocmd!
         " Indentations settings.
-        autocmd BufRead,BufEnter */{yourPeople*,global-styles}/*.py
+        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-avatars}/*.py
             \ set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
-        autocmd BufRead,BufEnter */{yourPeople*,global-styles}/*.{js,scss,css}
+        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-avatars}/*.{js,scss,css}
             \ set noexpandtab shiftwidth=2 softtabstop=2 tabstop=2
     augroup END
 " }}}
@@ -398,11 +398,11 @@
     let g:ag_prg = "ag --column --nogroup --noheading --ignore '*.pyc'"
 
     " Search using Silver search.
-    nnoremap <leader>a :Ag! --ignore "test*.py" --ignore "tags" 
-    nnoremap <leader>at :Ag! --ignore "tags" 
+    nnoremap <leader>a :Ag! --ignore "test*.py" --ignore "tags" --ignore-dir "*.tmp" 
+    nnoremap <leader>at :Ag! --ignore "tags" --ignore-dir "*.tmp" 
     " Immediately search for the word under the cursor.
-    nnoremap <leader>A :Ag! --ignore "test*.py" --ignore "tags" --word "<C-r><C-w>"<CR>
-    nnoremap <leader>At :Ag! --ignore "tags" --word "<C-r><C-w>"<CR>
+    nnoremap <leader>A :Ag! --ignore "test*.py" --ignore "tags" --ignore-dir "*.tmp" --word "<C-r><C-w>"<CR>
+    nnoremap <leader>At :Ag! --ignore "tags" --ignore-dir "*.tmp" --word "<C-r><C-w>"<CR>
 " }}}
 " ALE {{{
     let g:ale_linters = {
