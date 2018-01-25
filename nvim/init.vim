@@ -103,6 +103,7 @@
     " Shortcut for :
     nnoremap ; :
     nnoremap q; q:
+    vnoremap ; :
 
     " Delete buffer and close the window.
     nnoremap <leader>qc :bd!<CR>
@@ -128,8 +129,8 @@
     " Get file name.
     nnoremap <leader>@ :echo @%<CR>
 
-    " Save file name to clipboard
-    nnoremap <F4> :let @+ = expand("%:p")<CR>
+    " Copy file name to clipboard
+    nnoremap <leader>c@ :let @+ = expand("%:p")<CR>
 
     " Windows keys.
     nnoremap <C-j> <C-w>j
@@ -173,7 +174,7 @@
         " Indentations settings.
         autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-avatars}/*.py
             \ set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
-        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-avatars}/*.{js,scss,css}
+        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-avatars}/*.{js,scss,css,html,hbs}
             \ set noexpandtab shiftwidth=2 softtabstop=2 tabstop=2
     augroup END
 " }}}
@@ -236,6 +237,7 @@
         Plug 'junegunn/fzf.vim' " Fuzzy search for files, tags, buffer, e.t.c
     Plug 'qpkorr/vim-bufkill' " Add commands to kill buffers without removing the window.
     Plug 'rking/ag.vim' " Silver searcher vim integration.
+    Plug 'michaeljsmith/vim-indent-object'
 
     " Tmux support.
     Plug 'christoomey/vim-tmux-navigator' " Easier navigation from vim to tmux
@@ -249,6 +251,9 @@
     Plug 'pangloss/vim-javascript' " Enhance javascript coding experience.
     Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags.
     Plug 'gregsexton/matchtag' " Highlight matching HTML/XML tag.
+
+    " Plugins for CSS.
+    Plug 'csscomb/vim-csscomb'
 
     " Plugins for Ember.
     Plug 'joukevandermaas/vim-ember-hbs' " Support for Ember handle bar files.
@@ -273,6 +278,7 @@
 " }}}
 " NERDtree {{{
     augroup nerdtree
+        autocmd!
         " Open a NERDTree automatically when vim starts up if no files were specified.
         autocmd StdinReadPre * let s:std_in=1
         autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -358,7 +364,7 @@
 
     " Control threshold for ID-based suggestion.
     " Use high number (e.g. 99) to turn off ID-based suggestion and leave semantic completion.
-    let g:ycm_min_num_of_chars_for_completion = 99
+    let g:ycm_min_num_of_chars_for_completion = 7
     " let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file.
     let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure.
     let g:ycm_seed_identifiers_with_syntax = 1 " Seed identifiers from the language's keywords list.
@@ -376,8 +382,8 @@
     let g:tagbar_autofocus = 1
     " Whether to auto close the tagbar when hitting <CR>.
     let g:tagbar_autoclose = 0
-    " Disable tag sorting.
-    let g:tagbar_sort = 0
+    " Enable tag sorting.
+    let g:tagbar_sort = 1
 
     " Map tagbar keys to be consistent with NERDTree.
     " Map hIde to 'I'.
@@ -430,6 +436,14 @@
 " BufKill {{{
     " Close buffer but keep window open.
     nnoremap <leader>qq :BD!<CR>
+" }}}
+" CSSComb {{{
+    augroup csscomb
+        " Map bc to run CSScomb. bc stands for beautify css
+        " autocmd FileType css noremap <buffer> <leader>bc :CSScomb<CR>
+        " Automatically comb your CSS on save
+        autocmd BufWritePre,FileWritePre *.css,*.less,*.scss,*.sass silent! :CSScomb
+    augroup END
 " }}}
 " Vim-Markdown {{{
     " Fold a little nicer.
