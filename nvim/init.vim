@@ -73,7 +73,7 @@
         set sidescrolloff=5 " show next 5 columns while side-scrolling
     endif
 
-    " No folding by default
+    " No folding by default. Press zi to enable folding.
     set nofoldenable
 
     " Tell Vim which characters to show for expanded TABs,
@@ -378,7 +378,8 @@
     " Shortcuts for ycm goto commands.
     nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
     nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
-    nnoremap <leader>gp :YcmCompleter GetDoc<CR> " go peek
+    " Go peek
+    nnoremap <leader>gp :YcmCompleter GetDoc<CR>
 " }}}
 " Tagbar {{{
     " Whether to auto focus to Tagbar when open.
@@ -452,7 +453,7 @@
     " Fold a little nicer.
     let g:vim_markdown_folding_style_pythonic = 1
 " }}}
-" TODO: Make braces matching and autoclosing working for hbs files.
+
 " Auto-folding when open this file.
 set modelines=1 " Run the line below for this file only
 " vim:foldmethod=marker:foldlevel=0
