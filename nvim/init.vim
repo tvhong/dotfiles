@@ -159,6 +159,7 @@
         autocmd!
         " Auto reload vimrc when it changes.
         autocmd BufWritePost init.vim,.nvimrc source $MYVIMRC
+        autocmd BufRead,BufEnter *.tmux.conf set syntax=tmux
     augroup END
 
     augroup clean_whitespaces_on_write
@@ -167,6 +168,8 @@
         autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
                     \ :call <SID>StripTrailingWhitespaces()
     augroup END
+
+
 
     " Zenefits specific settings.
     augroup zenefits_projects_settings
