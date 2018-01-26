@@ -7,7 +7,11 @@ if [[ ! -d $DOTFILES_DIR ]]; then
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-    echo I am a Mac
+    echo Detect Mac OS.
+
+    echo Linking tmux...
+    ln -sf $HOME/.dotfiles/tmux/mac.tmux.conf $HOME/.tmux.conf
+    echo Done.
 elif [[ $OSTYPE == linux* ]]; then
     echo Detect Linux OS.
 
