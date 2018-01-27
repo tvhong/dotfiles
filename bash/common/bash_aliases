@@ -9,3 +9,7 @@ alias u5="cd ../../../../.."
 alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
+
+# Favorite editors
+alias vi='nvim'
+alias vim='nvim'
