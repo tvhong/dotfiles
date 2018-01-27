@@ -45,4 +45,9 @@ elif [[ $OSTYPE == darwin* ]]; then
     echo Linking .bash_aliases...
     ln -sf $BASH_MAC/bash_aliases $HOME/.bash_aliases
     echo Done.
+
+    GIT_DIR=$DOTFILES_DIR/git
+    echo Linking .gitconfig...
+    ln -sf $GIT_DIR/mac.gitconfig $HOME/.gitconfig
+    echo Done.
 fi

@@ -1,0 +1,36 @@
+[user]
+	name = Vy Hong
+	email = vhong@zenefits.com
+[color]
+	ui = true
+[alias]
+	st = status
+	co = checkout
+	cm = commit
+	br = branch
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	logme = log --pretty=format:'%h %s [%an]' --graph
+	loggraph = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[core]
+	editor = nvim
+	excludesfile = /Users/vhong/.gitignore_global
+[push]
+	default = simple
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[http]
+	postBuffer = 524288000
+
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = true
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[difftool]
+	prompt = false
+[diff]
+	tool = vimdiff
