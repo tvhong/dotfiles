@@ -20,14 +20,14 @@ elif [[ $OSTYPE == linux* ]]; then
     echo Done.
 
     echo Linking .bashrc...
-    ln -sf $HOME/.dotfiles/bash/bashrc.sithLord $HOME/.bashrc
+    ln -sf $HOME/.dotfiles/bash/linux/bashrc $HOME/.bashrc
+    echo Done.
+
+    echo Linking .bash_logout...
+    ln -sf $HOME/.dotfiles/bash/linux/bash_logout $HOME/.bash_logout
     echo Done.
 
     echo Linking .bash_aliases...
     ln -sf $HOME/.dotfiles/bash/bash_aliases $HOME/.bash_aliases
-    echo Done.
-
-    echo Linking .bash_logout...
-    ln -sf $HOME/.dotfiles/bash/bash_logout $HOME/.bash_logout
     echo Done.
 fi
