@@ -1,17 +1,7 @@
+source $HOME/.dotfiles/bash/common/bash_aliases
+
 # Alias for open default program.
 alias xo="xdg-open"
-
-# Up directories.
-alias u="cd .."
-alias u2="cd ../.."
-alias u3="cd ../../.."
-alias u4="cd ../../../.."
-alias u5="cd ../../../../.."
-
-# Some ls aliases.
-alias ll="ls -alF"
-alias la="ls -A"
-alias l="ls -CF"
 
 # CSE ssh login.
 alias csessh="ssh -X tvho795@login.cse.unsw.edu.au"

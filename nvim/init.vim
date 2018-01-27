@@ -160,7 +160,7 @@
         " Auto reload vimrc when it changes.
         autocmd BufWritePost init.vim,.nvimrc source $MYVIMRC
         autocmd BufRead,BufEnter *.tmux.conf set syntax=tmux
-        autocmd BufRead,BufEnter bashrc.* set syntax=sh
+        autocmd BufRead,BufEnter bashrc,bash_logout,bash_aliases set syntax=sh
     augroup END
 
     augroup clean_whitespaces_on_write

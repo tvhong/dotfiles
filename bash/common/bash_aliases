@@ -1,0 +1,11 @@
+# Up directories.
+alias u="cd .."
+alias u2="cd ../.."
+alias u3="cd ../../.."
+alias u4="cd ../../../.."
+alias u5="cd ../../../../.."
+
+# Some ls aliases.
+alias ll="ls -alF"
+alias la="ls -A"
+alias l="ls -CF"
