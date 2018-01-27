@@ -1,4 +1,5 @@
-source $HOME/.dotfiles/bash/common/bash_aliases
+# Color output for ls.
+alias ls='ls --color=auto'
 
 # Alias for open default program.
 alias xo="xdg-open"
@@ -11,3 +12,6 @@ alias sossh="ssh vy@61.14.235.124"
 # Convenient alias for sosub
 alias ssd="cd ~/workspace/sosub"
 alias sse="cd ~/workspace/sosub && pyenv activate sosubvenv"
+
+# Source common aliases
+source $HOME/.dotfiles/bash/common/bash_aliases
