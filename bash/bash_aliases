@@ -1,3 +1,6 @@
+# Alias for open default program.
+alias xo="xdg-open"
+
 # Up directories.
 alias u="cd .."
 alias u2="cd ../.."

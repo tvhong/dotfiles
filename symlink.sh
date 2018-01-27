@@ -18,4 +18,12 @@ elif [[ $OSTYPE == linux* ]]; then
     echo Linking tmux...
     ln -sf $HOME/.dotfiles/tmux/linux.tmux.conf $HOME/.tmux.conf
     echo Done.
+
+    echo Linking .bashrc...
+    ln -sf $HOME/.dotfiles/bash/bashrc.sithLord $HOME/.bashrc
+    echo Done.
+
+    echo Linking .bash_aliases...
+    ln -sf $HOME/.dotfiles/bash/bash_aliases $HOME/.bash_aliases
+    echo Done.
 fi

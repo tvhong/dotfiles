@@ -101,9 +101,6 @@ fi
 # Set my favourite editor
 export EDITOR="vim"
 
-# Alias for open default program.
-alias xo="xdg-open"
-
 # Read man with vim
 man() {
   /usr/bin/man $* | \
