@@ -1,4 +1,6 @@
 # Requries $PROJECT_ROOT and $PROJECT_ROOT2 set before calling this.
+source $HOME/.dotfiles/bash/common/bash_aliases
+
 alias zendb7='/Users/vhong/workspace/zendb/zendb7'
 alias yp='cd $PROJECT_ROOT'
 alias ype='nvm use v4.8.6 && export PYTHONPATH=$PROJECT_ROOT && cd $PROJECT_ROOT && source ./venv/bin/activate'
