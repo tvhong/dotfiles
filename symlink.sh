@@ -12,6 +12,15 @@ if [[ $OSTYPE == darwin* ]]; then
     echo Linking tmux...
     ln -sf $DOTFILES_DIR/tmux/mac.tmux.conf $HOME/.tmux.conf
     echo Done.
+
+    BASH_MAC=$DOTFILES_DIR/bash/mac
+    echo Linking .bash_profile...
+    ln -sf $BASH_MAC/bash_profile $HOME/.bash_profile
+    echo Done.
+
+    echo Linking .bash_aliases...
+    ln -sf $BASH_MAC/bash_aliases $HOME/.bash_aliases
+    echo Done.
 elif [[ $OSTYPE == linux* ]]; then
     echo Detect Linux OS.
 
