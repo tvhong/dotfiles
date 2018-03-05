@@ -130,7 +130,7 @@
     nnoremap <leader>@ :echo @%<CR>
 
     " Copy file name to clipboard
-    nnoremap <leader>c@ :let @+ = expand("%:p")<CR>
+    nnoremap <leader>c@ :let @+ = @%<CR>
 
     " Windows keys.
     nnoremap <C-j> <C-w>j
@@ -265,6 +265,9 @@
     " Plugins for Markdown.
     Plug 'godlygeek/tabular' " Dependency for vim-markdown.
     Plug 'plasticboy/vim-markdown' " Markdown support for vim.
+
+    " Plugins for GraphQL
+    Plug 'jparise/vim-graphql' " GraphQL filetype support syntax
 
     " Snippet?
     " Note: Has dependency on ryanoasis/nerd-fonts.
