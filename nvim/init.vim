@@ -244,7 +244,7 @@
     Plug 'michaeljsmith/vim-indent-object'
 
     " Tmux support.
-    Plug 'christoomey/vim-tmux-navigator' " Easier navigation from vim to tmux
+    Plug 'christoomey/vim-tmux-navigator' " Easier navigation from vim panes to tmux panes.
 
     " IDE-like features.
     Plug 'Valloric/YouCompleteMe' " Auto-complete for vim.
@@ -255,6 +255,9 @@
     Plug 'pangloss/vim-javascript' " Enhance javascript coding experience.
     Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags.
     Plug 'gregsexton/matchtag' " Highlight matching HTML/XML tag.
+
+    "Plugins for Typescript.
+    Plug 'leafgarland/typescript-vim'
 
     " Plugins for CSS.
     Plug 'csscomb/vim-csscomb'
@@ -267,11 +270,13 @@
     Plug 'plasticboy/vim-markdown' " Markdown support for vim.
 
     " Plugins for GraphQL
-    Plug 'jparise/vim-graphql' " GraphQL filetype support syntax
+    Plug 'jparise/vim-graphql' " GraphQL filetype support syntax.
 
     " Snippet?
     " Note: Has dependency on ryanoasis/nerd-fonts.
-    Plug 'ryanoasis/vim-devicons' " Should stay at the end for other plugins to use
+    "
+    " This plugin need to stay at the end for other plugins to use.
+    Plug 'ryanoasis/vim-devicons' " Icons for NERDTree.
     call plug#end()
 " }}}
 " Solarized colorscheme {{{
@@ -421,7 +426,15 @@
 " ALE {{{
     let g:ale_linters = {
                 \   'python': ['pyflakes'],
+                \   'javascript': ['eslint', 'prettier'],
+                \   'typescript': ['tslint'],
                 \}
+
+    " Run all 'value' linters for 'key' filetypes.
+    let g:ale_linter_aliases = {
+                \   'typescript': 'javascript'
+                \}
+
     " Go to previous error and next error. Can't use nnoremap.
     nmap <silent> <C-p> <Plug>(ale_previous_wrap)
     nmap <silent> <C-n> <Plug>(ale_next_wrap)
