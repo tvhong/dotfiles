@@ -21,7 +21,7 @@ alias pir='pip install -r requirements.txt'
 # z-frontend development env setups
 Z_FRONTEND_PATH='/Users/vhong/workspace/z-frontend'
 
-alias zf='nvm use v9 && cd $Z_FRONTEND_PATH'
+alias zf="nvm use v9 && export PATH=$Z_FRONTEND_PATH/node_modules/.bin:$PATH && cd $Z_FRONTEND_PATH"
 
 # Color output for ls.
 alias ls='ls -G'
