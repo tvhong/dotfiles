@@ -9,6 +9,7 @@ fi
 TMUX_DIR=$DOTFILES_DIR/tmux
 BASH_DIR=$DOTFILES_DIR/bash
 GIT_DIR=$DOTFILES_DIR/git
+CTAGS_DIR=$DOTFILES_DIR/ctags
 
 if [[ $OSTYPE == linux* ]]; then
     echo OS: Linux.
@@ -49,5 +50,9 @@ elif [[ $OSTYPE == darwin* ]]; then
     ln -sf $GIT_DIR/mac.gitconfig $HOME/.gitconfig
     echo Linking .gitignore_global...
     ln -sf $GIT_DIR/gitignore_global $HOME/.gitignore_global
+    echo Done.
+
+    echo Linking ctags...
+    ln -sf $CTAGS_DIR/ctags $HOME/.ctags.d/mac.ctags
     echo Done.
 fi
