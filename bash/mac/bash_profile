@@ -60,11 +60,6 @@ export DYLD_LIBRARY_PATH="/usr/local/lib"
 # Use image magick 6
 export MAGICK_HOME=/usr/local/opt/imagemagick@6
 
-export PROJECT_ROOT='/Users/vhong/workspace/yourPeople3'
-export PROJECT_ROOT2='/Users/vhong/workspace/yourPeople3_2'
-
-export PYTHONPATH="$PROJECT_ROOT"
-
 # Setup nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
