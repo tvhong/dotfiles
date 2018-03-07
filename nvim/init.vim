@@ -261,6 +261,9 @@
     Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags.
     Plug 'gregsexton/matchtag' " Highlight matching HTML/XML tag.
 
+    " Plugins for JSX
+    Plug 'mxw/vim-jsx'
+
     "Plugins for Typescript.
     Plug 'leafgarland/typescript-vim'
 
