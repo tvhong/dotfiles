@@ -1,19 +1,19 @@
-export PROJECT_ROOT='/Users/vhong/workspace/yourPeople3'
-export PROJECT_ROOT2='/Users/vhong/workspace/yourPeople3_2'
+YP_PATH='/Users/vhong/workspace/yourPeople3'
+YP2_PATH='/Users/vhong/workspace/yourPeople3_2'
 
 alias zendb7='/Users/vhong/workspace/zendb/zendb7'
-alias yp='cd $PROJECT_ROOT'
-alias ype='nvm use v4.8.6 && export PYTHONPATH=$PROJECT_ROOT && cd $PROJECT_ROOT && source ./venv/bin/activate'
+alias yp='cd $YP_PATH'
+alias ype='nvm use v4.8.6 && export PYTHONPATH=$YP_PATH && cd $YP_PATH && source ./venv/bin/activate'
 
-alias yp2='cd $PROJECT_ROOT2'
-alias ype2='nvm use v4.8.6 && export PYTHONPATH=$PROJECT_ROOT2 && cd $PROJECT_ROOT2 && pyenv activate yp2a'
+alias yp2='cd $YP2_PATH'
+alias ype2='nvm use v4.8.6 && export PYTHONPATH=$YP2_PATH && cd $YP2_PATH && pyenv activate yp2a'
 
 alias pm='python manage.py '
 alias pmt='python manage.py test --reusedb --settings=yourpeople.test_local_settings '
 
 alias moto='moto_server swf'
-alias ypuwsgi='uwsgi $PROJECT_ROOT/yourpeople/uwsgi-dev.ini --home $PROJECT_ROOT/venv'
-alias yp2uwsgi='uwsgi $PROJECT_ROOT2/yourpeople/uwsgi-dev.ini --home $(pyenv root)/versions/yp2a'
+alias ypuwsgi='uwsgi $YP_PATH/yourpeople/uwsgi-dev.ini --home $YP_PATH/venv'
+alias yp2uwsgi='uwsgi $YP2_PATH/yourpeople/uwsgi-dev.ini --home $(pyenv root)/versions/yp2a'
 alias smtp='sudo python -m smtpd -n -c DebuggingServer localhost:25'
 
 alias pir='pip install -r requirements.txt'
