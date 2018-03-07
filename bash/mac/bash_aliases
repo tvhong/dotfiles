@@ -18,6 +18,11 @@ alias smtp='sudo python -m smtpd -n -c DebuggingServer localhost:25'
 
 alias pir='pip install -r requirements.txt'
 
+# z-frontend development env setups
+Z_FRONTEND_PATH='/Users/vhong/workspace/z-frontend'
+
+alias zf='nvm use v9 && cd $Z_FRONTEND_PATH'
+
 # Color output for ls.
 alias ls='ls -G'
 
