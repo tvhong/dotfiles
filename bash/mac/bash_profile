@@ -74,3 +74,5 @@ eval "$(pyenv virtualenv-init -)"
 export PYTHONDONTWRITEBYTECODE=1
 
 source $HOME/.dotfiles/bash/common/bashrc
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
