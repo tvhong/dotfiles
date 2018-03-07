@@ -181,9 +181,9 @@
     augroup zenefits_projects_settings
         autocmd!
         " Indentations settings.
-        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-avatars}/*.py
+        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-*}/*.py
             \ set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
-        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-avatars}/*.{js,scss,css,html,hbs}
+        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-*}/*.{js,ts,tsx,scss,css,html,hbs}
             \ set noexpandtab shiftwidth=2 softtabstop=2 tabstop=2
     augroup END
 " }}}
@@ -235,6 +235,7 @@
         Plug 'vim-airline/vim-airline-themes', {'do': ':AirlineTheme solarized'} " Vim-airline & solarize integration
     Plug 'ap/vim-css-color' " Highlight HEX color codes.
     Plug 'yuttie/comfortable-motion.vim' " For a smoother scrolling experience.
+    Plug 'yggdroot/indentline' " Simple indentation guides.
 
     " Text editor enhancement plugins.
     Plug 'jiangmiao/auto-pairs' " Auto insert/delete brackets, parens, quotes
