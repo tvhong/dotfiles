@@ -32,8 +32,8 @@
     "   + Ubuntu: https://askubuntu.com/a/836521/69234
 
     " Python2 Support For NeoVim:
-    " Assume that python 2 host prog is installed by:
-    " $ pyenv virtualenv 2.7.14 py2nvim`
+    " Assumed that python 2 host executible is installed by:
+    " $ pyenv virtualenv 2.7.14 py2nvim
     " $ pyenv activate py2nvim
     " $ pip install neovim
 
@@ -47,6 +47,11 @@
     "   vim-plug timeout.
     "   + Enable Python2 support for NeoVim.
     "   + Compile YCM (https://github.com/Valloric/YouCompleteMe/#installation).
+
+    " Linters:
+    " Linters defined in g:ale_linters are assumed to available in $PATH.
+    " This can be done by activating the python virtualenv or prepend
+    " <project-path>/node_modules/.bin to $PATH
 " }}}
 " General Configs {{{
     set autoread
