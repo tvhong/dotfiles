@@ -264,8 +264,11 @@
     Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags.
     Plug 'gregsexton/matchtag' " Highlight matching HTML/XML tag.
 
-    "Plugins for Typescript.
+    " Plugins for Typescript.
     Plug 'leafgarland/typescript-vim'
+
+    " Plugins for JSON
+    Plug 'elzr/vim-json' " Extra JSON supports.
 
     " Plugins for JSX & TSX
     Plug 'mxw/vim-jsx' " JSX language support.
@@ -378,6 +381,9 @@
         autocmd!
         autocmd VimEnter * AirlineTheme solarized
     augroup END
+" }}}
+" IndentLine {{{
+    let g:indentLine_concealcursor="nc"
 " }}}
 " YouCompleteMe {{{
     " Remember to add the project dir to PYTHONPATH so that Jedi can find the
