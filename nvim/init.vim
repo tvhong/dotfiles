@@ -182,9 +182,11 @@
         autocmd!
         " Indentations settings.
         autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-*}/*.py
-            \ set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+            \ set shiftwidth=4 softtabstop=4 tabstop=4
         autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-*}/*.{js,ts,tsx,scss,css,html,hbs}
-            \ set noexpandtab shiftwidth=2 softtabstop=2 tabstop=2
+            \ set shiftwidth=2 softtabstop=2 tabstop=2
+        autocmd BufRead,BufEnter */{yourPeople*}/*
+            \ set noexpandtab
     augroup END
 " }}}
 " Backups {{{
