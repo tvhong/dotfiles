@@ -32,6 +32,11 @@ if [[ $OSTYPE == linux* ]]; then
     echo Linking .gitignore_global...
     ln -sf $GIT_DIR/gitignore_global $HOME/.gitignore_global
     echo Done.
+
+    echo Linking ctags...
+    mkdir -p $HOME/.ctags.d
+    ln -sf $CTAGS_DIR/ctags $HOME/.ctags.d/common.ctags
+    echo Done.
 elif [[ $OSTYPE == darwin* ]]; then
     echo OS: Mac.
 
@@ -53,6 +58,7 @@ elif [[ $OSTYPE == darwin* ]]; then
     echo Done.
 
     echo Linking ctags...
-    ln -sf $CTAGS_DIR/ctags $HOME/.ctags.d/mac.ctags
+    mkdir -p $HOME/.ctags.d
+    ln -sf $CTAGS_DIR/ctags $HOME/.ctags.d/common.ctags
     echo Done.
 fi
