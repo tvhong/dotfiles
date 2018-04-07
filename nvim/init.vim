@@ -182,9 +182,11 @@
         autocmd!
         " Indentations settings.
         autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-*}/*.py
-            \ set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+            \ set shiftwidth=4 softtabstop=4 tabstop=4
         autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-*}/*.{js,ts,tsx,scss,css,html,hbs}
-            \ set noexpandtab shiftwidth=2 softtabstop=2 tabstop=2
+            \ set shiftwidth=2 softtabstop=2 tabstop=2
+        autocmd BufRead,BufEnter */{yourPeople*}/*
+            \ set noexpandtab
     augroup END
 " }}}
 " Backups {{{
@@ -233,7 +235,7 @@
     Plug 'altercation/vim-colors-solarized' " Solarize vim theme.
     Plug 'vim-airline/vim-airline' " Nicer statusbar support for vim.
         Plug 'vim-airline/vim-airline-themes', {'do': ':AirlineTheme solarized'} " Vim-airline & solarize integration
-    Plug 'ap/vim-css-color' " Highlight HEX color codes.
+    Plug 'lilydjwg/colorizer' " Colorize all text in form #rrggbb #rgb.
     Plug 'yuttie/comfortable-motion.vim' " For a smoother scrolling experience.
     Plug 'yggdroot/indentline' " Simple indentation guides.
 
@@ -262,8 +264,11 @@
     Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags.
     Plug 'gregsexton/matchtag' " Highlight matching HTML/XML tag.
 
-    "Plugins for Typescript.
+    " Plugins for Typescript.
     Plug 'leafgarland/typescript-vim'
+
+    " Plugins for JSON
+    Plug 'elzr/vim-json' " Extra JSON supports.
 
     " Plugins for JSX & TSX
     Plug 'mxw/vim-jsx' " JSX language support.
@@ -367,7 +372,7 @@
     " :help airline-section
     let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
     " Set solarized theme (Need :AirlineTheme solarized) before this has effect.
-    let g:airline_solarized_bg='dark'
+    let g:airline_solarized_bg = 'dark'
 
     " Enable tabline when there's no window.
     let g:airline#extensions#tabline#enabled = 1
@@ -376,6 +381,12 @@
         autocmd!
         autocmd VimEnter * AirlineTheme solarized
     augroup END
+" }}}
+" Colorizer {{{
+    let g:colorizer_maxlines = 1000
+" }}}
+" IndentLine {{{
+    let g:indentLine_concealcursor = "nc"
 " }}}
 " YouCompleteMe {{{
     " Remember to add the project dir to PYTHONPATH so that Jedi can find the
