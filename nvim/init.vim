@@ -153,8 +153,8 @@
     " Change between relative and absolute numbering.
     nnoremap <leader>r :call ToggleNumber()<cr>
 
-    " Split arguments to multiplie lines (mnemonic: Code Arguments).
-    nnoremap <leader>ca :call ZenSplitArguments()<cr>
+    " Split arguments to multiplie lines (mnemonic: formaT Arguments).
+    nnoremap <leader>ta :call ZenSplitArguments()<cr>
 
     " Save session.
     nnoremap <leader>s :mksession!<CR>
