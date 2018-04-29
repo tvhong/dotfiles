@@ -269,6 +269,8 @@
     Plug 'Valloric/YouCompleteMe' " Auto-complete for vim.
     Plug 'w0rp/ale' " Linting engine.
     Plug 'tpope/vim-fugitive' " Git integration.
+    Plug 'sirver/ultisnips' " Snippet engine for vim.
+        Plug 'honza/vim-snippets' " Community snippets collection for ultisnips.
 
     " Plugins for Javascript.
     Plug 'pangloss/vim-javascript' " Enhance javascript coding experience.
@@ -298,10 +300,8 @@
     " Plugins for GraphQL
     Plug 'jparise/vim-graphql' " GraphQL filetype support syntax.
 
-    " Snippet?
-    " Note: Has dependency on ryanoasis/nerd-fonts.
-    "
     " This plugin need to stay at the end for other plugins to use.
+    " Note: Has dependency on ryanoasis/nerd-fonts.
     Plug 'ryanoasis/vim-devicons' " Icons for NERDTree.
     call plug#end()
 " }}}
@@ -421,6 +421,30 @@
     nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
     " Go peek
     nnoremap <leader>gp :YcmCompleter GetDoc<CR>
+" }}}
+" UltiSnips {{{
+    let g:UltiSnipsJumpForwardTrigger = "<c-n>"
+    let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+
+
+    let g:UltiSnipsJumpForwardTrigger="<tab>" " Go next in the suggestion list. Keep consistent with YCM setting.
+    let g:UltiSnipsJumpBackwardTrigger="<S-tab>" " Go prev in the suggestion list. Keep consistent with YCM setting.
+
+    let g:UltiSnipsExpandTrigger="<NUL>" " Set to null and use the next function to use <CR> as expand trigger.
+    " Hack to set <CR> as UltiSnips expand trigger.
+    let g:ulti_expand_or_jump_res = 0
+    function! <SID>ExpandSnippetOrReturn()
+        let snippet = UltiSnips#ExpandSnippetOrJump()
+        if g:ulti_expand_or_jump_res > 0
+            return snippet
+        else
+            return "\<CR>"
+        endif
+    endfunction
+    inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
+" }}}
+" Vim-Snippets {{{
+    let g:ultisnips_python_style = "normal" " Python comment style. Other values: doxygen, sphinx, google, numpy & jedi.
 " }}}
 " Tagbar {{{
     " Whether to auto focus to Tagbar when open.
