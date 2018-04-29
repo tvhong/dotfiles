@@ -260,7 +260,7 @@
         Plug 'junegunn/fzf.vim' " Fuzzy search for files, tags, buffer, e.t.c
     Plug 'qpkorr/vim-bufkill' " Add commands to kill buffers without removing the window.
     Plug 'rking/ag.vim' " Silver searcher vim integration.
-    Plug 'michaeljsmith/vim-indent-object'
+    Plug 'michaeljsmith/vim-indent-object' " Define new text object for same indentation level (e.g. ai (an indentation), ii).
 
     " Tmux support.
     Plug 'christoomey/vim-tmux-navigator' " Easier navigation from vim panes to tmux panes.
@@ -360,9 +360,9 @@
     nnoremap <leader>. :Tags<CR>
     " Search tags under cursor.
     nnoremap <leader>> :Tags '<C-r><C-w> <CR>
-    " Search tags in the current buffer.
+    " Search buffer name in opened buffers.
     nnoremap <leader>bb :Buffers<CR>
-    " Search current buffer.
+    " Search tags in current buffer.
     nnoremap <leader>bt :BTags<CR>
     " Search in all buffers.
     nnoremap <leader>bl :Lines<CR>
