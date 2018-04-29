@@ -153,6 +153,9 @@
     " Change between relative and absolute numbering.
     nnoremap <leader>r :call ToggleNumber()<cr>
 
+    " Split arguments to multiplie lines (mnemonic: Code Arguments).
+    nnoremap <leader>ca :call ZenSplitArguments()<cr>
+
     " Save session.
     nnoremap <leader>s :mksession!<CR>
 
@@ -216,6 +219,14 @@
         %s/\s\+$//e
         let @/=_s
         call cursor(l, c)
+    endfunction
+
+    " Split arguments onto multiple lines
+    function! ZenSplitArguments()
+        " Assuming indentation for now. Should auto detect the current line's
+        " indentation and edit based on that.
+        " Also instead of tabs, can use the current tabstop settings.
+        s/(/(\r\t\t\t/e | s/, /,\r\t\t\t/e | s/)/,\r\t\t)/e
     endfunction
 " }}}
 " Plugins {{{
