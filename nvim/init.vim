@@ -513,6 +513,10 @@
     " Don't run linters on opening a file.
     let g:ale_lint_on_enter = 0
 " }}}
+" Vim-Fugitive {{{
+    " Run git blame on highlighted block. Mnemonic: My Git.
+    vnoremap <leader>mg :Gblame<cr>
+" }}}
 " BufKill {{{
     " Close buffer but keep window open.
     nnoremap <leader>qq :BD!<CR>
