@@ -157,10 +157,10 @@
     nnoremap <leader><space> :nohlsearch<CR>
 
     " Change between relative and absolute numbering.
-    nnoremap <leader>r :call ToggleNumber()<cr>
+    nnoremap <leader>r :call ToggleNumber()<CR>
 
     " Split arguments to multiplie lines (mnemonic: formaT Arguments).
-    nnoremap <leader>ta :call ZenSplitArguments()<cr>
+    nnoremap <leader>ta :call ZenSplitArguments()<CR>
 
     " Save session.
     nnoremap <leader>s :mksession!<CR>
@@ -527,8 +527,8 @@
 " }}}
 " Vim-Fugitive {{{
     " Run git blame. Mnemonic: My Git.
-    nnoremap <leader>mg :Gblame<cr>
-    vnoremap <leader>mg :Gblame<cr>
+    nnoremap <leader>mg :Gblame<CR>
+    vnoremap <leader>mg :Gblame<CR>
 " }}}
 " BufKill {{{
     " Close buffer but keep window open.
