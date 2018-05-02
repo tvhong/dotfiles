@@ -135,7 +135,9 @@
     nnoremap <leader>@ :echo @%<CR>
 
     " Copy file name to clipboard
-    nnoremap <leader>c@ :let @+ = @%<CR>
+    nnoremap <leader>@c :let @+ = @%<CR>
+    " Copy file name as python path
+    nnoremap <leader>@p :let @+ = GetPythonPathOfCurrentFile()<CR>
 
     " Windows keys.
     nnoremap <C-j> <C-w>j
@@ -227,6 +229,12 @@
         " indentation and edit based on that.
         " Also instead of tabs, can use the current tabstop settings.
         s/(/(\r\t\t\t/e | s/, /,\r\t\t\t/e | s/)/,\r\t\t)/e
+    endfunction
+
+    function! GetPythonPathOfCurrentFile()
+        let l:python_path = substitute(@%, ".py$", "", "")
+        let l:python_path = substitute(l:python_path, "/", ".", "g")
+        return l:python_path
     endfunction
 " }}}
 " Plugins {{{
