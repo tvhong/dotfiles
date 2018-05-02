@@ -514,7 +514,8 @@
     let g:ale_lint_on_enter = 0
 " }}}
 " Vim-Fugitive {{{
-    " Run git blame on highlighted block. Mnemonic: My Git.
+    " Run git blame. Mnemonic: My Git.
+    nnoremap <leader>mg :Gblame<cr>
     vnoremap <leader>mg :Gblame<cr>
 " }}}
 " BufKill {{{
