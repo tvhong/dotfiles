@@ -132,7 +132,7 @@
     nnoremap Q @q
 
     " Get file name.
-    nnoremap <leader>@ :echo @%<CR>
+    nnoremap <leader>@@ :echo @%<CR>
 
     " Copy file name to clipboard
     nnoremap <leader>@c :let @+ = @%<CR>
