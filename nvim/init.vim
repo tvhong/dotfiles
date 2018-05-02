@@ -145,6 +145,10 @@
     nnoremap <C-h> <C-w>h
     nnoremap <C-l> <C-w>l
 
+    " Close Tagbar and NERDTree. Depends on those plugins.
+    " Mnemonic: Window Close.
+    nnoremap <leader>wc :NERDTreeClose <bar> :TagbarClose<CR>
+
     " Remap goto start and goto end.
     nnoremap B ^
     nnoremap E $
