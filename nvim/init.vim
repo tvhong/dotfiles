@@ -468,6 +468,8 @@
     let g:tagbar_autoclose = 0
     " Enable tag sorting.
     let g:tagbar_sort = 1
+    " Hide levels > foldlevel
+    let g:tagbar_foldlevel = 0
 
     " Map tagbar keys to be consistent with NERDTree.
     " Map hIde to 'I'.
