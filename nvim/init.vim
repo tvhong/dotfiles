@@ -505,6 +505,7 @@
         \   'grepprgbuf': "git grep -nIie $* -- $.",
         \   'grepformat': "%f:%l:%m",
         \ }}
+    " Limit the number of results
     let g:grepper.stop = 500
 
     " Git grep ignores tests
