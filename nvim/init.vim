@@ -273,7 +273,7 @@
     Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --bin'}
         Plug 'junegunn/fzf.vim' " Fuzzy search for files, tags, buffer, e.t.c
     Plug 'qpkorr/vim-bufkill' " Add commands to kill buffers without removing the window.
-    Plug 'rking/ag.vim' " Silver searcher vim integration.
+    Plug 'mhinz/vim-grepper' " Search tool support (grep, ag, git-grep, etc.)
     Plug 'michaeljsmith/vim-indent-object' " Define new text object for same indentation level (e.g. ai (an indentation), ii).
 
     " Tmux support.
@@ -401,6 +401,8 @@
 
     " Enable tabline when there's no window.
     let g:airline#extensions#tabline#enabled = 1
+    " Enable vim-grepper integration
+    let g:airline#extensions#grepper#enabled = 1
 
     augroup vim_airline_config
         autocmd!
@@ -485,20 +487,35 @@
     " Jump to this method in Tagbar.
     nnoremap <leader>gt :TagbarOpen j<CR>
 " }}}
-" ag.vim {{{
-    " Open a larger quickfix window.
-    let g:ag_qhandler = "botright copen 20"
-    " Highlight result (not working!).
-    let g:ag_highlight = 1
-    " Specify the default ag options.
-    let g:ag_prg = "ag --column --nogroup --noheading --ignore '*.pyc'"
+" vim-grepper {{{
+    let g:grepper = {
+        \ 'tools': ['gitNoTests', 'gitNoMigrations', 'git', 'ag'],
+        \ 'git': {
+        \   'grepprg': "git grep -nIie $*",
+        \   'grepprgbuf': "git grep -nIie $* -- $.",
+        \   'grepformat': "%f:%l:%m",
+        \ },
+        \ 'gitNoMigrations': {
+        \   'grepprg': "git grep -nIie $* -- :/ ':!**/migrations/**'",
+        \   'grepprgbuf': "git grep -nIie $* -- $.",
+        \   'grepformat': "%f:%l:%m",
+        \ },
+        \ 'gitNoTests': {
+        \   'grepprg': "git grep -nIie $* -- :/ ':!**/migrations/**' ':!**/test*.py'",
+        \   'grepprgbuf': "git grep -nIie $* -- $.",
+        \   'grepformat': "%f:%l:%m",
+        \ }}
+    let g:grepper.stop = 500
 
-    " Search using Silver search.
-    nnoremap <leader>a :Ag! --ignore "test*.py" --ignore "tags" --ignore-dir "*.tmp" 
-    nnoremap <leader>at :Ag! --ignore "tags" --ignore-dir "*.tmp" 
-    " Immediately search for the word under the cursor.
-    nnoremap <leader>A :Ag! --ignore "test*.py" --ignore "tags" --ignore-dir "*.tmp" --word "<C-r><C-w>"<CR>
-    nnoremap <leader>At :Ag! --ignore "tags" --ignore-dir "*.tmp" --word "<C-r><C-w>"<CR>
+    " Git grep ignores tests
+    nnoremap <leader>a :Grepper -tool gitNoTests<cr>
+    " Git grep word under cursor
+    nnoremap <leader>A :Grepper -tool gitNoTests -cword -noprompt<cr>
+
+    " Git grep consider tests
+    nnoremap <leader>at :Grepper -tool gitNoMigrations<cr>
+    " Git grep word under cursor
+    nnoremap <leader>At :Grepper -tool gitNoMigrations -cword -noprompt<cr>
 " }}}
 " ALE {{{
     let g:ale_linters = {
