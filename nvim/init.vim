@@ -192,7 +192,9 @@
         " Indentations settings.
         autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-*}/*.py
             \ set shiftwidth=4 softtabstop=4 tabstop=4
-        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-*}/*.{js,ts,tsx,scss,css,html,hbs}
+        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-*}/*.{js,ts,tsx,scss,css,hbs}
+            \ set shiftwidth=4 softtabstop=4 tabstop=4
+        autocmd BufRead,BufEnter */{yourPeople*,global-styles,z-*}/*.{html}
             \ set shiftwidth=2 softtabstop=2 tabstop=2
         autocmd BufRead,BufEnter */{yourPeople*}/*
             \ set noexpandtab
@@ -433,6 +435,8 @@
 
     " Shortcuts for ycm goto commands.
     nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+    " Mnemonic: Goto Declaration
+    nnoremap <leader>ge :YcmCompleter GoToDeclaration<CR>
     nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
     " Go peek
     nnoremap <leader>gp :YcmCompleter GetDoc<CR>
@@ -547,6 +551,8 @@
 " Vim-Markdown {{{
     " Fold a little nicer.
     let g:vim_markdown_folding_style_pythonic = 1
+    " No concealing links and formats.
+    let g:vim_markdown_conceal = 0
 " }}}
 
 " Auto-folding when open this file.
