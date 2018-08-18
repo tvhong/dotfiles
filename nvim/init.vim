@@ -1,8 +1,4 @@
 " This is to be linked to ~/.config/nvim/init.vim
-" Dependencies:
-" * Prospector for linting (`pip install prospector` in the project's venv).
-" * Isort for python sorting (`pip install isort` in the project's venv).
-
 " Dependencies {{{
     " Vim Plug:
     " - Website: https://github.com/junegunn/vim-plug
@@ -18,12 +14,6 @@
     " NERD Fonts:
     " - Website: https://github.com/ryanoasis/nerd-fonts
     " - Installation: https://github.com/ryanoasis/nerd-fonts#font-installation
-
-    " The Silver Searcher:
-    " - Website: https://github.com/ggreer/the_silver_searcher
-    " - Installation:
-    "   + MacOS: `brew install the_silver_searcher`
-    "   + Ubuntu: `apt install silversearcher-ag`
 
     " Universal Ctags:
     " - Website: https://ctags.io/
@@ -52,6 +42,14 @@
     " Linters defined in g:ale_linters are assumed to available in $PATH.
     " This can be done by activating the python virtualenv or prepend
     " <project-path>/node_modules/.bin to $PATH
+
+    " The Silver Searcher:
+    " - Website: https://github.com/ggreer/the_silver_searcher
+    " - Installation:
+    "   + MacOS: `brew install the_silver_searcher`
+    "   + Ubuntu: `apt install silversearcher-ag`
+
+    " Isort: For python import sorts. Install via `pip install isort`.
 " }}}
 " General Configs {{{
     set autoread
