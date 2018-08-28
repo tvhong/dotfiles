@@ -64,6 +64,7 @@
     set splitbelow " Horizontal split below current
 
     set number " show number on left
+    set relativenumber " use relative numbering
     set cursorline " highlight current line
 
     set showmatch " Show matching brackets
@@ -146,10 +147,6 @@
     " Close Tagbar and NERDTree. Depends on those plugins.
     " Mnemonic: Window Close.
     nnoremap <leader>wc :NERDTreeClose <bar> :TagbarClose<CR>
-
-    " Remap goto start and goto end.
-    nnoremap B ^
-    nnoremap E $
 
     " Clear the highlighting of :set hlsearch.
     nnoremap <leader><space> :nohlsearch<CR>
