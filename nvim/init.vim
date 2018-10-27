@@ -11,9 +11,11 @@
     "   + Gnome Terminal: Right click > Profile > Profile Preferences > Colours.
     "                     Select built-in Solarized themes.
 
-    " NERD Fonts:
+    " FuraCode Nerd Font:
     " - Website: https://github.com/ryanoasis/nerd-fonts
-    " - Installation: https://github.com/ryanoasis/nerd-fonts#font-installation
+    " - Installation:
+    "   + Install font to system: https://github.com/ryanoasis/nerd-fonts#font-installation
+    "   + Enable font on terminal.
 
     " Universal Ctags:
     " - Website: https://ctags.io/
