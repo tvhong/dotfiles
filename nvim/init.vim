@@ -146,9 +146,9 @@
     nnoremap <C-h> <C-w>h
     nnoremap <C-l> <C-w>l
 
-    " Close Tagbar and NERDTree. Depends on those plugins.
+    " Close Tagbar, NERDTree and quickfix window. Depends on those plugins.
     " Mnemonic: Window Close.
-    nnoremap <leader>wc :NERDTreeClose <bar> :TagbarClose<CR>
+    nnoremap <leader>wc :cclose <bar> :NERDTreeClose <bar> :TagbarClose<CR>
 
     " Clear the highlighting of :set hlsearch.
     nnoremap <leader><space> :nohlsearch<CR>
