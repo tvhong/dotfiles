@@ -70,9 +70,10 @@ export PYENV_ROOT="/Users/vhong/.pyenv"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# Disallow python from creating *.pyc files.
+# Tell CPython not to create *.pyc files to avoid stale pycs
 export PYTHONDONTWRITEBYTECODE=1
 
 source $HOME/.dotfiles/bash/common/bashrc
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/swig@3.04/bin:$PATH"
