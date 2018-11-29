@@ -3,17 +3,18 @@ YP2_PATH='/Users/vhong/workspace/yourPeople3_2'
 
 alias zendb7='/Users/vhong/workspace/zendb/zendb7'
 alias yp='cd $YP_PATH'
-alias ype='nvm use v4.8.6 && export PYTHONPATH=$YP_PATH && cd $YP_PATH && source ./venv/bin/activate'
+alias ype='nvm use v4.8.6 && export PYTHONPATH=$YP_PATH && export YP3=$YP_PATH && cd $YP_PATH && pyenv activate yp'
 
 alias yp2='cd $YP2_PATH'
-alias ype2='nvm use v4.8.6 && export PYTHONPATH=$YP2_PATH && cd $YP2_PATH && pyenv activate yp2a'
+alias ype2='nvm use v4.8.6 && export PYTHONPATH=$YP2_PATH && export YP3=$YP2_PATH && cd $YP2_PATH && pyenv activate yp2a'
 
 alias pm='python manage.py '
 alias pmt='python manage.py test --reusedb --settings=yourpeople.test_local_settings '
 
-alias moto='moto_server swf'
-alias ypuwsgi='uwsgi $YP_PATH/yourpeople/uwsgi-dev.ini --home $YP_PATH/venv'
+alias ypuwsgi='uwsgi $YP_PATH/yourpeople/uwsgi-dev.ini --home $(pyenv root)/versions/yp'
 alias yp2uwsgi='uwsgi $YP2_PATH/yourpeople/uwsgi-dev.ini --home $(pyenv root)/versions/yp2a'
+
+alias moto='moto_server swf'
 alias smtp='sudo python -m smtpd -n -c DebuggingServer localhost:25'
 
 alias pir='pip install -r requirements.txt'
