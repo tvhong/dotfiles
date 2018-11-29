@@ -180,6 +180,10 @@
         autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
                     \ :call <SID>StripTrailingWhitespaces()
     augroup END
+    augroup highlight_word_under_cursor
+        autocmd!
+        autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+    augroup END
 
 
 
