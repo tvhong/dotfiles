@@ -21,3 +21,6 @@ alias less='less -R'
 # Favorite editors
 alias vi='nvim'
 alias vim='nvim'
+
+# Python virtualenv aliases
+alias vba="source ./venv/bin/activate"
