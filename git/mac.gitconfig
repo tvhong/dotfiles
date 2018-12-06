@@ -13,7 +13,7 @@
 	loggraph = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [core]
 	editor = nvim
-	excludesfile = /Users/vhong/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [push]
 	default = simple
 [http]
