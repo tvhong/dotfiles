@@ -10,10 +10,10 @@ get_all_yp_paths() {
 }
 
 alias yp='cd $YP_PATH'
-alias ype='nvm use v4.8.6 && export PYTHONPATH=$(get_all_yp_paths $YP_PATH) && export YP3=$YP_PATH && cd $YP_PATH'
+alias ype='nvm use v4.8.6 && cd $YP_PATH && export YP3=$YP_PATH && export PYTHONPATH=$(get_all_yp_paths $YP_PATH)'
 
 alias yp2='cd $YP2_PATH'
-alias ype2='nvm use v4.8.6 && export PYTHONPATH=$(get_all_yp_paths YP2_PATH) && export YP3=$YP2_PATH && cd $YP2_PATH'
+alias ype2='nvm use v4.8.6 && cd $YP2_PATH && export YP3=$YP2_PATH && export PYTHONPATH=$(get_all_yp_paths $YP2_PATH)'
 
 alias pm='python manage.py '
 alias pmt='python manage.py test --reusedb --settings=yourpeople.test_local_settings '
@@ -29,7 +29,7 @@ alias pir='pip install -r requirements.txt'
 # z-frontend development env setups
 Z_FRONTEND_PATH='/Users/vhong/workspace/z-frontend'
 
-alias zf="nvm use lts/dubnium && export PATH=$Z_FRONTEND_PATH/node_modules/.bin:$PATH && cd $Z_FRONTEND_PATH"
+alias zf="nvm use 10 && export PATH=$Z_FRONTEND_PATH/node_modules/.bin:$PATH && cd $Z_FRONTEND_PATH"
 
 # Color output for ls.
 alias ls='ls -G'
