@@ -287,6 +287,9 @@
     Plug 'sirver/ultisnips' " Snippet engine for vim.
         Plug 'honza/vim-snippets' " Community snippets collection for ultisnips.
 
+    " Plugins for Python
+    Plug 'mgedmin/python-imports.vim' " Auto import for Python, depend on ctags
+"
     " Plugins for Javascript.
     Plug 'pangloss/vim-javascript' " Enhance javascript coding experience.
     Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags.
@@ -332,9 +335,6 @@
 " NERDtree {{{
     augroup nerdtree
         autocmd!
-        " Open a NERDTree automatically when vim starts up if no files were specified.
-        autocmd StdinReadPre * let s:std_in=1
-        autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
         " Open NERDTree automatically when vim starts up on opening a directory.
         autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -572,6 +572,10 @@
     let g:vim_markdown_folding_style_pythonic = 1
     " No concealing links and formats.
     let g:vim_markdown_conceal = 0
+" }}}
+" Python imports {{{
+    map <leader>i :ImportName<CR>
+    map <leader>I :ImportNameHere<CR>
 " }}}
 
 " Auto-folding when open this file.
