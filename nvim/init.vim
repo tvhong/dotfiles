@@ -287,6 +287,9 @@
     Plug 'sirver/ultisnips' " Snippet engine for vim.
         Plug 'honza/vim-snippets' " Community snippets collection for ultisnips.
 
+    " Plugins for Python
+    Plug 'mgedmin/python-imports.vim' " Auto import for Python, depend on ctags
+"
     " Plugins for Javascript.
     Plug 'pangloss/vim-javascript' " Enhance javascript coding experience.
     Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags.
@@ -569,6 +572,10 @@
     let g:vim_markdown_folding_style_pythonic = 1
     " No concealing links and formats.
     let g:vim_markdown_conceal = 0
+" }}}
+" Python imports {{{
+    map <leader>i :ImportName<CR>
+    map <leader>I :ImportNameHere<CR>
 " }}}
 
 " Auto-folding when open this file.
