@@ -43,3 +43,6 @@ psgrep() {
   local arg="$@"
   ps aux | grep "[${arg:0:1}]${arg:1}"
 }
+
+# pyenv-virtualenv config
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
