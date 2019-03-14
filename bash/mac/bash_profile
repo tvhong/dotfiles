@@ -57,7 +57,8 @@ export PATH="$PATH:$HOME/.fzf/bin"
 # Use image magick 6
 export MAGICK_HOME=/usr/local/opt/imagemagick@6
 
-# Setup nvm
+# Setup nvm cloned from github.com/creationix/nvm
+# The author recommends not to use brew nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

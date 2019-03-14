@@ -3,5 +3,5 @@ tags.lock
 tags.temp
 *Session.vim
 *.orig
-
+venv/
 .python-version
