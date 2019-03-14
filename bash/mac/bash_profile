@@ -54,9 +54,6 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # Add fzf to path
 export PATH="$PATH:$HOME/.fzf/bin"
 
-# Specify dyld library.
-export DYLD_LIBRARY_PATH="/usr/local/lib"
-
 # Use image magick 6
 export MAGICK_HOME=/usr/local/opt/imagemagick@6
 
