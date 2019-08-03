@@ -15,6 +15,8 @@
 --exclude=dist
 --exclude=vendor
 --exclude=logs
+# Ignore files in ocgull
+--exclude=build/*
 # Run ctags --list-kinds=python to see details
 --python-kinds=-iIx
 
