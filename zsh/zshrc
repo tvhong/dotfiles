@@ -64,6 +64,8 @@ ZSH_THEME="miloshadzic"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+source $ZSH/oh-my-zsh.sh
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -90,10 +92,7 @@ plugins=(git)
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-#source ~/.zshrc.pre-oh-my-zsh
-#
 
-# Below is my own configs
 # ZSh antibody plugins configuration. Require antibody to be installed
 source <(antibody init)
 antibody bundle < ~/.zsh_plugins.txt
