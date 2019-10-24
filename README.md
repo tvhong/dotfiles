@@ -3,6 +3,6 @@ This should be cloned or linked to $HOME/.dotfiles in order for the configs to w
 
 Example setup:
 ```
-$ ln -sf /Users/vy/workspace/dotfiles/ $HOME/.dotfiles
+$ ln -sf $HOME/workspace/dotfiles/ $HOME/.dotfiles
 $ cd ~/.dotfiles/ && ./symlink.sh
 ```
