@@ -50,51 +50,31 @@ linking() {
 if [[ $OSTYPE == linux* ]]; then
     echo OS: Linux.
 
-    echo Linking tmux...
-    ln -sf $TMUX_DIR/linux.tmux.conf $HOME/.tmux.conf
-    echo Done.
+    linking "$TMUX_DIR/linux.tmux.conf" "$HOME/.tmux.conf"
 
     BASH_LINUX=$BASH_DIR/linux
-    echo Linking .bashrc...
-    ln -sf $BASH_LINUX/bashrc $HOME/.bashrc
-    echo Linking .bash_logout...
-    ln -sf $BASH_LINUX/bash_logout $HOME/.bash_logout
-    echo Linking .bash_aliases...
-    ln -sf $BASH_LINUX/bash_aliases $HOME/.bash_aliases
-    echo Done.
+    linking "$BASH_LINUX/bashrc" "$HOME/.bashrc"
+    linking "$BASH_LINUX/bash_logout" "$HOME/.bash_logout"
+    linking "$BASH_LINUX/bash_aliases" "$HOME/.bash_aliases"
 
-    echo Linking .gitconfig...
-    ln -sf $GIT_DIR/linux.gitconfig $HOME/.gitconfig
-    echo Linking .gitignore_global...
-    ln -sf $GIT_DIR/gitignore_global $HOME/.gitignore_global
-    echo Done.
+    linking "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
+    linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 
-    echo Linking ctags...
     mkdir -p $HOME/.ctags.d
-    ln -sf $CTAGS_DIR/ctags $HOME/.ctags.d/common.ctags
-    echo Done.
+    linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
 elif [[ $OSTYPE == darwin* ]]; then
     echo OS: Mac.
 
-    echo Linking tmux...
-    ln -sf $TMUX_DIR/mac.tmux.conf $HOME/.tmux.conf
-    echo Done.
+    linking "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
 
     BASH_MAC=$BASH_DIR/mac
-    echo Linking .bash_profile...
-    ln -sf $BASH_MAC/bash_profile $HOME/.bash_profile
-    echo Done.
+    linking "$BASH_MAC/bash_profile" "$HOME/.bash_profile"
 
     linking "$ZSH_DIR/zshrc" "$HOME/.zshrc"
+    linking "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
+    linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 
-    echo Linking .gitconfig...
-    ln -sf $GIT_DIR/mac.gitconfig $HOME/.gitconfig
-    echo Linking .gitignore_global...
-    ln -sf $GIT_DIR/gitignore_global $HOME/.gitignore_global
-    echo Done.
-
-    echo Linking ctags...
     mkdir -p $HOME/.ctags.d
-    ln -sf $CTAGS_DIR/ctags $HOME/.ctags.d/common.ctags
+    linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
     echo Done.
 fi
