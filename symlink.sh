@@ -59,9 +59,6 @@ if [[ $OSTYPE == linux* ]]; then
 
     linking "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
     linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
-
-    mkdir -p $HOME/.ctags.d
-    linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
 elif [[ $OSTYPE == darwin* ]]; then
     echo OS: Mac.
 
@@ -73,8 +70,8 @@ elif [[ $OSTYPE == darwin* ]]; then
     linking "$ZSH_DIR/zshrc" "$HOME/.zshrc"
     linking "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
     linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
-
-    mkdir -p $HOME/.ctags.d
-    linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
-    echo Done.
 fi
+
+mkdir -p $HOME/.ctags.d
+linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
+echo Done.
