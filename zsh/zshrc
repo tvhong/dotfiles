@@ -1,6 +1,7 @@
 # Installation:
 # - Install Oh-my-zsh
 # - Install PowerLine fonts https://github.com/powerline/fonts
+# - Install Antibody https://getantibody.github.io/install/
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -99,6 +100,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
+# Statically load plugins from antibody
+source ~/.zsh_plugins.sh
+zsh_build_plugins() {
+    antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+}
+
 source $HOME/.dotfiles/bash/common/bash_aliases
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
