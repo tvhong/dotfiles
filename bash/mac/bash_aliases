@@ -1,8 +1,0 @@
-# Color output for ls.
-alias ls='ls -G'
-
-alias grep='grep --color'
-alias ag='ag --color'
-
-# Source common aliases
-source $HOME/.dotfiles/bash/common/bash_aliases
