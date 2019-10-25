@@ -11,6 +11,7 @@ BASH_DIR=$DOTFILES_DIR/bash
 GIT_DIR=$DOTFILES_DIR/git
 CTAGS_DIR=$DOTFILES_DIR/ctags
 ZSH_DIR=$DOTFILES_DIR/zsh
+NVIM_DIR=$DOTFILES_DIR/nvim
 
 copy_with_backup() {
     if [[ $# -ne 2 ]]; then
@@ -62,7 +63,6 @@ elif [[ $OSTYPE == darwin* ]]; then
     echo OS: Mac.
 
     linking "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
-
     linking "$ZSH_DIR/zshrc" "$HOME/.zshrc"
     linking "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
 fi
@@ -71,3 +71,6 @@ linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 
 mkdir -p $HOME/.ctags.d
 linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
+
+mkdir -p $HOME/.config/nvim
+linking "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
