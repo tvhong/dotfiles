@@ -108,6 +108,14 @@ zsh_build_plugins() {
     antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 }
 
+# Add fzf to path
+export PATH="$PATH:$HOME/.fzf/bin"
+
+# pyenv-virtualenv
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 alias cat=ccat
 alias less=cless
 source $HOME/.dotfiles/bash/common/bash_aliases
