@@ -1,8 +1,7 @@
 " This is to be linked to ~/.config/nvim/init.vim
 " Dependencies {{{
-    " Vim Plug:
+    " Vim Plug (auto installed):
     " - Website: https://github.com/junegunn/vim-plug
-    " - Installation: https://github.com/junegunn/vim-plug#neovim
 
     " Solarized Palette:
     " - Website: http://ethanschoonover.com/solarized
@@ -14,7 +13,7 @@
     " FuraCode Nerd Font:
     " - Website: https://github.com/ryanoasis/nerd-fonts
     " - Installation:
-    "   + Install font to system: https://github.com/ryanoasis/nerd-fonts#font-installation
+    "   + Install font to system: https://github.com/ryanoasis/nerd-fonts#font-installation (prefer `./install.sh FiraCode` method)
     "   + Enable font on terminal.
 
     " Universal Ctags:
@@ -60,7 +59,7 @@
     set mouse=a " enable mouse usage
     set lazyredraw " redraw only when we need to.
     set encoding=utf8
-    set guifont=FuraCode_Nerd_Font:h11 " install font from https://github.com/ryanoasis/nerd-fonts & enable in iTerm
+    set guifont=FuraCode_Nerd_Font:h11 " Need to enable in iTerm https://www.iterm2.com/documentation-fonts.html
 
     set splitright " Vertical split to right of current
     set splitbelow " Horizontal split below current
