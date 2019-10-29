@@ -1,6 +1,9 @@
 # Color output for ls.
 alias ls='ls --color=auto'
 
+# Tell less to keep color from pipe.
+alias less='less -R'
+
 # Alias for open default program.
 alias xo="xdg-open"
 
