@@ -12,6 +12,7 @@ GIT_DIR=$DOTFILES_DIR/git
 CTAGS_DIR=$DOTFILES_DIR/ctags
 ZSH_DIR=$DOTFILES_DIR/zsh
 NVIM_DIR=$DOTFILES_DIR/nvim
+IDEAVIM_DIR=$DOTFILES_DIR/ideavim
 
 copy_with_backup() {
     if [[ $# -ne 2 ]]; then
@@ -74,3 +75,6 @@ linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
 
 mkdir -p $HOME/.config/nvim
 linking "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
+
+linking "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
+

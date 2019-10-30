@@ -1,0 +1,34 @@
+set ignorecase
+set smartcase
+set scrolloff=3         " 3 lines above/below cursor when scrolling
+
+set relativenumber
+
+let mapleader = ','
+
+
+nnoremap ; :
+vnoremap ; :
+
+nnoremap gd :action VimGotoDeclaration<cr>
+
+" Navigation commands
+nnoremap <leader>f :action GotoFile<cr>
+nnoremap <leader>F evb:action GotoFile<cr>
+nnoremap <leader>c :action GotoClass<cr>
+nnoremap <leader>C evb:action GotoClass<cr>
+nnoremap <leader>. :action GotoSymbol<cr>
+nnoremap <leader>> evb:action GotoSymbol<cr>
+nnoremap <leader>a :action FindInPath<cr>
+nnoremap <leader>A evb:action FindInPath<cr>
+
+nnoremap <leader>gn :action SelectIn<cr>
+nnoremap <leader>gt :action FileStructurePopup<cr>
+nnoremap <leader>d :action ShowErrorDescription<cr>
+
+nnoremap <leader>ge :action GotoDeclaration<cr>
+nnoremap <leader>gr :action FindUsages<cr>
+
+
+nnoremap <leader>gq :action QuickJavaDoc<cr>
+nnoremap <leader>gp :action QuickImplementations<cr>
