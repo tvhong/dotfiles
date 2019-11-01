@@ -12,7 +12,7 @@
 	logme = log --pretty=format:'%h %s [%an]' --graph
 	loggraph = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = /home/vy/.gitignore_global
 [push]
 	default = simple
