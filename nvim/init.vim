@@ -246,7 +246,7 @@
 
     call plug#begin()
     " General editing plugins.
-    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-surround' " Allow manipulating brackets around text objects
     Plug 'scrooloose/nerdcommenter' " Auto comment for different file types
 
     " Layout plugins.
@@ -308,7 +308,7 @@
     Plug 'jparise/vim-graphql' " GraphQL filetype support syntax.
 
     " This plugin need to stay at the end for other plugins to use.
-    " Note: Has dependency on ryanoasis/nerd-fonts.
+    " Note: need a ligatures-supported font installed and enabled in terminal (e.g. FuraCode)
     Plug 'ryanoasis/vim-devicons' " Icons for NERDTree.
     call plug#end()
 " }}}
