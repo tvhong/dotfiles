@@ -23,7 +23,9 @@ nnoremap <leader>a :action FindInPath<cr>
 nnoremap <leader>A evb:action FindInPath<cr>
 
 nnoremap <leader>gn :action SelectIn<cr>
-nnoremap <leader>gt :action FileStructurePopup<cr>
+nnoremap <leader>bb :action RecentFiles<cr>
+nnoremap <leader>bt :action FileStructurePopup<cr>
+nnoremap <leader>wt :action FileStructurePopup<cr>
 nnoremap <leader>d :action ShowErrorDescription<cr>
 
 nnoremap <leader>ge :action GotoDeclaration<cr>
@@ -32,3 +34,13 @@ nnoremap <leader>gr :action FindUsages<cr>
 
 nnoremap <leader>gq :action QuickJavaDoc<cr>
 nnoremap <leader>gp :action QuickImplementations<cr>
+
+nnoremap <leader>@c :action CopyPaths<cr>
+nnoremap <leader>@p :action CopyReference<cr>
+
+nnoremap <leader>gb :action Annotate<cr>
+
+nnoremap <C-O> :action Back<cr>
+nnoremap <C-I> :action Forward<cr>
+
+nnoremap <C-6> :action Switcher
