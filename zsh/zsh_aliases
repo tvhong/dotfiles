@@ -1,0 +1,3 @@
+# ccat and cless are available through `colorize` plugin in zsh
+alias cat=ccat
+alias less=cless

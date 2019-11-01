@@ -65,6 +65,7 @@ elif [[ $OSTYPE == darwin* ]]; then
 
     linking "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
     linking "$ZSH_DIR/zshrc" "$HOME/.zshrc"
+    linking "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
     linking "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
 fi
 
