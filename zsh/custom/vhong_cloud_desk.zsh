@@ -1,5 +1,5 @@
 # Amazon specific tools
-ZSH_THEME="dieter"
+ZSH_THEME="clean"
 
 export PATH="/apollo/env/AmazonAwsCli/bin/:$PATH"
 
