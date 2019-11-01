@@ -9,6 +9,32 @@
 #   + Description: plugin manager for zsh.
 #   + Installation: https://getantibody.github.io/install/
 
+#######################################################################
+# User configuration
+#######################################################################
+
+# Add fzf to path
+export PATH="$PATH:$HOME/.fzf/bin"
+
+# pyenv-virtualenv
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Set my favourite editor
+export EDITOR="vim"
+
+# Source aliases
+source $HOME/.zsh_aliases
+
+#######################################################################
+# Oh-my-zsh
+#######################################################################
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load
@@ -31,6 +57,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+#######################################################################
+# Plugins
+#######################################################################
+
 # Statically load plugins from antibody
 source ~/.zsh_plugins.sh
 # Command to rebuild antibody plugins.
@@ -38,22 +68,3 @@ source ~/.zsh_plugins.sh
 zsh_build_plugins() {
     antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 }
-
-# User configuration
-# Add fzf to path
-export PATH="$PATH:$HOME/.fzf/bin"
-
-# pyenv-virtualenv
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Set my favourite editor
-export EDITOR="vim"
-
-# Source aliases
-source $HOME/.zsh_aliases
