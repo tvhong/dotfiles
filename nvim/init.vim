@@ -3,13 +3,6 @@
     " Vim Plug (auto installed):
     " - Website: https://github.com/junegunn/vim-plug
 
-    " Solarized Palette:
-    " - Website: http://ethanschoonover.com/solarized
-    " - Installation:
-    "   + iterm2: https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized
-    "   + Gnome Terminal: Right click > Profile > Profile Preferences > Colours.
-    "                     Select built-in Solarized themes.
-
     " FuraCode Nerd Font:
     " - Website: https://github.com/ryanoasis/nerd-fonts
     " - Installation:
@@ -59,7 +52,7 @@
     set mouse=a " enable mouse usage
     set lazyredraw " redraw only when we need to.
     set encoding=utf8
-    set guifont=FuraCode_Nerd_Font:h11 " Need to enable in iTerm https://www.iterm2.com/documentation-fonts.html
+    set guifont=FuraCode_Nerd_Font:h11 " Need to enable in iTerm2 https://www.iterm2.com/documentation-fonts.html
 
     set splitright " Vertical split to right of current
     set splitbelow " Horizontal split below current
@@ -257,9 +250,6 @@
     Plug 'scrooloose/nerdcommenter' " Auto comment for different file types
 
     " Layout plugins.
-    Plug 'altercation/vim-colors-solarized' " Solarize vim theme.
-    Plug 'vim-airline/vim-airline' " Nicer statusbar support for vim.
-        Plug 'vim-airline/vim-airline-themes', {'do': ':AirlineTheme solarized'} " Vim-airline & solarize integration
     Plug 'lilydjwg/colorizer' " Colorize all text in form #rrggbb #rgb.
     Plug 'yuttie/comfortable-motion.vim' " For a smoother scrolling experience.
     Plug 'yggdroot/indentline' " Simple indentation guides.
@@ -288,7 +278,7 @@
 
     " Plugins for Python
     Plug 'mgedmin/python-imports.vim' " Auto import for Python, depend on ctags
-"
+
     " Plugins for Javascript.
     Plug 'pangloss/vim-javascript' " Enhance javascript coding experience.
     Plug 'docunext/closetag.vim' " Use <C-_> to close HTML/XML tags.
@@ -321,15 +311,6 @@
     " Note: Has dependency on ryanoasis/nerd-fonts.
     Plug 'ryanoasis/vim-devicons' " Icons for NERDTree.
     call plug#end()
-" }}}
-" Solarized colorscheme {{{
-    syntax enable " enable syntax processing
-    set background=dark
-
-    " Using solarized color scheme.
-    " Note: also need to set the terminal's color pallete to Solarized color.
-    " scheme, check out https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized for instructions.
-    colorscheme solarized
 " }}}
 " NERDtree {{{
     augroup nerdtree
@@ -391,23 +372,6 @@
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
-" }}}
-" Vim-Airline {{{
-    " Note, if ever need to customize airline's section, see
-    " :help airline-section
-    let g:airline_powerline_fonts = 1 " Let vim-airline uses new fonts
-    " Set solarized theme (Need :AirlineTheme solarized) before this has effect.
-    let g:airline_solarized_bg = 'dark'
-
-    " Enable tabline when there's no window.
-    let g:airline#extensions#tabline#enabled = 1
-    " Enable vim-grepper integration
-    let g:airline#extensions#grepper#enabled = 1
-
-    augroup vim_airline_config
-        autocmd!
-        autocmd VimEnter * AirlineTheme solarized
-    augroup END
 " }}}
 " Colorizer {{{
     let g:colorizer_maxlines = 1000
