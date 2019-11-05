@@ -5,3 +5,6 @@ tags.temp
 *.orig
 venv/
 .python-version
+*.iml
+annotation-generated-*/
+build
