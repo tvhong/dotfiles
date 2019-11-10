@@ -87,13 +87,17 @@ link_zsh() {
     fi
 }
 
+link_ctags() {
+    mkdir -p "$HOME/.ctags.d"
+    linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
+}
+
 link_tmux
 link_bash
 link_git
 link_zsh
+link_ctags
 
-mkdir -p "$HOME/.ctags.d"
-linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
 
 mkdir -p "$HOME/.config/nvim"
 linking "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
