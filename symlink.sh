@@ -68,12 +68,14 @@ link_bash() {
     fi
 }
 
-link_gitconfig() {
+link_git() {
     if [[ $OSTYPE == linux* ]]; then
         linking "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
     elif [[ $OSTYPE == darwin* ]]; then
         linking "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
     fi
+
+    linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 }
 
 link_zsh() {
@@ -87,10 +89,8 @@ link_zsh() {
 
 link_tmux
 link_bash
-link_gitconfig
+link_git
 link_zsh
-
-linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 
 mkdir -p "$HOME/.ctags.d"
 linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
