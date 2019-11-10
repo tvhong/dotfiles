@@ -105,10 +105,37 @@ link_ideavim() {
     linking "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
 }
 
-link_tmux
-link_bash
-link_git
-link_zsh
-link_ctags
-link_nvim
-link_ideavim
+element_in() {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
+
+if element_in 'tmux' $@; then
+    link_tmux
+fi
+
+if element_in 'bash' $@; then
+    link_bash
+fi
+
+if element_in 'zsh' $@; then
+    link_zsh
+fi
+
+if element_in 'git' $@; then
+    link_git
+fi
+
+if element_in 'ctags' $@; then
+    link_ctags
+fi
+
+if element_in 'nvim' $@; then
+    link_nvim
+fi
+
+if element_in 'ideavim' $@; then
+    link_ideavim
+fi
