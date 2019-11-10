@@ -97,13 +97,14 @@ link_nvim() {
     linking "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
 }
 
+link_ideavim() {
+    linking "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
+}
+
 link_tmux
 link_bash
 link_git
 link_zsh
 link_ctags
 link_nvim
-
-
-
-linking "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
+link_ideavim
