@@ -24,10 +24,11 @@ copy_with_backup() {
         if ! cmp -s "$src" "$dest"; then
             echo "Backing up $dest to $dest_bak"
             mv "$dest" "$dest_bak"
+            ln -s "$src" "$dest"
+        else
+            echo "Symlink already created, not updating."
         fi
     fi
-
-    ln -s "$src" "$dest"
 }
 
 linking() {
