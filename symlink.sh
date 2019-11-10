@@ -76,16 +76,19 @@ link_gitconfig() {
     fi
 }
 
-if [[ $OSTYPE == darwin* ]]; then
-    echo "OS: Mac."
+link_zsh() {
+    if [[ $OSTYPE == darwin* ]]; then
+        echo "OS: Mac."
 
-    linking "$ZSH_DIR/zshrc" "$HOME/.zshrc"
-    linking "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
-fi
+        linking "$ZSH_DIR/zshrc" "$HOME/.zshrc"
+        linking "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
+    fi
+}
 
 link_tmux
 link_bash
 link_gitconfig
+link_zsh
 
 linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 
