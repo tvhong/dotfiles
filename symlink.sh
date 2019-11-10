@@ -6,14 +6,6 @@ if [[ ! -d $DOTFILES_DIR ]]; then
     exit
 fi
 
-TMUX_DIR=$DOTFILES_DIR/tmux
-BASH_DIR=$DOTFILES_DIR/bash
-GIT_DIR=$DOTFILES_DIR/git
-CTAGS_DIR=$DOTFILES_DIR/ctags
-ZSH_DIR=$DOTFILES_DIR/zsh
-NVIM_DIR=$DOTFILES_DIR/nvim
-IDEAVIM_DIR=$DOTFILES_DIR/ideavim
-
 copy_with_backup() {
     if [[ $# -ne 2 ]]; then
         echo ERROR: Calling copy_with_backup with incorrect arguments
@@ -52,6 +44,8 @@ linking() {
 }
 
 link_tmux() {
+    local TMUX_DIR=$DOTFILES_DIR/tmux
+
     if [[ $OSTYPE == linux* ]]; then
         linking "$TMUX_DIR/linux.tmux.conf" "$HOME/.tmux.conf"
     elif [[ $OSTYPE == darwin* ]]; then
@@ -60,6 +54,8 @@ link_tmux() {
 }
 
 link_bash() {
+    local BASH_DIR=$DOTFILES_DIR/bash
+
     if [[ $OSTYPE == linux* ]]; then
         BASH_LINUX="$BASH_DIR/linux"
         linking "$BASH_LINUX/bashrc" "$HOME/.bashrc"
@@ -69,6 +65,8 @@ link_bash() {
 }
 
 link_git() {
+    local GIT_DIR=$DOTFILES_DIR/git
+
     if [[ $OSTYPE == linux* ]]; then
         linking "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
     elif [[ $OSTYPE == darwin* ]]; then
@@ -79,6 +77,8 @@ link_git() {
 }
 
 link_zsh() {
+    local ZSH_DIR=$DOTFILES_DIR/zsh
+
     if [[ $OSTYPE == darwin* ]]; then
         echo "OS: Mac."
 
@@ -88,16 +88,22 @@ link_zsh() {
 }
 
 link_ctags() {
+    local CTAGS_DIR=$DOTFILES_DIR/ctags
+
     mkdir -p "$HOME/.ctags.d"
     linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
 }
 
 link_nvim() {
+    local NVIM_DIR=$DOTFILES_DIR/nvim
+
     mkdir -p "$HOME/.config/nvim"
     linking "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
 }
 
 link_ideavim() {
+    local IDEAVIM_DIR=$DOTFILES_DIR/ideavim
+
     linking "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
 }
 
