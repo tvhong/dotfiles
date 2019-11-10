@@ -50,18 +50,18 @@ linking() {
 
 
 if [[ $OSTYPE == linux* ]]; then
-    echo OS: Linux.
+    echo "OS: Linux."
 
     linking "$TMUX_DIR/linux.tmux.conf" "$HOME/.tmux.conf"
 
-    BASH_LINUX=$BASH_DIR/linux
+    BASH_LINUX="$BASH_DIR/linux"
     linking "$BASH_LINUX/bashrc" "$HOME/.bashrc"
     linking "$BASH_LINUX/bash_logout" "$HOME/.bash_logout"
     linking "$BASH_LINUX/bash_aliases" "$HOME/.bash_aliases"
 
     linking "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
 elif [[ $OSTYPE == darwin* ]]; then
-    echo OS: Mac.
+    echo "OS: Mac."
 
     linking "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
     linking "$ZSH_DIR/zshrc" "$HOME/.zshrc"
@@ -71,11 +71,10 @@ fi
 
 linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 
-mkdir -p $HOME/.ctags.d
+mkdir -p "$HOME/.ctags.d"
 linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
 
-mkdir -p $HOME/.config/nvim
+mkdir -p "$HOME/.config/nvim"
 linking "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
 
 linking "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
-
