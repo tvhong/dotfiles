@@ -80,8 +80,6 @@ link_zsh() {
     local ZSH_DIR=$DOTFILES_DIR/zsh
 
     if [[ $OSTYPE == darwin* ]]; then
-        echo "OS: Mac."
-
         linking "$ZSH_DIR/zshrc" "$HOME/.zshrc"
         linking "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
     fi
