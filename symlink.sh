@@ -19,9 +19,9 @@ copy_with_backup() {
         echo ERROR: Calling copy_with_backup with incorrect arguments
     fi
 
-    src="$1"
-    dest="$2"
-    dest_bk=$(mktemp ${dest}.bk.XXXXXX)
+    local src="$1"
+    local dest="$2"
+    local dest_bk=$(mktemp ${dest}.bk.XXXXXX)
     if [[ ! -e "$src" ]]; then
         echo "$src" does not exist. Skipping...
         return 1
@@ -40,14 +40,14 @@ linking() {
         echo ERROR: Calling linking with incorrect arguments
     fi
 
-    src="$1"
-    dest="$2"
+    local src="$1"
+    local dest="$2"
     echo ---
     echo Linking "$src" to "$dest"...
     copy_with_backup "$src" "$dest"
     echo Done
 }
-    
+
 
 if [[ $OSTYPE == linux* ]]; then
     echo OS: Linux.
