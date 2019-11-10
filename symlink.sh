@@ -51,11 +51,16 @@ linking() {
     echo Done
 }
 
+link_tmux() {
+    if [[ $OSTYPE == linux* ]]; then
+        linking "$TMUX_DIR/linux.tmux.conf" "$HOME/.tmux.conf"
+    elif [[ $OSTYPE == darwin* ]]; then
+        linking "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
+    fi
+}
 
 if [[ $OSTYPE == linux* ]]; then
     echo "OS: Linux."
-
-    linking "$TMUX_DIR/linux.tmux.conf" "$HOME/.tmux.conf"
 
     BASH_LINUX="$BASH_DIR/linux"
     linking "$BASH_LINUX/bashrc" "$HOME/.bashrc"
@@ -66,11 +71,12 @@ if [[ $OSTYPE == linux* ]]; then
 elif [[ $OSTYPE == darwin* ]]; then
     echo "OS: Mac."
 
-    linking "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
     linking "$ZSH_DIR/zshrc" "$HOME/.zshrc"
     linking "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
     linking "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
 fi
+
+link_tmux
 
 linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 
