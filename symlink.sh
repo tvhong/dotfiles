@@ -21,15 +21,18 @@ copy_with_backup() {
 
     local src="$1"
     local dest="$2"
-    local dest_bk=$(mktemp ${dest}.bk.XXXXXX)
+    local dest_bk=$(mktemp ${dest}.bak.XXXXXX)
+
     if [[ ! -e "$src" ]]; then
-        echo "$src" does not exist. Skipping...
+        echo ERROR: "$src" does not exist. Skipping...
         return 1
     fi
 
     if [[ -e "$dest" ]]; then
-        echo Backing up "$dest" to "$dest_bk"
-        mv "$dest" "$dest_bk"
+        if ! cmp -s "$src" "$dest"; then
+            echo "Backing up $dest to $dest_bak"
+            mv "$dest" "$dest_bak"
+        fi
     fi
 
     ln -s "$src" "$dest"
