@@ -92,14 +92,18 @@ link_ctags() {
     linking "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
 }
 
+link_nvim() {
+    mkdir -p "$HOME/.config/nvim"
+    linking "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
+}
+
 link_tmux
 link_bash
 link_git
 link_zsh
 link_ctags
+link_nvim
 
 
-mkdir -p "$HOME/.config/nvim"
-linking "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
 
 linking "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
