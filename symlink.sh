@@ -59,13 +59,17 @@ link_tmux() {
     fi
 }
 
+link_bash() {
+    if [[ $OSTYPE == linux* ]]; then
+        BASH_LINUX="$BASH_DIR/linux"
+        linking "$BASH_LINUX/bashrc" "$HOME/.bashrc"
+        linking "$BASH_LINUX/bash_logout" "$HOME/.bash_logout"
+        linking "$BASH_LINUX/bash_aliases" "$HOME/.bash_aliases"
+    fi
+}
+
 if [[ $OSTYPE == linux* ]]; then
     echo "OS: Linux."
-
-    BASH_LINUX="$BASH_DIR/linux"
-    linking "$BASH_LINUX/bashrc" "$HOME/.bashrc"
-    linking "$BASH_LINUX/bash_logout" "$HOME/.bash_logout"
-    linking "$BASH_LINUX/bash_aliases" "$HOME/.bash_aliases"
 
     linking "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
 elif [[ $OSTYPE == darwin* ]]; then
@@ -77,6 +81,7 @@ elif [[ $OSTYPE == darwin* ]]; then
 fi
 
 link_tmux
+link_bash
 
 linking "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 
