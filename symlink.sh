@@ -100,7 +100,7 @@ link_ideavim() {
 
 usage() {
 cat <<- EOF
-Usage: $PROGNAME [-d|--dryrun] [all|tmux|bash|zsh|git|ctags|nvim|ideavim]
+Usage: $PROGNAME [-d|--dryrun] [all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")]
 EOF
 }
 
