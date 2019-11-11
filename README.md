@@ -1,8 +1,5 @@
-This repo contains my dotfiles.
-This should be cloned or linked to $HOME/.dotfiles in order for the configs to work correctly.
-
-Example setup:
 ```
-$ ln -sf $HOME/workspace/dotfiles/ $HOME/.dotfiles
-$ cd ~/.dotfiles/ && ./symlink.sh
+$ git clone https://github.com/tvhong/dotfiles.git
+$ cd dotfiles
+$ ./symlink.sh -h
 ```
