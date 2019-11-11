@@ -4,6 +4,7 @@
 
 readonly DOTFILES_DIR=$HOME/.dotfiles
 readonly ALL_PROGRAMS=(tmux bash zsh git ctags nvim ideavim)
+
 DRYRUN=False
 
 main() {
@@ -11,7 +12,7 @@ main() {
 
     while [[ -n "$1" ]]; do
         case "$1" in
-            -h | --help) usage; exit 0;;
+            -h | --help) print_usage; exit 0;;
             -d | --dryrun) DRYRUN=True;;
             all) programs="${ALL_PROGRAMS[@]}";;
             *) programs+=($1)
@@ -25,7 +26,7 @@ main() {
     link_programs ${programs[@]}
 }
 
-usage() {
+print_usage() {
 cat <<- EOF
 Usage: $(basename "$0") [-h] [-d|--dryrun] all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")
 EOF
@@ -35,14 +36,14 @@ validate_programs() {
     local programs=("$@")
 
     if [[ ${#programs[@]} == 0 ]]; then
-        usage
+        print_usage
         return 1
     fi
 
     for p in "${programs[@]}"; do
         if ! element_in "$p" "${ALL_PROGRAMS[@]}"; then
             echo "ERROR: Unknown program: $p"
-            usage
+            print_usage
             return 1
         fi
     done
