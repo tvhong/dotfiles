@@ -28,7 +28,7 @@ main() {
 
 print_usage() {
 cat << EOF
-Usage: $(basename "$0") [-h] [-d|--dryrun] all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")
+Usage: $(basename "$0") [-h|--help] [-d|--dryrun] all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")
 EOF
 }
 
