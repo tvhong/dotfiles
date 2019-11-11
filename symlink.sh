@@ -35,6 +35,13 @@ _link() {
     _run ln -sf "$src" "$dest"
 }
 
+link_dotfiles() {
+    if [[ ! -d $DOTFILES_DIR ]]; then
+        local dotfiles_src_dir=$(cd $(dirname $0) && pwd)
+        _link $dotfiles_src_dir $DOTFILES_DIR
+    fi
+}
+
 link_tmux() {
     local TMUX_DIR=$DOTFILES_DIR/tmux
 
@@ -142,10 +149,7 @@ main() {
 
     validate_programs $programs >&2 || exit 1
 
-    if [[ ! -d $DOTFILES_DIR ]]; then
-        local dotfiles_src_dir=$(cd $(dirname $0) && pwd)
-        _link $dotfiles_src_dir $DOTFILES_DIR
-    fi
+    link_dotfiles
 
     unique_programs=($(echo "${programs[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
     for p in "${unique_programs[@]}"; do
