@@ -4,7 +4,7 @@ DOTFILES_DIR=$HOME/.dotfiles
 ALL_PROGRAMS=(tmux bash zsh git ctags nvim ideavim)
 DRYRUN=False
 
-_run() {
+execute() {
     if [[ $DRYRUN == True ]]; then
         echo "dryrun: $@"
     else
@@ -13,9 +13,9 @@ _run() {
     fi
 }
 
-_link() {
+symlink() {
     [[ $# -ne 2 ]] \
-            && echo ERROR: Calling _link with incorrect arguments >&2 \
+            && echo ERROR: Calling symlink with incorrect arguments >&2 \
             && return 1
 
     local src="$1"
@@ -29,16 +29,16 @@ _link() {
 
     # Create backup if needed
     if [[ -e "$dest" ]] && (! cmp -s "$src" "$dest"); then
-        _run mv "$dest" "$(mktemp ${dest}.bak.XXXXXX)"
+        execute mv "$dest" "$(mktemp ${dest}.bak.XXXXXX)"
     fi
 
-    _run ln -sf "$src" "$dest"
+    execute ln -sf "$src" "$dest"
 }
 
 link_dotfiles() {
     if [[ ! -d $DOTFILES_DIR ]]; then
         local dotfiles_src_dir=$(cd $(dirname $0) && pwd)
-        _link $dotfiles_src_dir $DOTFILES_DIR
+        symlink $dotfiles_src_dir $DOTFILES_DIR
     fi
 }
 
@@ -46,9 +46,9 @@ link_tmux() {
     local TMUX_DIR=$DOTFILES_DIR/tmux
 
     if [[ $OSTYPE == linux* ]]; then
-        _link "$TMUX_DIR/linux.tmux.conf" "$HOME/.tmux.conf"
+        symlink "$TMUX_DIR/linux.tmux.conf" "$HOME/.tmux.conf"
     elif [[ $OSTYPE == darwin* ]]; then
-        _link "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
+        symlink "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
     fi
 }
 
@@ -57,9 +57,9 @@ link_bash() {
 
     if [[ $OSTYPE == linux* ]]; then
         BASH_LINUX="$BASH_DIR/linux"
-        _link "$BASH_LINUX/bashrc" "$HOME/.bashrc"
-        _link "$BASH_LINUX/bash_logout" "$HOME/.bash_logout"
-        _link "$BASH_LINUX/bash_aliases" "$HOME/.bash_aliases"
+        symlink "$BASH_LINUX/bashrc" "$HOME/.bashrc"
+        symlink "$BASH_LINUX/bash_logout" "$HOME/.bash_logout"
+        symlink "$BASH_LINUX/bash_aliases" "$HOME/.bash_aliases"
     fi
 }
 
@@ -67,21 +67,21 @@ link_git() {
     local GIT_DIR=$DOTFILES_DIR/git
 
     if [[ $OSTYPE == linux* ]]; then
-        _link "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
+        symlink "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
     elif [[ $OSTYPE == darwin* ]]; then
-        _link "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
+        symlink "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
     fi
 
-    _link "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
+    symlink "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 }
 
 link_zsh() {
     local ZSH_DIR=$DOTFILES_DIR/zsh
 
     if [[ $OSTYPE == darwin* ]]; then
-        _link "$ZSH_DIR/zshrc" "$HOME/.zshrc"
-        _link "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
-        _link "$ZSH_DIR/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
+        symlink "$ZSH_DIR/zshrc" "$HOME/.zshrc"
+        symlink "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
+        symlink "$ZSH_DIR/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
     fi
 }
 
@@ -89,20 +89,20 @@ link_ctags() {
     local CTAGS_DIR=$DOTFILES_DIR/ctags
 
     mkdir -p "$HOME/.ctags.d"
-    _link "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
+    symlink "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
 }
 
 link_nvim() {
     local NVIM_DIR=$DOTFILES_DIR/nvim
 
     mkdir -p "$HOME/.config/nvim"
-    _link "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
+    symlink "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
 }
 
 link_ideavim() {
     local IDEAVIM_DIR=$DOTFILES_DIR/ideavim
 
-    _link "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
+    symlink "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
 }
 
 usage() {
@@ -166,6 +166,7 @@ main() {
     done
 
     validate_programs ${programs[@]} >&2 || exit 1
+
     link_dotfiles
     link_programs ${programs[@]}
 }
