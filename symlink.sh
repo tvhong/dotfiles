@@ -109,38 +109,40 @@ Usage: $PROGNAME [-d|--dryrun] [all|tmux|bash|zsh|git|ctags|nvim|ideavim]
 EOF
 }
 
-PROGRAMS=()
+main() {
+    local programs=()
 
-while [[ -n "$1" ]]; do
-    case "$1" in
-        -d | --dryrun) DRYRUN=True;;
-        all) PROGRAMS="${ALL_PROGRAMS[@]}";;
-        tmux) PROGRAMS+=(tmux);;
-        bash) PROGRAMS+=(bash);;
-        zsh) PROGRAMS+=(zsh);;
-        git) PROGRAMS+=(git);;
-        ctags) PROGRAMS+=(ctags);;
-        nvim) PROGRAMS+=(nvim);;
-        ideavim) PROGRAMS+=(ideavim);;
-        *) usage >&2 && exit 1;;
-    esac
-    shift
-done
+    while [[ -n "$1" ]]; do
+        case "$1" in
+            -d | --dryrun) DRYRUN=True;;
+            all) programs="${ALL_PROGRAMS[@]}";;
+            tmux) programs+=(tmux);;
+            bash) programs+=(bash);;
+            zsh) programs+=(zsh);;
+            git) programs+=(git);;
+            ctags) programs+=(ctags);;
+            nvim) programs+=(nvim);;
+            ideavim) programs+=(ideavim);;
+            *) usage >&2 && exit 1;;
+        esac
+        shift
+    done
 
-# uniq-fy the programs
-PROGRAMS=($(echo "${PROGRAMS[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
-[[ ${#PROGRAMS[@]} == 0 ]] && usage >&2 && exit 1
+    unique_programs=($(echo "${programs[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+    [[ ${#unique_programs[@]} == 0 ]] && usage >&2 && exit 1
 
-for p in "${PROGRAMS[@]}"; do
-    case $p in
-        tmux) link_tmux;;
-        bash) link_bash;;
-        zsh) link_zsh;;
-        git) link_git;;
-        ctags) link_ctags;;
-        nvim) link_nvim;;
-        ideavim) link_ideavim;;
-        *) echo "ERROR: Unknown program $p" >&2 && exit 1;;
-    esac
-done
+    for p in "${unique_programs[@]}"; do
+        case $p in
+            tmux) link_tmux;;
+            bash) link_bash;;
+            zsh) link_zsh;;
+            git) link_git;;
+            ctags) link_ctags;;
+            nvim) link_nvim;;
+            ideavim) link_ideavim;;
+            *) echo "ERROR: Unknown program $p" >&2 && exit 1;;
+        esac
+    done
+}
 
+main "$@"
