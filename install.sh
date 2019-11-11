@@ -141,6 +141,12 @@ link_ideavim() {
     symlink "$ideavim_dir/ideavimrc" "$HOME/.ideavimrc"
 }
 
+#######################################
+# Create symlink from $src to $dest. Creating backup if necessary.
+# Arguments:
+#   $src
+#   $dest
+#######################################
 symlink() {
     [[ $# -ne 2 ]] \
             && echo ERROR: Calling symlink with incorrect arguments >&2 \
@@ -172,6 +178,12 @@ execute() {
     fi
 }
 
+#######################################
+# Check if element is in array.
+# Arguments:
+#   $element
+#   $array
+#######################################
 element_in() {
     local e match="$1"
     shift
