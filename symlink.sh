@@ -122,15 +122,14 @@ main() {
         esac
         shift
     done
-
-    unique_programs=($(echo "${programs[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
-    [[ ${#unique_programs[@]} == 0 ]] && usage >&2 && exit 1
+    [[ ${#programs[@]} == 0 ]] && usage >&2 && exit 1
 
     if [[ ! -d $DOTFILES_DIR ]]; then
         local dotfiles_src_dir=$(cd $(dirname $0) && pwd)
         _link $dotfiles_src_dir $DOTFILES_DIR
     fi
 
+    unique_programs=($(echo "${programs[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
     for p in "${unique_programs[@]}"; do
         case $p in
             tmux) link_tmux;;
