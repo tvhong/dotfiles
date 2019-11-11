@@ -105,12 +105,6 @@ EOF
 }
 
 main() {
-    if [[ ! -d $DOTFILES_DIR ]]; then
-        echo Please make sure that $DOTFILES_DIR exists.
-        echo Exiting..
-        exit
-    fi
-
     local programs=()
 
     while [[ -n "$1" ]]; do
@@ -131,6 +125,11 @@ main() {
 
     unique_programs=($(echo "${programs[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
     [[ ${#unique_programs[@]} == 0 ]] && usage >&2 && exit 1
+
+    if [[ ! -d $DOTFILES_DIR ]]; then
+        local dotfiles_src_dir=$(cd $(dirname $0) && pwd)
+        create_symlink $dotfiles_src_dir $DOTFILES_DIR
+    fi
 
     for p in "${unique_programs[@]}"; do
         case $p in
