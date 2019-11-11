@@ -1,4 +1,5 @@
 #!/bin/bash
+
 DOTFILES_DIR=$HOME/.dotfiles
 ALL_PROGRAMS=(tmux bash zsh git ctags nvim ideavim)
 DRYRUN=False
@@ -23,7 +24,7 @@ create_symlink() {
     echo "linking: $src -> $dest..."
 
     [[ ! -e "$src" ]] \
-            && echo ERROR: "$src" does not exist. Skipping... >&2 \
+            && echo ERROR: "$src" does not exist! >&2 \
             && return 1
 
     # Create backup if needed
