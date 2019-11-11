@@ -133,10 +133,16 @@ done
 PROGRAMS=($(echo "${PROGRAMS[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
 [[ ${#PROGRAMS[@]} == 0 ]] && usage >&2 && exit 1
 
-        #tmux) link_tmux;;
-        #bash) link_bash;;
-        #zsh) link_zsh;;
-        #git) link_git;;
-        #ctags) link_ctags;;
-        #nvim) link_nvim;;
-        #ideavim) link_ideavim;;
+for p in "${PROGRAMS[@]}"; do
+    case $p in
+        tmux) link_tmux;;
+        bash) link_bash;;
+        zsh) link_zsh;;
+        git) link_git;;
+        ctags) link_ctags;;
+        nvim) link_nvim;;
+        ideavim) link_ideavim;;
+        *) echo "ERROR: Unknown program $p" >&2 && exit 1;;
+    esac
+done
+
