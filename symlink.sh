@@ -6,6 +6,15 @@ if [[ ! -d $DOTFILES_DIR ]]; then
     exit
 fi
 
+_run() {
+    if [[ -n $DRY_RUN ]]; then
+        echo "dryrun: $@"
+    else
+        echo "running: $@"
+        eval "$@"
+    fi
+}
+
 create_symlink() {
     [[ $# -ne 2 ]] \
             && echo ERROR: Calling create_symlink with incorrect arguments >&2 \
@@ -14,8 +23,7 @@ create_symlink() {
     local src="$1"
     local dest="$2"
 
-    echo ---
-    echo Creating symlink from "$src" to "$dest"...
+    echo "$src -> $dest..."
 
     [[ ! -e "$src" ]] \
             && echo ERROR: "$src" does not exist. Skipping... >&2 \
@@ -23,12 +31,10 @@ create_symlink() {
 
     # Create backup if needed
     if [[ -e "$dest" ]] && (! cmp -s "$src" "$dest"); then
-        local dest_bak=$(mktemp ${dest}.bak.XXXXXX)
-        echo "Backing up $dest to $dest_bak"
-        mv "$dest" "$dest_bak"
+        _run mv "$dest" "$(mktemp ${dest}.bak.XXXXXX)"
     fi
 
-    ln -sf "$src" "$dest"
+    _run ln -sf "$src" "$dest"
 
     echo Done
 }
@@ -96,6 +102,7 @@ link_ideavim() {
     create_symlink "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
 }
 
+DRY_RUN='1'
 while [[ -n "$1" ]]; do
     case "$1" in
         tmux) link_tmux;;
