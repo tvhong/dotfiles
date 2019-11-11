@@ -80,6 +80,7 @@ link_zsh() {
     if [[ $OSTYPE == darwin* ]]; then
         linking "$ZSH_DIR/zshrc" "$HOME/.zshrc"
         linking "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
+        linking "$ZSH_DIR/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
     fi
 }
 
