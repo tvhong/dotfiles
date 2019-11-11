@@ -2,8 +2,8 @@
 #
 # Create symbolic links to various program configurations.
 
-DOTFILES_DIR=$HOME/.dotfiles
-ALL_PROGRAMS=(tmux bash zsh git ctags nvim ideavim)
+readonly DOTFILES_DIR=$HOME/.dotfiles
+readonly ALL_PROGRAMS=(tmux bash zsh git ctags nvim ideavim)
 DRYRUN=False
 
 main() {
