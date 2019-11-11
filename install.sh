@@ -29,6 +29,10 @@ main() {
 print_usage() {
 cat << EOF
 Usage: $(basename "$0") [-h|--help] [-d|--dryrun] all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")
+
+WHERE
+    -h | --help: Prints this help message.
+    -d | --dryrun: Runs program in dryrun mode. Prints out the intended actions, but no changes to the system is performed.
 EOF
 }
 
