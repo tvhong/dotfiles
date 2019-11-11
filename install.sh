@@ -27,8 +27,10 @@ main() {
 }
 
 print_usage() {
+    local programs_string="all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")"
+
 cat << EOF
-Usage: $(basename "$0") [-h|--help] [-d|--dryrun] all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")
+Usage: $(basename "$0") [-h|--help] [-d|--dryrun] $programs_string [${ALL_PROGRAMS[0]}|...]
 
 WHERE
     -h | --help: Prints this help message.
