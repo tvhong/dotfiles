@@ -119,7 +119,7 @@ element_in() {
 }
 
 validate_programs() {
-    local programs=$1
+    local programs=("$@")
 
     if [[ ${#programs[@]} == 0 ]]; then
         usage
@@ -135,21 +135,8 @@ validate_programs() {
     done
 }
 
-main() {
-    local programs=()
-
-    while [[ -n "$1" ]]; do
-        case "$1" in
-            -d | --dryrun) DRYRUN=True;;
-            all) programs="${ALL_PROGRAMS[@]}";;
-            *) programs+=($1)
-        esac
-        shift
-    done
-
-    validate_programs $programs >&2 || exit 1
-
-    link_dotfiles
+link_programs() {
+    local programs=("$@")
 
     unique_programs=($(echo "${programs[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
     for p in "${unique_programs[@]}"; do
@@ -164,6 +151,23 @@ main() {
             *) echo "ERROR: Unknown program $p" >&2; exit 1;;
         esac
     done
+}
+
+main() {
+    local programs=()
+
+    while [[ -n "$1" ]]; do
+        case "$1" in
+            -d | --dryrun) DRYRUN=True;;
+            all) programs="${ALL_PROGRAMS[@]}";;
+            *) programs+=($1)
+        esac
+        shift
+    done
+
+    validate_programs ${programs[@]} >&2 || exit 1
+    link_dotfiles
+    link_programs ${programs[@]}
 }
 
 main "$@"
