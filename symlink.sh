@@ -110,6 +110,24 @@ element_in() {
     for e; do [[ "$e" == "$match" ]] && return 0; done
     return 1
 }
+
+validate_programs() {
+    local programs=$1
+
+    if [[ ${#programs[@]} == 0 ]]; then
+        usage
+        return 1
+    fi
+
+    for p in "${programs[@]}"; do
+        if ! element_in "$p" "${ALL_PROGRAMS[@]}"; then
+            echo "ERROR: Unknown program: $p"
+            usage
+            return 1
+        fi
+    done
+}
+
 main() {
     local programs=()
 
@@ -121,15 +139,8 @@ main() {
         esac
         shift
     done
-    [[ ${#programs[@]} == 0 ]] && usage >&2 && exit 1
 
-    for p in "${programs[@]}"; do
-        if ! element_in "$p" "${ALL_PROGRAMS[@]}"; then
-            echo "ERROR: Unknown program: $p" >&2
-            usage >&2
-            exit 1
-        fi
-    done
+    validate_programs $programs >&2 || exit 1
 
     if [[ ! -d $DOTFILES_DIR ]]; then
         local dotfiles_src_dir=$(cd $(dirname $0) && pwd)
