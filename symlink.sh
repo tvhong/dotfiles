@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# Create symbolic links to various program configurations.
 
 DOTFILES_DIR=$HOME/.dotfiles
 ALL_PROGRAMS=(tmux bash zsh git ctags nvim ideavim)
@@ -107,7 +109,7 @@ link_ideavim() {
 
 usage() {
 cat <<- EOF
-Usage: $PROGNAME [-d|--dryrun] [all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")]
+Usage: $(basename "$0") [-h] [-d|--dryrun] all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")
 EOF
 }
 
@@ -158,6 +160,7 @@ main() {
 
     while [[ -n "$1" ]]; do
         case "$1" in
+            -h | --help) usage; exit 0;;
             -d | --dryrun) DRYRUN=True;;
             all) programs="${ALL_PROGRAMS[@]}";;
             *) programs+=($1)
