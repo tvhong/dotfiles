@@ -6,8 +6,10 @@ if [[ ! -d $DOTFILES_DIR ]]; then
     exit
 fi
 
+ALL_PROGRAMS=(tmux bash zsh git ctags nvim ideavim)
+
 _run() {
-    if [[ -n $DRY_RUN ]]; then
+    if [[ -n $DRYRUN ]]; then
         echo "dryrun: $@"
     else
         echo "running: $@"
@@ -102,17 +104,39 @@ link_ideavim() {
     create_symlink "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
 }
 
-DRY_RUN='1'
+usage() {
+cat <<- EOF
+Usage: $PROGNAME [-d|--dryrun] [all|tmux|bash|zsh|git|ctags|nvim|ideavim]
+EOF
+}
+
+DRYRUN=
+PROGRAMS=()
+
 while [[ -n "$1" ]]; do
     case "$1" in
-        tmux) link_tmux;;
-        bash) link_bash;;
-        zsh) link_zsh;;
-        git) link_git;;
-        ctags) link_ctags;;
-        nvim) link_nvim;;
-        ideavim) link_ideavim;;
-        *) echo "unknown subsystem $1" >&2;;
+        -d | --dryrun) DRYRUN=True;;
+        all) PROGRAMS="${ALL_PROGRAMS[@]}";;
+        tmux) PROGRAMS+=(tmux);;
+        bash) PROGRAMS+=(bash);;
+        zsh) PROGRAMS+=(zsh);;
+        git) PROGRAMS+=(git);;
+        ctags) PROGRAMS+=(ctags);;
+        nvim) PROGRAMS+=(nvim);;
+        ideavim) PROGRAMS+=(ideavim);;
+        *) usage >&2 && exit 1;;
     esac
     shift
 done
+
+# uniq-fy the programs
+PROGRAMS=($(echo "${PROGRAMS[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+[[ ${#PROGRAMS[@]} == 0 ]] && usage >&2 && exit 1
+
+        #tmux) link_tmux;;
+        #bash) link_bash;;
+        #zsh) link_zsh;;
+        #git) link_git;;
+        #ctags) link_ctags;;
+        #nvim) link_nvim;;
+        #ideavim) link_ideavim;;
