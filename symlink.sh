@@ -26,7 +26,7 @@ create_symlink() {
     local src="$1"
     local dest="$2"
 
-    echo "$src -> $dest..."
+    echo "linking: $src -> $dest..."
 
     [[ ! -e "$src" ]] \
             && echo ERROR: "$src" does not exist. Skipping... >&2 \
@@ -38,8 +38,6 @@ create_symlink() {
     fi
 
     _run ln -sf "$src" "$dest"
-
-    echo Done
 }
 
 link_tmux() {
