@@ -20,15 +20,12 @@ copy_with_backup() {
         return 1
     fi
 
-    if [[ -e "$dest" ]]; then
-        if ! cmp -s "$src" "$dest"; then
-            echo "Backing up $dest to $dest_bak"
-            mv "$dest" "$dest_bak"
-            ln -s "$src" "$dest"
-        else
-            echo "Symlink already created, not updating."
-        fi
+    if [[ -e "$dest" ]] && (! cmp -s "$src" "$dest"); then
+        echo "Backing up $dest to $dest_bak"
+        mv "$dest" "$dest_bak"
     fi
+
+    ln -sf "$src" "$dest"
 }
 
 linking() {
