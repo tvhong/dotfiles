@@ -1,11 +1,5 @@
 #!/bin/bash
 DOTFILES_DIR=$HOME/.dotfiles
-if [[ ! -d $DOTFILES_DIR ]]; then
-    echo Please make sure that $DOTFILES_DIR exists.
-    echo Exiting..
-    exit
-fi
-
 ALL_PROGRAMS=(tmux bash zsh git ctags nvim ideavim)
 DRYRUN=False
 
@@ -110,6 +104,12 @@ EOF
 }
 
 main() {
+    if [[ ! -d $DOTFILES_DIR ]]; then
+        echo Please make sure that $DOTFILES_DIR exists.
+        echo Exiting..
+        exit
+    fi
+
     local programs=()
 
     while [[ -n "$1" ]]; do
