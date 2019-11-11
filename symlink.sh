@@ -6,38 +6,31 @@ if [[ ! -d $DOTFILES_DIR ]]; then
     exit
 fi
 
-copy_with_backup() {
+linking() {
     if [[ $# -ne 2 ]]; then
-        echo ERROR: Calling copy_with_backup with incorrect arguments
+        echo ERROR: Calling linking with incorrect arguments >&2
     fi
 
     local src="$1"
     local dest="$2"
-    local dest_bk=$(mktemp ${dest}.bak.XXXXXX)
+
+    echo ---
+    echo Linking "$src" to "$dest"...
 
     if [[ ! -e "$src" ]]; then
-        echo ERROR: "$src" does not exist. Skipping...
+        echo ERROR: "$src" does not exist. Skipping... >&2
         return 1
     fi
 
+    # Create backup if needed
     if [[ -e "$dest" ]] && (! cmp -s "$src" "$dest"); then
+        local dest_bak=$(mktemp ${dest}.bak.XXXXXX)
         echo "Backing up $dest to $dest_bak"
         mv "$dest" "$dest_bak"
     fi
 
     ln -sf "$src" "$dest"
-}
 
-linking() {
-    if [[ $# -ne 2 ]]; then
-        echo ERROR: Calling linking with incorrect arguments
-    fi
-
-    local src="$1"
-    local dest="$2"
-    echo ---
-    echo Linking "$src" to "$dest"...
-    copy_with_backup "$src" "$dest"
     echo Done
 }
 
