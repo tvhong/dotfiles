@@ -27,7 +27,7 @@ main() {
 }
 
 print_usage() {
-cat <<- EOF
+cat << EOF
 Usage: $(basename "$0") [-h] [-d|--dryrun] all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")
 EOF
 }
@@ -137,13 +137,6 @@ link_ideavim() {
     symlink "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
 }
 
-element_in() {
-    local e match="$1"
-    shift
-    for e; do [[ "$e" == "$match" ]] && return 0; done
-    return 1
-}
-
 symlink() {
     [[ $# -ne 2 ]] \
             && echo ERROR: Calling symlink with incorrect arguments >&2 \
@@ -173,6 +166,13 @@ execute() {
         echo "running: $@"
         eval "$@"
     fi
+}
+
+element_in() {
+    local e match="$1"
+    shift
+    for e; do [[ "$e" == "$match" ]] && return 0; done
+    return 1
 }
 
 main "$@"
