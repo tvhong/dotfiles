@@ -104,37 +104,16 @@ link_ideavim() {
     linking "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
 }
 
-element_in() {
-  local e match="$1"
-  shift
-  for e; do [[ "$e" == "$match" ]] && return 0; done
-  return 1
-}
-
-if element_in 'tmux' $@; then
-    link_tmux
-fi
-
-if element_in 'bash' $@; then
-    link_bash
-fi
-
-if element_in 'zsh' $@; then
-    link_zsh
-fi
-
-if element_in 'git' $@; then
-    link_git
-fi
-
-if element_in 'ctags' $@; then
-    link_ctags
-fi
-
-if element_in 'nvim' $@; then
-    link_nvim
-fi
-
-if element_in 'ideavim' $@; then
-    link_ideavim
-fi
+while [[ -n "$1" ]]; do
+    case "$1" in
+        tmux) link_tmux;;
+        bash) link_bash;;
+        zsh) link_zsh;;
+        git) link_git;;
+        ctags) link_ctags;;
+        nvim) link_nvim;;
+        ideavim) link_ideavim;;
+        *) echo "unknown subsystem $1" >&2;;
+    esac
+    shift
+done
