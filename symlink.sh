@@ -104,6 +104,12 @@ Usage: $PROGNAME [-d|--dryrun] [all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")]
 EOF
 }
 
+element_in() {
+    local e match="$1"
+    shift
+    for e; do [[ "$e" == "$match" ]] && return 0; done
+    return 1
+}
 main() {
     local programs=()
 
@@ -111,18 +117,19 @@ main() {
         case "$1" in
             -d | --dryrun) DRYRUN=True;;
             all) programs="${ALL_PROGRAMS[@]}";;
-            tmux) programs+=(tmux);;
-            bash) programs+=(bash);;
-            zsh) programs+=(zsh);;
-            git) programs+=(git);;
-            ctags) programs+=(ctags);;
-            nvim) programs+=(nvim);;
-            ideavim) programs+=(ideavim);;
-            *) usage >&2 && exit 1;;
+            *) programs+=($1)
         esac
         shift
     done
     [[ ${#programs[@]} == 0 ]] && usage >&2 && exit 1
+
+    for p in "${programs[@]}"; do
+        if ! element_in "$p" "${ALL_PROGRAMS[@]}"; then
+            echo "ERROR: Unknown program: $p" >&2
+            usage >&2
+            exit 1
+        fi
+    done
 
     if [[ ! -d $DOTFILES_DIR ]]; then
         local dotfiles_src_dir=$(cd $(dirname $0) && pwd)
@@ -139,7 +146,7 @@ main() {
             ctags) link_ctags;;
             nvim) link_nvim;;
             ideavim) link_ideavim;;
-            *) echo "ERROR: Unknown program $p" >&2 && exit 1;;
+            *) echo "ERROR: Unknown program $p" >&2; exit 1;;
         esac
     done
 }
