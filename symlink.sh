@@ -6,35 +6,46 @@ DOTFILES_DIR=$HOME/.dotfiles
 ALL_PROGRAMS=(tmux bash zsh git ctags nvim ideavim)
 DRYRUN=False
 
-execute() {
-    if [[ $DRYRUN == True ]]; then
-        echo "dryrun: $@"
-    else
-        echo "running: $@"
-        eval "$@"
-    fi
+main() {
+    local programs=()
+
+    while [[ -n "$1" ]]; do
+        case "$1" in
+            -h | --help) usage; exit 0;;
+            -d | --dryrun) DRYRUN=True;;
+            all) programs="${ALL_PROGRAMS[@]}";;
+            *) programs+=($1)
+        esac
+        shift
+    done
+
+    validate_programs ${programs[@]} >&2 || exit 1
+
+    link_dotfiles
+    link_programs ${programs[@]}
 }
 
-symlink() {
-    [[ $# -ne 2 ]] \
-            && echo ERROR: Calling symlink with incorrect arguments >&2 \
-            && return 1
+usage() {
+cat <<- EOF
+Usage: $(basename "$0") [-h] [-d|--dryrun] all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")
+EOF
+}
 
-    local src="$1"
-    local dest="$2"
+validate_programs() {
+    local programs=("$@")
 
-    echo "linking: $src -> $dest..."
-
-    [[ ! -e "$src" ]] \
-            && echo ERROR: "$src" does not exist! >&2 \
-            && return 1
-
-    # Create backup if needed
-    if [[ -e "$dest" ]] && (! cmp -s "$src" "$dest"); then
-        execute mv "$dest" "$(mktemp ${dest}.bak.XXXXXX)"
+    if [[ ${#programs[@]} == 0 ]]; then
+        usage
+        return 1
     fi
 
-    execute ln -sf "$src" "$dest"
+    for p in "${programs[@]}"; do
+        if ! element_in "$p" "${ALL_PROGRAMS[@]}"; then
+            echo "ERROR: Unknown program: $p"
+            usage
+            return 1
+        fi
+    done
 }
 
 link_dotfiles() {
@@ -42,6 +53,24 @@ link_dotfiles() {
         local dotfiles_src_dir=$(cd $(dirname $0) && pwd)
         symlink $dotfiles_src_dir $DOTFILES_DIR
     fi
+}
+
+link_programs() {
+    local programs=("$@")
+
+    unique_programs=($(echo "${programs[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+    for p in "${unique_programs[@]}"; do
+        case $p in
+            tmux) link_tmux;;
+            bash) link_bash;;
+            zsh) link_zsh;;
+            git) link_git;;
+            ctags) link_ctags;;
+            nvim) link_nvim;;
+            ideavim) link_ideavim;;
+            *) echo "ERROR: Unknown program $p" >&2; exit 1;;
+        esac
+    done
 }
 
 link_tmux() {
@@ -107,12 +136,6 @@ link_ideavim() {
     symlink "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
 }
 
-usage() {
-cat <<- EOF
-Usage: $(basename "$0") [-h] [-d|--dryrun] all|$(tr ' ' '|' <<< "${ALL_PROGRAMS[@]}")
-EOF
-}
-
 element_in() {
     local e match="$1"
     shift
@@ -120,58 +143,35 @@ element_in() {
     return 1
 }
 
-validate_programs() {
-    local programs=("$@")
+symlink() {
+    [[ $# -ne 2 ]] \
+            && echo ERROR: Calling symlink with incorrect arguments >&2 \
+            && return 1
 
-    if [[ ${#programs[@]} == 0 ]]; then
-        usage
-        return 1
+    local src="$1"
+    local dest="$2"
+
+    echo "linking: $src -> $dest..."
+
+    [[ ! -e "$src" ]] \
+            && echo ERROR: "$src" does not exist! >&2 \
+            && return 1
+
+    # Create backup if needed
+    if [[ -e "$dest" ]] && (! cmp -s "$src" "$dest"); then
+        execute mv "$dest" "$(mktemp ${dest}.bak.XXXXXX)"
     fi
 
-    for p in "${programs[@]}"; do
-        if ! element_in "$p" "${ALL_PROGRAMS[@]}"; then
-            echo "ERROR: Unknown program: $p"
-            usage
-            return 1
-        fi
-    done
+    execute ln -sf "$src" "$dest"
 }
 
-link_programs() {
-    local programs=("$@")
-
-    unique_programs=($(echo "${programs[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
-    for p in "${unique_programs[@]}"; do
-        case $p in
-            tmux) link_tmux;;
-            bash) link_bash;;
-            zsh) link_zsh;;
-            git) link_git;;
-            ctags) link_ctags;;
-            nvim) link_nvim;;
-            ideavim) link_ideavim;;
-            *) echo "ERROR: Unknown program $p" >&2; exit 1;;
-        esac
-    done
-}
-
-main() {
-    local programs=()
-
-    while [[ -n "$1" ]]; do
-        case "$1" in
-            -h | --help) usage; exit 0;;
-            -d | --dryrun) DRYRUN=True;;
-            all) programs="${ALL_PROGRAMS[@]}";;
-            *) programs+=($1)
-        esac
-        shift
-    done
-
-    validate_programs ${programs[@]} >&2 || exit 1
-
-    link_dotfiles
-    link_programs ${programs[@]}
+execute() {
+    if [[ $DRYRUN == True ]]; then
+        echo "dryrun: $@"
+    else
+        echo "running: $@"
+        eval "$@"
+    fi
 }
 
 main "$@"
