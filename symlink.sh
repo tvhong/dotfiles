@@ -13,9 +13,9 @@ _run() {
     fi
 }
 
-create_symlink() {
+_link() {
     [[ $# -ne 2 ]] \
-            && echo ERROR: Calling create_symlink with incorrect arguments >&2 \
+            && echo ERROR: Calling _link with incorrect arguments >&2 \
             && return 1
 
     local src="$1"
@@ -39,9 +39,9 @@ link_tmux() {
     local TMUX_DIR=$DOTFILES_DIR/tmux
 
     if [[ $OSTYPE == linux* ]]; then
-        create_symlink "$TMUX_DIR/linux.tmux.conf" "$HOME/.tmux.conf"
+        _link "$TMUX_DIR/linux.tmux.conf" "$HOME/.tmux.conf"
     elif [[ $OSTYPE == darwin* ]]; then
-        create_symlink "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
+        _link "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
     fi
 }
 
@@ -50,9 +50,9 @@ link_bash() {
 
     if [[ $OSTYPE == linux* ]]; then
         BASH_LINUX="$BASH_DIR/linux"
-        create_symlink "$BASH_LINUX/bashrc" "$HOME/.bashrc"
-        create_symlink "$BASH_LINUX/bash_logout" "$HOME/.bash_logout"
-        create_symlink "$BASH_LINUX/bash_aliases" "$HOME/.bash_aliases"
+        _link "$BASH_LINUX/bashrc" "$HOME/.bashrc"
+        _link "$BASH_LINUX/bash_logout" "$HOME/.bash_logout"
+        _link "$BASH_LINUX/bash_aliases" "$HOME/.bash_aliases"
     fi
 }
 
@@ -60,21 +60,21 @@ link_git() {
     local GIT_DIR=$DOTFILES_DIR/git
 
     if [[ $OSTYPE == linux* ]]; then
-        create_symlink "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
+        _link "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
     elif [[ $OSTYPE == darwin* ]]; then
-        create_symlink "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
+        _link "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
     fi
 
-    create_symlink "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
+    _link "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
 }
 
 link_zsh() {
     local ZSH_DIR=$DOTFILES_DIR/zsh
 
     if [[ $OSTYPE == darwin* ]]; then
-        create_symlink "$ZSH_DIR/zshrc" "$HOME/.zshrc"
-        create_symlink "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
-        create_symlink "$ZSH_DIR/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
+        _link "$ZSH_DIR/zshrc" "$HOME/.zshrc"
+        _link "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
+        _link "$ZSH_DIR/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
     fi
 }
 
@@ -82,20 +82,20 @@ link_ctags() {
     local CTAGS_DIR=$DOTFILES_DIR/ctags
 
     mkdir -p "$HOME/.ctags.d"
-    create_symlink "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
+    _link "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
 }
 
 link_nvim() {
     local NVIM_DIR=$DOTFILES_DIR/nvim
 
     mkdir -p "$HOME/.config/nvim"
-    create_symlink "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
+    _link "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
 }
 
 link_ideavim() {
     local IDEAVIM_DIR=$DOTFILES_DIR/ideavim
 
-    create_symlink "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
+    _link "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
 }
 
 usage() {
@@ -128,7 +128,7 @@ main() {
 
     if [[ ! -d $DOTFILES_DIR ]]; then
         local dotfiles_src_dir=$(cd $(dirname $0) && pwd)
-        create_symlink $dotfiles_src_dir $DOTFILES_DIR
+        _link $dotfiles_src_dir $DOTFILES_DIR
     fi
 
     for p in "${unique_programs[@]}"; do
