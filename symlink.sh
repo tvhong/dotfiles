@@ -145,7 +145,7 @@ symlink() {
     local src="$1"
     local dest="$2"
 
-    echo "linking: $src -> $dest..."
+    echo "linking $src -> $dest..."
 
     [[ ! -e "$src" ]] \
             && echo ERROR: "$src" does not exist! >&2 \
@@ -153,7 +153,7 @@ symlink() {
 
     # Create backup if needed
     if [[ -e "$dest" ]] && (! cmp -s "$src" "$dest"); then
-        execute mv "$dest" "$(mktemp ${dest}.bak.XXXXXX)"
+        execute mv "$dest" "${dest}.$(random_string 3).bak"
     fi
 
     execute ln -sf "$src" "$dest"
@@ -173,6 +173,11 @@ element_in() {
     shift
     for e; do [[ "$e" == "$match" ]] && return 0; done
     return 1
+}
+
+random_string() {
+    local len=$1
+    echo $(head /dev/urandom | base64 | head -n 1 | tr -dc '[:lower:][:digit:]' | cut -c -$len)
 }
 
 main "$@"
