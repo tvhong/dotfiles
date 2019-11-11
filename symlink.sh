@@ -7,9 +7,9 @@ if [[ ! -d $DOTFILES_DIR ]]; then
 fi
 
 linking() {
-    if [[ $# -ne 2 ]]; then
-        echo ERROR: Calling linking with incorrect arguments >&2
-    fi
+    [[ $# -ne 2 ]] \
+            && echo ERROR: Calling linking with incorrect arguments >&2 \
+            && return 1
 
     local src="$1"
     local dest="$2"
@@ -17,10 +17,9 @@ linking() {
     echo ---
     echo Linking "$src" to "$dest"...
 
-    if [[ ! -e "$src" ]]; then
-        echo ERROR: "$src" does not exist. Skipping... >&2
-        return 1
-    fi
+    [[ ! -e "$src" ]] \
+            && echo ERROR: "$src" does not exist. Skipping... >&2 \
+            && return 1
 
     # Create backup if needed
     if [[ -e "$dest" ]] && (! cmp -s "$src" "$dest"); then
