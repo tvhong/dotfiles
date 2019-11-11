@@ -7,9 +7,10 @@ if [[ ! -d $DOTFILES_DIR ]]; then
 fi
 
 ALL_PROGRAMS=(tmux bash zsh git ctags nvim ideavim)
+DRYRUN=False
 
 _run() {
-    if [[ -n $DRYRUN ]]; then
+    if [[ $DRYRUN == True ]]; then
         echo "dryrun: $@"
     else
         echo "running: $@"
@@ -110,7 +111,6 @@ Usage: $PROGNAME [-d|--dryrun] [all|tmux|bash|zsh|git|ctags|nvim|ideavim]
 EOF
 }
 
-DRYRUN=
 PROGRAMS=()
 
 while [[ -n "$1" ]]; do
