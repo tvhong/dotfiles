@@ -75,20 +75,20 @@ link_programs() {
 }
 
 link_tmux() {
-    local TMUX_DIR=$DOTFILES_DIR/tmux
+    local tmux_dir=$DOTFILES_DIR/tmux
 
     if [[ $OSTYPE == linux* ]]; then
-        symlink "$TMUX_DIR/linux.tmux.conf" "$HOME/.tmux.conf"
+        symlink "$tmux_dir/linux.tmux.conf" "$HOME/.tmux.conf"
     elif [[ $OSTYPE == darwin* ]]; then
-        symlink "$TMUX_DIR/mac.tmux.conf" "$HOME/.tmux.conf"
+        symlink "$tmux_dir/mac.tmux.conf" "$HOME/.tmux.conf"
     fi
 }
 
 link_bash() {
-    local BASH_DIR=$DOTFILES_DIR/bash
+    local bash_dir=$DOTFILES_DIR/bash
 
     if [[ $OSTYPE == linux* ]]; then
-        BASH_LINUX="$BASH_DIR/linux"
+        BASH_LINUX="$bash_dir/linux"
         symlink "$BASH_LINUX/bashrc" "$HOME/.bashrc"
         symlink "$BASH_LINUX/bash_logout" "$HOME/.bash_logout"
         symlink "$BASH_LINUX/bash_aliases" "$HOME/.bash_aliases"
@@ -96,45 +96,45 @@ link_bash() {
 }
 
 link_git() {
-    local GIT_DIR=$DOTFILES_DIR/git
+    local git_dir=$DOTFILES_DIR/git
 
     if [[ $OSTYPE == linux* ]]; then
-        symlink "$GIT_DIR/linux.gitconfig" "$HOME/.gitconfig"
+        symlink "$git_dir/linux.gitconfig" "$HOME/.gitconfig"
     elif [[ $OSTYPE == darwin* ]]; then
-        symlink "$GIT_DIR/mac.gitconfig" "$HOME/.gitconfig"
+        symlink "$git_dir/mac.gitconfig" "$HOME/.gitconfig"
     fi
 
-    symlink "$GIT_DIR/gitignore_global" "$HOME/.gitignore_global"
+    symlink "$git_dir/gitignore_global" "$HOME/.gitignore_global"
 }
 
 link_zsh() {
-    local ZSH_DIR=$DOTFILES_DIR/zsh
+    local zsh_dir=$DOTFILES_DIR/zsh
 
     if [[ $OSTYPE == darwin* ]]; then
-        symlink "$ZSH_DIR/zshrc" "$HOME/.zshrc"
-        symlink "$ZSH_DIR/zsh_aliases" "$HOME/.zsh_aliases"
-        symlink "$ZSH_DIR/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
+        symlink "$zsh_dir/zshrc" "$HOME/.zshrc"
+        symlink "$zsh_dir/zsh_aliases" "$HOME/.zsh_aliases"
+        symlink "$zsh_dir/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
     fi
 }
 
 link_ctags() {
-    local CTAGS_DIR=$DOTFILES_DIR/ctags
+    local ctags_dir=$DOTFILES_DIR/ctags
 
     mkdir -p "$HOME/.ctags.d"
-    symlink "$CTAGS_DIR/ctags" "$HOME/.ctags.d/common.ctags"
+    symlink "$ctags_dir/ctags" "$HOME/.ctags.d/common.ctags"
 }
 
 link_nvim() {
-    local NVIM_DIR=$DOTFILES_DIR/nvim
+    local nvim_dir=$DOTFILES_DIR/nvim
 
     mkdir -p "$HOME/.config/nvim"
-    symlink "$NVIM_DIR/init.vim" "$HOME/.config/nvim/init.vim"
+    symlink "$nvim_dir/init.vim" "$HOME/.config/nvim/init.vim"
 }
 
 link_ideavim() {
-    local IDEAVIM_DIR=$DOTFILES_DIR/ideavim
+    local ideavim_dir=$DOTFILES_DIR/ideavim
 
-    symlink "$IDEAVIM_DIR/ideavimrc" "$HOME/.ideavimrc"
+    symlink "$ideavim_dir/ideavimrc" "$HOME/.ideavimrc"
 }
 
 symlink() {
