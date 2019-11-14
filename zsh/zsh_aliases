@@ -1,6 +1,2 @@
-# ccat and cless are available through `colorize` plugin in zsh
-alias cat=ccat
-alias less=cless
-
 # Source the common aliases
 source $HOME/.dotfiles/bash/common/bash_aliases
