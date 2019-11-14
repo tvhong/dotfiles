@@ -14,6 +14,7 @@ vnoremap ; :
 nnoremap gd :action VimGotoDeclaration<cr>
 
 " Navigation commands
+" Search file
 nnoremap <leader>f :action GotoFile<cr>
 nnoremap <leader>F evb:action GotoFile<cr>
 nnoremap <leader>c :action GotoClass<cr>
@@ -23,18 +24,35 @@ nnoremap <leader>> evb:action GotoSymbol<cr>
 nnoremap <leader>a :action FindInPath<cr>
 nnoremap <leader>A evb:action FindInPath<cr>
 
+" Require Frame Switcher plugin
+" Go project
+nnoremap <leader>gp :action FrameSwitchAction<cr>
+" Go NERDTree (legacy from vim :p)
 nnoremap <leader>gn :action SelectIn<cr>
 nnoremap <leader>bb :action RecentFiles<cr>
 nnoremap <leader>bt :action FileStructurePopup<cr>
+" Open tags window
 nnoremap <leader>wt :action FileStructurePopup<cr>
+
+" Open hierachy window
+nnoremap <leader>wh :action TypeHierarchy<cr>
+
+" Close all windows
+nnoremap <leader>wc :action HideAllWindows<cr>
+
 nnoremap <leader>d :action ShowErrorDescription<cr>
 
 nnoremap <leader>ge :action GotoDeclaration<cr>
+" Goto reference
 nnoremap <leader>gr :action FindUsages<cr>
+" Goto implementation
+nnoremap <leader>gi :action GotoImplementation<cr>
 
 
-nnoremap <leader>gq :action QuickJavaDoc<cr>
-nnoremap <leader>gp :action QuickImplementations<cr>
+" Peek quick
+nnoremap <leader>pp :action QuickJavaDoc<cr>
+" Peek definition
+nnoremap <leader>pd :action QuickImplementations<cr>
 
 nnoremap <leader>@c :action CopyPaths<cr>
 nnoremap <leader>@p :action CopyReference<cr>
