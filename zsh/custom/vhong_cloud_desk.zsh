@@ -1,7 +1,9 @@
 # Amazon specific tools
 ZSH_THEME="crunch"
 
+export PATH="/apollo/env/AmazonMqOpsToolsConsumable/bin/:$PATH"
 export PATH="/apollo/env/AmazonAwsCli/bin/:$PATH"
+
 export JAVA_HOME=/apollo/env/envImprovement/jdk1.8
 export PATH=$JAVA_HOME/bin:$PATH
 
