@@ -5,6 +5,9 @@ alias u3="cd ../../.."
 alias u4="cd ../../../.."
 alias u5="cd ../../../../.."
 
+# Git!
+alias g='git'
+
 # Some ls aliases.
 alias ll="ls -alF"
 alias la="ls -A"
