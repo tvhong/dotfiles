@@ -8,3 +8,6 @@ venv/
 *.iml
 annotation-generated-*/
 build
+
+# `direnv` files
+.envrc
