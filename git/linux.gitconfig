@@ -1,28 +1,5 @@
 [user]
 	name = Vy Hong
 	email = contact@vyhong.me
-[color]
-	ui = true
-[alias]
-	st = status
-	co = checkout
-	cm = commit
-	br = branch
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	logme = log --pretty=format:'%h %s [%an]' --graph
-	loggraph = log --graph --decorate --pretty=oneline --abbrev-commit --all
-[core]
-	editor = nvim
-	excludesfile = /home/vy/.gitignore_global
-[push]
-	default = simple
-[merge]
-	tool = vimdiff
-[mergetool]
-	prompt = true
-[mergetool "vimdiff"]
-	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-[difftool]
-	prompt = false
-[diff]
-	tool = vimdiff
+[include]
+    path = ~/.dotfiles/git/common.gitconfig
