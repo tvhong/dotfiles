@@ -11,7 +11,10 @@ let mapleader = ','
 nnoremap ; :
 vnoremap ; :
 
-nnoremap gd :action VimGotoDeclaration<cr>
+" Goto definition in this file
+" This is a giant hack but ideavim doesn't have word-under-cursor register.
+nnoremap gd :set noignorecase<cr>*ggn:set ignorecase<cr>zz
+vnoremap gd <Esc>:set noignorecase<cr>*ggn:set ignorecase<cr>zz
 
 " Navigation commands
 " Search file
@@ -40,16 +43,29 @@ nnoremap <leader>wh :action TypeHierarchy<cr>
 " Close all windows
 nnoremap <leader>wc :action HideAllWindows<cr>
 
-nnoremap <leader>d :action ShowErrorDescription<cr>
+" Error error!
+nnoremap <leader>ee :action ShowErrorDescription<cr>
+" Error fix
+nnoremap <leader>ef :action ShowIntentionActions<cr>
+" Next error
+nnoremap <C-n> :action GotoNextError<cr>
+" Previous error
+nnoremap <C-p> :action GotoPreviousError<cr>
 
+" Goto declaration
 nnoremap <leader>ge :action GotoDeclaration<cr>
+" Goto definition
+nnoremap <leader>gd :action GotoDeclaration<cr>
+
 " Goto reference
 nnoremap <leader>gr :action FindUsages<cr>
 " Goto implementation
 nnoremap <leader>gi :action GotoImplementation<cr>
+" Goto terminal
+nnoremap <leader>gt :action ActivateTerminalToolWindow<cr>
 
 
-" Peek quick
+" Peek peek
 nnoremap <leader>pp :action QuickJavaDoc<cr>
 " Peek definition
 nnoremap <leader>pd :action QuickImplementations<cr>
@@ -62,4 +78,20 @@ nnoremap <leader>gb :action Annotate<cr>
 nnoremap <C-O> :action Back<cr>
 nnoremap <C-I> :action Forward<cr>
 
-nnoremap <C-6> :action Switcher
+nnoremap <C-6> :action Switcher<cr>
+
+" Run
+nnoremap <leader>rr :action Run<cr>
+" Run Debug
+nnoremap <leader>rd :action Debug<cr>
+" Run Tests
+nnoremap <leader>rt :action RunClass<cr>
+" Run Failed Tests
+nnoremap <leader>rf :action RerunFailedTests<cr>
+" Run Build
+nnoremap <leader>rb :action Compile<cr>
+
+" Refactor
+nnoremap <leader>tt :action Refactorings.QuickListPopupAction<cr>
+" Refactor rename
+nnoremap <leader>tr :action RenameElement<cr>
