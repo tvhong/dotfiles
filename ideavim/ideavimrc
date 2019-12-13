@@ -1,3 +1,7 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set ignorecase
 set smartcase
 set scrolloff=3         " 3 lines above/below cursor when scrolling
@@ -8,40 +12,95 @@ set relativenumber
 let mapleader = ','
 
 
+" Map ; to : for convenience
 nnoremap ; :
 vnoremap ; :
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Emunating VIM
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Goto definition in this file
 " This is a giant hack but ideavim doesn't have word-under-cursor register.
 nnoremap gd :set noignorecase<cr>*ggn:set ignorecase<cr>zz
-vnoremap gd <Esc>:set noignorecase<cr>*ggn:set ignorecase<cr>zz
+vnoremap gd <Esc>gd
 
-" Navigation commands
+" Simulate Ctrl+O and Ctrl+I in VIM
+nnoremap <C-O> :action Back<cr>
+nnoremap <C-I> :action Forward<cr>
+
+" Switch to most recent file
+nnoremap <C-6> :action Switcher<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Navigation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Search file
 nnoremap <leader>f :action GotoFile<cr>
+" Search file with the word-under-cursor
 nnoremap <leader>F evb:action GotoFile<cr>
+
+" Search class
 nnoremap <leader>c :action GotoClass<cr>
+" Search class with the word-under-cursor
 nnoremap <leader>C evb:action GotoClass<cr>
+
+" Search symbol
 nnoremap <leader>. :action GotoSymbol<cr>
+" Search symbol with the word-under-cursor
 nnoremap <leader>> evb:action GotoSymbol<cr>
+
+" Search all
 nnoremap <leader>a :action FindInPath<cr>
+" Search all with the word-under-cursor
 nnoremap <leader>A evb:action FindInPath<cr>
 
-" Require Frame Switcher plugin
-" Go project
-nnoremap <leader>gp :action FrameSwitchAction<cr>
-" Go NERDTree (legacy from vim :p)
+" Goto corresponding file in file tree (or Goto NERDTree in VIM)
 nnoremap <leader>gn :action SelectIn<cr>
+
+" Open recent files (or buffer in VIM)
 nnoremap <leader>bb :action RecentFiles<cr>
+
+" Open tags in this file (or buffer in VIM)
 nnoremap <leader>bt :action FileStructurePopup<cr>
-" Open tags window
 nnoremap <leader>wt :action FileStructurePopup<cr>
+
+" Goto declaration/definition
+nnoremap <leader>ge :action GotoDeclaration<cr>
+nnoremap <leader>gd :action GotoDeclaration<cr>
+
+" Goto reference
+nnoremap <leader>gr :action FindUsages<cr>
+vnoremap <leader>gr <Esc>gr
+
+" Goto implementation
+nnoremap <leader>gi :action GotoImplementation<cr>
+
+" Goto project
+" Require Frame Switcher plugin
+nnoremap <leader>gp :action FrameSwitchAction<cr>
+
+" Goto terminal
+nnoremap <leader>gt :action ActivateTerminalToolWindow<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Window/pane management
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Open hierachy window
 nnoremap <leader>wh :action TypeHierarchy<cr>
 
-" Close all windows
+" Close all other windows (except text editor)
 nnoremap <leader>wc :action HideAllWindows<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" IDE features
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Error error!
 nnoremap <leader>ee :action ShowErrorDescription<cr>
@@ -52,33 +111,19 @@ nnoremap <C-n> :action GotoNextError<cr>
 " Previous error
 nnoremap <C-p> :action GotoPreviousError<cr>
 
-" Goto declaration
-nnoremap <leader>ge :action GotoDeclaration<cr>
-" Goto definition
-nnoremap <leader>gd :action GotoDeclaration<cr>
-
-" Goto reference
-nnoremap <leader>gr :action FindUsages<cr>
-" Goto implementation
-nnoremap <leader>gi :action GotoImplementation<cr>
-" Goto terminal
-nnoremap <leader>gt :action ActivateTerminalToolWindow<cr>
-
-
 " Peek peek
 nnoremap <leader>pp :action QuickJavaDoc<cr>
 " Peek definition
 nnoremap <leader>pd :action QuickImplementations<cr>
 
+" Copy file path
 nnoremap <leader>@c :action CopyPaths<cr>
+
+" Copy reference to word-under-cursor
 nnoremap <leader>@p :action CopyReference<cr>
 
+" Git blame
 nnoremap <leader>gb :action Annotate<cr>
-
-nnoremap <C-O> :action Back<cr>
-nnoremap <C-I> :action Forward<cr>
-
-nnoremap <C-6> :action Switcher<cr>
 
 " Run
 nnoremap <leader>rr :action Run<cr>
@@ -89,9 +134,11 @@ nnoremap <leader>rt :action RunClass<cr>
 " Run Failed Tests
 nnoremap <leader>rf :action RerunFailedTests<cr>
 " Run Build
-nnoremap <leader>rb :action Compile<cr>
+nnoremap <leader>rb :action CompileProject<cr>
 
 " Refactor
 nnoremap <leader>tt :action Refactorings.QuickListPopupAction<cr>
+vnoremap <leader>tt :action Refactorings.QuickListPopupAction<cr>
+
 " Refactor rename
 nnoremap <leader>tr :action RenameElement<cr>
