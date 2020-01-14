@@ -3,6 +3,7 @@
 [alias]
 	st = status
 	co = checkout
+	a = add
 	cm = commit
 	br = branch
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
