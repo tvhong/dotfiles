@@ -14,3 +14,5 @@ alias third-party='~/.toolbox/bin/brazil-third-party-tool'
 export GIT_EDITOR=vim
 alias vim='/apollo/env/envImprovement/bin/vim'
 alias vi='/apollo/env/envImprovement/bin/vim'
+
+eval `ssh-agent`
