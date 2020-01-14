@@ -9,5 +9,8 @@ venv/
 annotation-generated-*/
 build
 
+# IntelliJ IDE
+.rakeTasks
+
 # `direnv` files
 .envrc
