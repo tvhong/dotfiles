@@ -14,8 +14,8 @@
 #######################################################################
 
 commandExists() {
-    cmd=$1
-    return $(command -v $cmd) 2> /dev/null
+    hash $1 2>/dev/null
+    return $?
 }
 
 # Add fzf to path
