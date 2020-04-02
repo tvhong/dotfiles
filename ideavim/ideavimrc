@@ -33,6 +33,9 @@ nnoremap <C-I> :action Forward<cr>
 " Switch to most recent file
 nnoremap <C-6> :action Switcher<cr>
 
+" Reformat code
+nnoremap gq :action ReformatCode<cr>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigation
