@@ -13,13 +13,25 @@
 # User configuration
 #######################################################################
 
+commandExists() {
+    cmd=$1
+    return $(command -v $cmd) 2> /dev/null
+}
+
 # Add fzf to path
 export PATH="$PATH:$HOME/.fzf/bin"
 
 # pyenv-virtualenv
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if commandExists pyenv; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# rbenv
+if commandExists rbenv; then
+    eval "$(rbenv init -)"
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
