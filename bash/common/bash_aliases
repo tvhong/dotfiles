@@ -21,3 +21,6 @@ alias egrep='egrep --ignore-case --color=auto'
 # Favorite editors
 alias vi='nvim'
 alias vim='nvim'
+
+# cd
+cs() { cd "$@" && ls }
