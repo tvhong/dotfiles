@@ -15,4 +15,6 @@ export GIT_EDITOR=vim
 alias vim='/apollo/env/envImprovement/bin/vim'
 alias vi='/apollo/env/envImprovement/bin/vim'
 
+alias auth='kinit -f && mwinit -o'
+
 eval `ssh-agent`
