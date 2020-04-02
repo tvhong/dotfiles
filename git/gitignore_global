@@ -8,6 +8,7 @@ venv/
 *.iml
 annotation-generated-*/
 build
+.cache/
 
 # IntelliJ IDE
 .rakeTasks

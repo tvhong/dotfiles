@@ -46,3 +46,6 @@ psgrep() {
 
 # pyenv-virtualenv config
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# Don't write Python cache files
+PYTHONDONTWRITEBYTECODE=1
