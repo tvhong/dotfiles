@@ -14,9 +14,9 @@ alias la="ls -A"
 alias l="ls -CF"
 
 # Some grep aliases.
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias grep='grep --ignore-case --color=auto'
+alias fgrep='fgrep --ignore-case --color=auto'
+alias egrep='egrep --ignore-case --color=auto'
 
 # Favorite editors
 alias vi='nvim'
