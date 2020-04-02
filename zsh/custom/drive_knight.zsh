@@ -10,3 +10,10 @@ alias bre="brazil-recursive-cmd --allPackages"
 
 # Hook direnv into the shell
 eval "$(direnv hook zsh)"
+
+
+#######################################################################
+# Rapid Development Environment (RDE) config
+#######################################################################
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
