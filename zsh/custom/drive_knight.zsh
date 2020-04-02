@@ -13,6 +13,8 @@ if commandExists direnv; then
     eval "$(direnv hook zsh)"
 fi
 
+alias auth="kinit && mwinit"
+
 
 #######################################################################
 # Rapid Development Environment (RDE) config
