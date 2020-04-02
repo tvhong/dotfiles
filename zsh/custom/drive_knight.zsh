@@ -9,7 +9,9 @@ alias bws="brazil workspace"
 alias bre="brazil-recursive-cmd --allPackages"
 
 # Hook direnv into the shell
-eval "$(direnv hook zsh)"
+if commandExists direnv; then
+    eval "$(direnv hook zsh)"
+fi
 
 
 #######################################################################
