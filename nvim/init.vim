@@ -15,22 +15,26 @@
     "   + MacOS: https://github.com/universal-ctags/homebrew-universal-ctags
     "   + Ubuntu: https://askubuntu.com/a/836521/69234
 
-    " Python2 Support For NeoVim:
-    " Assumed that python 2 host executible is installed by:
-    " $ pyenv virtualenv 2.7.14 py2nvim
-    " $ pyenv activate py2nvim
+    " Python3 Support For NeoVim:
+    " Assumed that python 3 host executible is installed by:
+    " $ export PYTHON_CONFIGURE_OPTS="--enable-framework"
+    " $ pyenv install 3.8.5
+    " $ pyenv virtualenv 3.8.5 py3nvim
+    " $ pyenv activate py3nvim
     " $ pip install neovim
 
     " Specify the python path:
-    let g:python_host_prog = join([$HOME, '.pyenv/versions/py2nvim/bin/python'], '/')
+    let g:python3_host_prog = join([$HOME, '.pyenv/versions/py3nvim/bin/python'], '/')
 
     " YouCompleteMe:
     " - Website: https://github.com/Valloric/YouCompleteMe/
     " - Installation:
     "   + :PlugInstall to download YCM. If it times out, might need increase
     "   vim-plug timeout.
-    "   + Enable Python2 support for NeoVim.
-    "   + Compile YCM (https://github.com/Valloric/YouCompleteMe/#installation).
+    "   + Enable Python3 support for NeoVim.
+    "   + Compile YCM with instructions at:
+    "     https://github.com/Valloric/YouCompleteMe/#installation
+    "     (default YCM folder is ~/.config/nvim/plugged/YouCompleteMe)
 
     " Linters:
     " Linters defined in g:ale_linters are assumed to available in $PATH.
