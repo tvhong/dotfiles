@@ -15,3 +15,6 @@ build
 
 # `direnv` files
 .envrc
+
+# Mac files
+.DS_Store
