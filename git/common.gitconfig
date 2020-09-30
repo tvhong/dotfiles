@@ -30,6 +30,8 @@
 	prompt = false
 [diff]
 	tool = vimdiff
+[pull]
+	ff = only
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

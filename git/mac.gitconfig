@@ -2,6 +2,6 @@
 	name = Vy Hong
 	email = vhong@amazon.com
 [include]
-    path = ~/.dotfiles/git/common.gitconfig
+	path = ~/.dotfiles/git/common.gitconfig
 [init]
 	templatedir = ~/.git_template
