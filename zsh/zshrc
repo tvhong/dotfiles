@@ -54,7 +54,7 @@ source $HOME/.zsh_aliases
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load. See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="fletcherm"
+ZSH_THEME="avit"
 # _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 # Different timestamp format for `history` command
