@@ -43,6 +43,10 @@ export EDITOR="vim"
 # Source aliases
 source $HOME/.zsh_aliases
 
+# scm_breeze
+# Put this after zsh_alias to override some aliases
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+
 #######################################################################
 # Oh-my-zsh
 #######################################################################
