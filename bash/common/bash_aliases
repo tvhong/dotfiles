@@ -7,6 +7,10 @@ alias u5="cd ../../../../.."
 
 # Git!
 alias g='git'
+alias ga.='git add .'
+alias gc='git commit -v'
+alias gcn='git commit -v --amend'
+alias gcn!='git commit -v --no-edit --amend'
 
 # Some ls aliases.
 alias ll="ls -alF"
