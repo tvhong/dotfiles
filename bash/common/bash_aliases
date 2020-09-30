@@ -27,4 +27,4 @@ alias vi='nvim'
 alias vim='nvim'
 
 # cd
-cs() { cd "$@" && ls }
+cs() { cd "$@" && ls -G }
