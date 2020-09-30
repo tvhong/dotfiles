@@ -15,6 +15,20 @@ fi
 
 alias auth="kinit && mwinit"
 
+# prune my backup branches
+git-prune-backup() {
+    local branches
+    branches=$(git branch -r | awk -F/ '/backup\/vhong/{print $2"/"$3}')
+    echo $branches
+
+    echo -n "Continue?(y/n) "
+    read
+    if [[ $REPLY =~ ^[Yy] ]]; then
+        echo "Deleting the branches..."
+        echo $branches | xargs -I {} git push backup -d {}
+        echo "Done"
+    fi
+}
 
 #######################################################################
 # Rapid Development Environment (RDE) config
