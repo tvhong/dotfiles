@@ -540,6 +540,10 @@
     " No concealing links and formats.
     let g:vim_markdown_conceal = 0
 " }}}
+" Vim-json {{{
+    " Stop concealing quotes in json files
+    set conceallevel=0
+" }}}
 " Python imports {{{
     map <leader>i :ImportName<CR>
     map <leader>I :ImportNameHere<CR>
