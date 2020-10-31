@@ -23,8 +23,11 @@ alias fgrep='fgrep --ignore-case --color=auto'
 alias egrep='egrep --ignore-case --color=auto'
 
 # Favorite editors
-alias vi='nvim'
-alias vim='nvim'
+if command -v nvim; then
+  alias vi='nvim'
+  alias vim='nvim'
+fi
 
 # cd
 cs() { cd "$@" && ls -G }
+
