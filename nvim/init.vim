@@ -287,6 +287,13 @@
     " Plugins for Typescript.
     Plug 'leafgarland/typescript-vim'
 
+    " Plugins for Erlang.
+    Plug 'vim-erlang/vim-erlang-compiler' " Erlang syntax checking and compiler plugin
+    Plug 'vim-erlang/vim-erlang-tags' " Generate Vim tags for Erlang files
+    Plug 'vim-erlang/vim-erlang-runtime' "Erlang indentation and syntax for Vim
+    Plug 'edkolev/erlang-motions.vim' "Monions and text objects in Erlang
+
+
     " Plugins for JSON
     Plug 'elzr/vim-json' " Extra JSON supports.
 
