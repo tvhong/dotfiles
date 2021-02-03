@@ -8,6 +8,7 @@ alias u5="cd ../../../../.."
 # Git!
 alias g='git'
 alias gs='git status'
+alias ga='git add'
 alias ga.='git add .'
 alias gc='git commit -v'
 alias gcn='git commit -v --amend'
@@ -30,5 +31,5 @@ if command -v nvim; then
 fi
 
 # cd
-cs() { cd "$@" && ls -G }
+cs() { cd "$@" && ls -G; }
 
