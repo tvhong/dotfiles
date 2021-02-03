@@ -16,13 +16,13 @@
     "   + Ubuntu: https://askubuntu.com/a/836521/69234
 
     " Python3 Support For NeoVim:
-    " Assumed that python 3 host executible is installed by:
+    " Assumed that python 3 host executible is installed by (https://neovim.io/doc/user/provider.html#python-virtualenv):
     " $ export PYTHON_CONFIGURE_OPTS="--enable-framework" # for Mac
     " $ export PYTHON_CONFIGURE_OPTS="--enable-shared" # for Linux
-    " $ pyenv install 3.8.5
-    " $ pyenv virtualenv 3.8.5 py3nvim
+    " $ pyenv install 3.9.1
+    " $ pyenv virtualenv 3.9.1 py3nvim
     " $ pyenv activate py3nvim
-    " $ pip install neovim
+    " $ pip install pynvim
 
     " Specify the python path:
     let g:python3_host_prog = join([$HOME, '.pyenv/versions/py3nvim/bin/python'], '/')
