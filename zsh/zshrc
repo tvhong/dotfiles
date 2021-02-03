@@ -14,7 +14,7 @@
 #######################################################################
 
 commandExists() {
-    hash $1 2>/dev/null
+    type $1 > /dev/null 2>&1
     return $?
 }
 
@@ -22,8 +22,9 @@ commandExists() {
 export PATH="$PATH:$HOME/.fzf/bin"
 
 # pyenv-virtualenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PATH:$PYENV_ROOT/bin"
 if commandExists pyenv; then
-    export PYENV_ROOT="$HOME/.pyenv"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
