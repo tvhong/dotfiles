@@ -77,10 +77,15 @@ source $ZSH/oh-my-zsh.sh
 # Plugins
 #######################################################################
 
-# Statically load plugins from antibody
-source ~/.zsh_plugins.sh
 # Command to rebuild antibody plugins.
 # Should be run everytime we add new plugin through antibody.
 zsh_build_plugins() {
     antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
 }
+
+if [[ ! -f ~/.zsh_plugins.sh ]]; then
+    zsh_build_plugins
+fi
+
+# Statically load plugins from antibody
+source ~/.zsh_plugins.sh
