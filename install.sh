@@ -116,11 +116,11 @@ link_git() {
 link_zsh() {
     local zsh_dir=$DOTFILES_DIR/zsh
 
-    if [[ $OSTYPE == darwin* ]]; then
-        symlink "$zsh_dir/zshrc" "$HOME/.zshrc"
-        symlink "$zsh_dir/zsh_aliases" "$HOME/.zsh_aliases"
-        symlink "$zsh_dir/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
-    fi
+    symlink "$zsh_dir/zshrc" "$HOME/.zshrc"
+    symlink "$zsh_dir/zsh_aliases" "$HOME/.zsh_aliases"
+    symlink "$zsh_dir/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
+
+    echo "Remember to install [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) and any customer zsh scripts"
 }
 
 link_ctags() {
