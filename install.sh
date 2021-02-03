@@ -120,7 +120,7 @@ link_zsh() {
     symlink "$zsh_dir/zsh_aliases" "$HOME/.zsh_aliases"
     symlink "$zsh_dir/zsh_plugins.txt" "$HOME/.zsh_plugins.txt"
 
-    echo "Remember to install [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) and any customer zsh scripts"
+    echo "Remember to install [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh), antibody and any customer zsh scripts"
 }
 
 link_ctags() {
