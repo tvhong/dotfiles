@@ -17,7 +17,8 @@
 
     " Python3 Support For NeoVim:
     " Assumed that python 3 host executible is installed by:
-    " $ export PYTHON_CONFIGURE_OPTS="--enable-framework"
+    " $ export PYTHON_CONFIGURE_OPTS="--enable-framework" # for Mac
+    " $ export PYTHON_CONFIGURE_OPTS="--enable-shared" # for Linux
     " $ pyenv install 3.8.5
     " $ pyenv virtualenv 3.8.5 py3nvim
     " $ pyenv activate py3nvim
@@ -176,12 +177,6 @@
         autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
                     \ :call <SID>StripTrailingWhitespaces()
     augroup END
-    augroup highlight_word_under_cursor
-        autocmd!
-        autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-    augroup END
-
-
 
     " Zenefits specific settings.
     augroup zenefits_projects_settings
@@ -254,6 +249,7 @@
     Plug 'scrooloose/nerdcommenter' " Auto comment for different file types
 
     " Layout plugins.
+    Plug 'obxhdx/vim-auto-highlight' " Highlight word under cursor
     Plug 'lilydjwg/colorizer' " Colorize all text in form #rrggbb #rgb.
     Plug 'yuttie/comfortable-motion.vim' " For a smoother scrolling experience.
     Plug 'yggdroot/indentline' " Simple indentation guides.
@@ -379,6 +375,9 @@
 " }}}
 " Colorizer {{{
     let g:colorizer_maxlines = 1000
+" }}}
+" vim-auto-highlight {{{
+    let g:auto_highlight_disabled = 0
 " }}}
 " IndentLine {{{
     let g:indentLine_concealcursor = "nc"
