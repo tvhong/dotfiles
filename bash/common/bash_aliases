@@ -31,5 +31,5 @@ if command -v nvim; then
 fi
 
 # cd
-cs() { cd "$@" && ls -G; }
+cs() { cd "$@" && ls --color=tty; }
 
