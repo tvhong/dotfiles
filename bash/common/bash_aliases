@@ -29,7 +29,3 @@ if command -v nvim; then
   alias vi='nvim'
   alias vim='nvim'
 fi
-
-# cd
-cs() { cd "$@" && ls --color=tty; }
-

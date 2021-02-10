@@ -1,2 +1,2 @@
 # Source the common aliases
-source $HOME/.dotfiles/bash/common/bash_aliases
+source $HOME/.bash_aliases

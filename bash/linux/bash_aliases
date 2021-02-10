@@ -16,5 +16,7 @@ alias sossh="ssh vy@61.14.235.124"
 alias ssd="cd ~/workspace/sosub"
 alias sse="cd ~/workspace/sosub && pyenv activate sosubvenv"
 
+cs() { cd "$@" && ls --color=tty; }
+
 # Source common aliases
 source $HOME/.dotfiles/bash/common/bash_aliases

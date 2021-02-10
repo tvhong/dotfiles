@@ -98,6 +98,9 @@ link_bash() {
         symlink "$BASH_LINUX/bashrc" "$HOME/.bashrc"
         symlink "$BASH_LINUX/bash_logout" "$HOME/.bash_logout"
         symlink "$BASH_LINUX/bash_aliases" "$HOME/.bash_aliases"
+    elif [[ $OSTYPE == darwin* ]]; then
+        BASH_MAC="$bash_dir/mac"
+        symlink "$BASH_MAC/bash_aliases" "$HOME/.bash_aliases"
     fi
 }
 

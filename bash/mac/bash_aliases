@@ -1,0 +1,4 @@
+cs() { cd "$@" && ls -G; }
+
+# Source common aliases
+source $HOME/.dotfiles/bash/common/bash_aliases
