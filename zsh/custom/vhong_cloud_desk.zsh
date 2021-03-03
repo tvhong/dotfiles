@@ -20,6 +20,10 @@ export GIT_EDITOR=vim
 alias vim='/apollo/env/envImprovement/bin/vim'
 alias vi='/apollo/env/envImprovement/bin/vim'
 
+alias bb="brazil-build"
+alias bws="brazil workspace"
+alias bre="brazil-recursive-cmd --allPackages"
+
 alias auth='kinit -f && mwinit -o'
 
 eval `ssh-agent`
