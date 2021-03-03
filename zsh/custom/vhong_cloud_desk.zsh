@@ -1,6 +1,7 @@
 # Amazon specific tools
 ZSH_THEME="crunch"
 
+# Add clouddesk tools to PATH
 for f in AmazonMqOpsToolsConsumable SDETools envImprovement AmazonAwsCli OdinTools; do
     if [[ -d /apollo/env/$f ]]; then
         export PATH=$PATH:/apollo/env/$f/bin
