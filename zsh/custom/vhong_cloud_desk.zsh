@@ -1,12 +1,17 @@
 # Amazon specific tools
 ZSH_THEME="crunch"
 
-export PATH="/apollo/env/AmazonMqOpsToolsConsumable/bin/:$PATH"
-export PATH="/apollo/env/AmazonAwsCli/bin/:$PATH"
+for f in AmazonMqOpsToolsConsumable SDETools envImprovement AmazonAwsCli OdinTools; do
+    if [[ -d /apollo/env/$f ]]; then
+        export PATH=$PATH:/apollo/env/$f/bin
+    fi
+done
 
 export JAVA_HOME=/apollo/env/envImprovement/jdk1.8
 export PATH=$JAVA_HOME/bin:$PATH
 
+# Brazil tools
+export PATH=$HOME/.toolbox/bin:$PATH
 alias brazil-octane='/apollo/env/OctaneBrazilTools/bin/brazil-octane'
 alias third-party-promote='~/.toolbox/bin/brazil-third-party-tool promote'
 alias third-party='~/.toolbox/bin/brazil-third-party-tool'
