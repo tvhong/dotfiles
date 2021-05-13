@@ -79,9 +79,10 @@ if ! zgen saved; then
     zgen oh-my-zsh fzf
 
     # plugins
-    zgen load zsh-users/zsh-completions src
-    zgen load zsh-users/zsh-autosuggestions
+    zgen load zsh-users/zsh-completions src # Auto complete
+    zgen load zsh-users/zsh-autosuggestions # Suggestion while typing commands
     zgen load zsh-users/zsh-syntax-highlighting
+    zgen load jeffreytse/zsh-vi-mode # Better VI(M) mode
 
     # save all to init script
     zgen save
