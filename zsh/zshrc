@@ -5,9 +5,9 @@
 # - PowerLine fonts
 #   + Description: Many themes in oh-my-zsh relies on these fonts.
 #   + Installation: https://github.com/powerline/fonts#installation
-# - Antibody
+# - zgen
 #   + Description: plugin manager for zsh.
-#   + Installation: https://getantibody.github.io/install/
+#   + Installation: git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 
 #######################################################################
 # User configuration
@@ -52,41 +52,37 @@ source $HOME/.zsh_aliases
 # Oh-my-zsh
 #######################################################################
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-# Set name of the theme to load. See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# This section must be before zgen to be effective
+
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="avit"
 # _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 # Different timestamp format for `history` command
 HIST_STAMPS="yyyy-mm-dd"
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    git
-    colored-man-pages
-    colorize
-    fzf
-)
-
-source $ZSH/oh-my-zsh.sh
-
 #######################################################################
 # Plugins
 #######################################################################
 
-# Command to rebuild antibody plugins.
-# Should be run everytime we add new plugin through antibody.
-zsh_build_plugins() {
-    antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
-}
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
 
-if [[ ! -f ~/.zsh_plugins.sh ]]; then
-    zsh_build_plugins
+# if the init scipt doesn't exist
+if ! zgen saved; then
+    echo "Creating a zgen save"
+
+    zgen oh-my-zsh
+    zgen oh-my-zsh git
+    zgen oh-my-zsh colored-man-pages
+    zgen oh-my-zsh colorize
+    zgen oh-my-zsh fzf
+
+    # plugins
+    zgen load zsh-users/zsh-completions src
+    zgen load zsh-users/zsh-autosuggestions
+    zgen load zsh-users/zsh-syntax-highlighting
+
+    # save all to init script
+    zgen save
 fi
-
-# Statically load plugins from antibody
-source ~/.zsh_plugins.sh
